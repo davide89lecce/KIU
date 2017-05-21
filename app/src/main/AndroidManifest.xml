@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.damico.gianluca.sei.kiuapp">
+    package="com.gambino_serra.KIU">
 
     <permission
-        android:name="com.damico.gianluca.sei.kiuapp.permission.MAPS_RECEIVE"
+        android:name="com.gambino_serra.KIU.permission.MAPS_RECEIVE"
         android:protectionLevel="signature" />
     <permission
         android:name="android.permission.ACCESS_FINE_LOCATION"
@@ -13,7 +13,7 @@
         android:name="android.permission.ACCESS_COARSE_LOCATION"
         android:protectionLevel="dangerous" />
 
-    <uses-permission android:name="com.damico.gianluca.sei.kiuapp.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="com.gambino_serra.KIU.permission.MAPS_RECEIVE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -40,10 +40,10 @@
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
 
-        <service android:name="com.damico.gianluca.sei.kiuapp.Service_check" />
+        <service android:name="com.gambino_serra.KIU.Service_check" />
 
         <receiver
-            android:name="com.damico.gianluca.sei.kiuapp.BootCompletedReceiver"
+            android:name="com.gambino_serra.KIU.BootCompletedReceiver"
             android:enabled="true"
             android:exported="false">
             <intent-filter>
@@ -52,12 +52,12 @@
         </receiver>
 
         <activity
-            android:name="com.damico.gianluca.sei.kiuapp.MainActivity"
+            android:name="com.gambino_serra.KIU.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.damico.gianluca.sei.kiuapp.SplashActivity"
+            android:name="com.gambino_serra.KIU.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -66,55 +66,55 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.damico.gianluca.sei.kiuapp.RegisterActivity"
+            android:name="com.gambino_serra.KIU.RegisterActivity"
             android:label="@string/title_register"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.damico.gianluca.sei.kiuapp.MapsSetting"
+            android:name="com.gambino_serra.KIU.MapsSetting"
             android:label="@string/title_activity_maps"
-            android:parentActivityName="com.damico.gianluca.sei.kiuapp.SettingActivity"
+            android:parentActivityName="com.gambino_serra.KIU.SettingActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.damico.gianluca.sei.kiuapp.NotificationHelper"
+            android:name="com.gambino_serra.KIU.NotificationHelper"
             android:label="@string/title_notification_helper"
-            android:parentActivityName="com.damico.gianluca.sei.kiuapp.HelperHomeActivity"
+            android:parentActivityName="com.gambino_serra.KIU.HelperHomeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.damico.gianluca.sei.kiuapp.NotificationKiuer"
+            android:name="com.gambino_serra.KIU.NotificationKiuer"
             android:label="@string/title_notification_kiuer"
-            android:parentActivityName="com.damico.gianluca.sei.kiuapp.KiuerHomeActivity"
+            android:parentActivityName="com.gambino_serra.KIU.KiuerHomeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.damico.gianluca.sei.kiuapp.HelperHomeActivity"
+            android:name="com.gambino_serra.KIU.HelperHomeActivity"
             android:label="@string/title_home_helper"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.noAnim" />
         <activity
-            android:name="com.damico.gianluca.sei.kiuapp.KiuerHomeActivity"
+            android:name="com.gambino_serra.KIU.KiuerHomeActivity"
             android:label="@string/title_home_kiuer"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.noAnim" />
         <activity
-            android:name="com.damico.gianluca.sei.kiuapp.SettingActivity"
+            android:name="com.gambino_serra.KIU.SettingActivity"
             android:label="@string/title_setting_helper"
-            android:parentActivityName="com.damico.gianluca.sei.kiuapp.HelperHomeActivity"
+            android:parentActivityName="com.gambino_serra.KIU.HelperHomeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.damico.gianluca.sei.kiuapp.KiuerMaps"
+            android:name="com.gambino_serra.KIU.KiuerMaps"
             android:label="@string/title_activity_maps"
-            android:parentActivityName="com.damico.gianluca.sei.kiuapp.KiuerHomeActivity"
+            android:parentActivityName="com.gambino_serra.KIU.KiuerHomeActivity"
             android:screenOrientation="portrait" />
 
         <!-- Chat Activities - start -->
         <activity
-            android:name="com.damico.gianluca.sei.kiuapp.chat.ConversationsActivity"
+            android:name="com.gambino_serra.KIU.chat.ConversationsActivity"
             android:label="Chat Kiù"
-            android:parentActivityName="com.damico.gianluca.sei.kiuapp.MainActivity"
+            android:parentActivityName="com.gambino_serra.KIU.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.damico.gianluca.sei.kiuapp.chat.MessagesActivity"
-            android:parentActivityName="com.damico.gianluca.sei.kiuapp.chat.ConversationsActivity"
+            android:name="com.gambino_serra.KIU.chat.MessagesActivity"
+            android:parentActivityName="com.gambino_serra.KIU.chat.ConversationsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <!-- Chat Activities - fine -->
