@@ -1,0 +1,66 @@
+{
+  "project_info": {
+    "project_number": "919228679067",
+    "firebase_url": "https://firechat-aa625.firebaseio.com",
+    "project_id": "firechat-aa625",
+    "storage_bucket": "firechat-aa625.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:919228679067:android:023c1ecc4429111d",
+        "android_client_info": {
+          "package_name": "com.gambino_serra.KIU"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "919228679067-djfm243h3eb19g3gv3ehm2rqp2ljt7ag.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gambino_serra.KIU",
+            "certificate_hash": "D97568C1985F056E6D6EE7FB095E426F9923F4E5"
+          }
+        },
+        {
+          "client_id": "919228679067-hf4dh3u1jc4ntj5bls5s6gt2647qo260.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gambino_serra.KIU",
+            "certificate_hash": "98CF793B17E34C74991C58DCAD2CE9D34AC7E551"
+          }
+        },
+        {
+          "client_id": "919228679067-n1g3lpnck186cbk5s1u6brolm20n8khh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gambino_serra.KIU",
+            "certificate_hash": "31D9DEFDD941038932EB475CE5F6EC7E230613C9"
+          }
+        },
+        {
+          "client_id": "919228679067-ciouckpisv99ru9nn854q8pudhint3sr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzjKCMMlPrL3mCnVV6AWg4lvJq7Tc1io0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

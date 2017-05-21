@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="title_register">Registrati</string>
+    <string name="title_setting_helper">Impostazioni</string>
+
+    <!-- MainActivity -->
+    <string name="err_read_google"> Errore nella lettura di Google</string>
+    <string name="err_login"> username e password non corretti</string>
+    <string name="auth_failed">Autenticazione fallita</string>
+    <string name="insert_name_password">Inserire mail e password</string>
+
+    <!-- content_main -->
+    <string name="enter_mail"> Inserisci mail</string>
+    <string name="enter_password">Inserisci password</string>
+    <string name="str_login">ACCEDI</string>
+    <string name="str_signin">REGISTRATI</string>
+    <string name="logo_app">logo dell\'applicazione kiu</string>
+
+    <!-- RegisterActivity -->
+    <string name="name_surname_insert">Inserire il nome o il cognome</string>
+    <string name="name_surname_invalid">Il nome o il cognome sono non validi</string>
+    <string name="mail_invalid">per favore, inserire una mail valida</string>
+    <string name="empty_fields">Alcuni campi sono vuoti. Per favore, inserisci i valori </string>
+    <string name="psw_len_incorrect">Lunghezza password deve essere maggiore di 5</string>
+    <string name="type_user">Per favore, scegli una tipologia di utente</string>
+    <string name="registration_problem">Un errore si è verificato durante la registrazione</string>
+    <string name="connection_failed">Connessione fallita!</string>
+
+    <!-- activity_register -->
+    <string name="hint_name">Nome</string>
+    <string name="hint_surname">Cognome</string>
+    <string name="hint_email">E-mail</string>
+    <string name="label_activation_mode">ATTIVA IL PROFILO COME:</string>
+    <string name="confirm">CONFERMA</string>
+
+    <!-- dialog_registration_success -->
+    <string name="registration_detail">DETTAGLI REGISTRAZIONE</string>
+    <string name="registration_success">Registrazione avvenuta con successo.\n\n
+        Premere ok per entrare nella propria area personale. </string>
+
+    <!-- BaseActivity -->
+    <string name="loading">Registrazione in corso...</string>
+
+    <!-- MessagesActivity -->
+    <string name="send_btn">INVIA</string>
+    <!-- Conversations_fragmennt -->
+    <string name="no_conversation">Non sono presenti conversazioni.</string>
+
+    <!-- HelperHomeActivity -->
+    <!-- KiuerHomeActivity -->
+    <string name="disp">disponibilità: </string>
+    <string name="visible_by_kiuer">Sei visibile ai Kiuer</string>
+    <string name="invisible_by_kiuer">Non sei visibile ai Kiuer</string>
+    <string name="error_update_volley">Errore aggiornamento dati. Connessione internet mancante</string>
+    <string name="hour_queue">Ora coda: </string>
+    <string name="kiuer2">Kiuer:  </string>
+    <string name="helper2">Helper:  </string>
+    <string name="state">Stato:  </string>
+    <string name="queue_start_at">Coda da effettuare alle </string>
+    <string name="queue_assigned_to">Coda assegnata alle </string>
+    <string name="place">Luogo:  </string>
+    <string name="queue_not_started">Coda non iniziata </string>
+    <string name="queue_in_progress">Coda in corso </string>
+    <string name="queue_terminated">Coda terminata  </string>
+
+    <!-- HelperCloseQueue -->
+    <!-- KiuerCloseQueue -->
+    <string name="close_queue">CHIUDI CODA</string>
+    <string name="queue_closed">Coda chiusa</string>
+    <string name="hour_start_queue">Ora inizio coda:</string>
+    <string name="hour_end_queue">Ora fine coda:</string>
+    <string name="time_queue">Tempo coda:</string>
+    <string name="payment">Compenso:</string>
+
+    <!-- HelperDetails -->
+    <string name="queue_not_finished">La coda non è stata ancora terminata dall\'helper</string>
+    <string name="chiudi_coda">Chiudi coda</string>
+    <string name="goback">indietro</string>
+
+    <!-- KiuerDetails -->
+    <string name="kiuer_details">DETTAGLI KIUER</string>
+    <string name="inizia_coda">Inizia coda</string>
+    <string name="termina_coda">Termina coda</string>
+
+    <!-- KiuerMaps, MapsSetting -->
+    <string name="title_activity_maps">Imposta Posizione</string>
+    <string name="error_loading_maps">Errore durante il caricamento delle mappe</string>
+    <string name="enable_gps">Abilita GPS</string>
+    <string name="disconnected">Disconnesso. Si prega di riconnettersi</string>
+    <string name="network_lost">Connessione assente. Si prega di riconnettersi</string>
+    <string name="location_service_not_available">I servizi di localizzazione non sono disponibili</string>
+    <string name="place_marker_on_location">Posiziona il segnaposto sul luogo dove desideri cedere la coda</string>
+    <string name="select_helper">Seleziona uno degli helper visibili sulla mappa</string>
+    <string name="click_here_for_details">Premi qui per i dettagli</string>
+    <string name="request_sent">Richiesta inviata</string>
+    <string name="unused_request">Richiesta non inviata. Riprovare più tardi</string>
+    <string name="set_request_time">Imposta ora richiesta</string>
+    <string name="sign_your_position">Indica la tua posizione sulla mappa</string>
+    <string name="update_coordinates">Aggiornamento coordinate</string>
+    <string name="error_update_coordinates">Errore aggiornamento coordinate</string>
+    <string name="error_read_coordinates">Errore nella lettura delle coordinate</string>
+    <string name="address_not_available">Indirizzo non disponibile</string>
+
+    <!-- KiuerMapsDetails -->
+    <string name="send_request">Invia richiesta a</string>
+    <string name="hour_rate">Tariffa oraria</string>
+    <string name="start_availability">Inizio disponibilità:</string>
+    <string name="end_availability">Fine disponibilità:</string>
+    <string name="queue_done">Code effettuate:</string>
+    <string name="invia_richiesta">invia richiesta</string>
+    <string name="annulla">annulla</string>
+
+
+    <!-- NotificationDetailsKiuer -->
+    <string name="request_accepted">Richiesta accettata</string>
+    <string name="request_rejected">Richiesta rifiutata</string>
+    <string name="pending_confirmation">In attesa di conferma</string>
+    <string name="name">Nome</string>
+    <string name="surname">Cognome</string>
+    <string name="time">Orario</string>
+    <string name="details_kiuer">DETTAGLI NOTIFICA</string>
+
+    <!-- NotificationHelper -->
+    <string name="text_request_queue">richiede una coda alle </string>
+    <string name="text_request_queue2">presso</string>
+    <string name="accept">accetta</string>
+    <string name="reject">rifiuta</string>
+
+
+    <!-- SettingActivity -->
+    <string name="update_setting">Impostazioni aggiornate</string>
+    <string name="error_update_setting">Errore aggiornamento impostazioni</string>
+
+    <!-- Service_check -->
+    <string name="waiting_message">In attesa di nuovi messaggi</string>
+    <string name="kiu">Kiù</string>
+    <string name="kiu_chat">Kiù Chat</string>
+    <string name="queue_started">ha iniziato la coda</string>
+    <string name="queue_end">ha terminato la coda</string>
+    <string name="new_messages_received">Nuovi messaggi ricevuti</string>
+    <plurals name="incoming_queue_request">
+        <item quantity="one">%d Richiesta di coda da effettuare</item>
+        <item quantity="other">%d Richieste di coda da effettuare</item>
+    </plurals>
+    <plurals name="request_accepted_notification">
+        <item quantity="one">%d Richiesta accettata</item>
+        <item quantity="other">%d Richieste accettate</item>
+    </plurals>
+    <plurals name="request_rejected_notification">
+        <item quantity="one">%d Richiesta rifiutata</item>
+        <item quantity="other">%d Richieste rifiutate</item>
+    </plurals>
+
+    <!-- activity_kiuer_maps-->
+    <string name="img_content">icona uscita mappa</string>
+    <string name="img_content1">icona action mappe</string>
+
+    <!-- activity_messages-->
+    <string name="send_msg_field">scrivi messaggio</string>
+    <string name="send_msg_btn">bottone invio messaggio</string>
+
+    <!-- activity_settings-->
+    <string name="plus_sign">+</string>
+    <string name="minus_sign">-</string>
+    <string name="euro_hour_sign">€/h</string>
+    <string name="fascia_oraria">Definisci fascia oraria</string>
+    <string name="fascia_costo">Definisci costo orario</string>
+    <string name="start_time">Ora inizio disponibilità:</string>
+    <string name="end_time">Ora fine disponibilità:</string>
+    <string name="btn_area">scegli area</string>
+
+    <!-- fragment_helper_close_kiu-->
+    <string name="img_icon_descr">immagine icona utente</string>
+
+    <!-- fragment_kiuer_close_kiu-->
+    <string name="img_icon_user_descr">immagine icona utente</string>
+    <string name="kiuer_close_kiu_title">CHIUDI CODA</string>
+    <string name="txt_rating">Dai un voto</string>
+
+    <!-- fragment_helper_details-->
+    <string name="btn_details_helper">contatta</string>
+    <string name="img_user_helper">immagine utente helper</string>
+    <string name="detail_helper_title">DETTAGLI HELPER</string>
+
+
+    <!-- fragment_kiuer_details-->
+    <string name="btn_details_kiuer">vai!</string>
+    <string name="btn2_details_kiuer">contatta</string>
+    <string name="img_user_kiuer">user kiuer image icon</string>
+    <string name="img_details_kiuer">immagine utente kiuer</string>
+    <string name="detail_kiuer_title">DETTAGLI KIUER</string>
+
+    <!-- fragment_kiuer_details_maps-->
+    <string name="ora_richiesta">00:00</string>
+    <string name="req_queue">Orario richiesta coda:</string>
+    <string name="rating">Valutazione: </string>
+
+    <!-- notification_layout_helper-->
+    <string name="img_desc_1">immagine helper notifica</string>
+
+    <!-- notification_details_layout_helper-->
+    <string name="notif_details_helper_title">DETTAGLI NOTIFICA</string>
+
+    <!-- notification_layout_kiuer-->
+    <string name="img_desc_2">immagine kiuer notifica</string>
+
+    <!-- product_layout-->
+    <string name="img_desc_3">immagine icona utente</string>
+
+    <!-- splash_layout-->
+    <string name="splash_descr">immagine avvio applicazione</string>
+
+
+</resources>
+
