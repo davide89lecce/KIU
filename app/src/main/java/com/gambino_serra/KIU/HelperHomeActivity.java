@@ -43,7 +43,7 @@ import java.util.Map;
 public class HelperHomeActivity extends AppCompatActivity implements Response.Listener<String>, Response.ErrorListener {
 
     final private static String MY_PREFERENCES = "kiuPreferences";
-    private static final String IDUTENTE = "IDutente";
+    private static final String ID = "IDutente";
     final String TAG = this.getClass().getSimpleName();
     TextView disponibilita;
     Switch switchDisponibilita;
@@ -102,7 +102,7 @@ public class HelperHomeActivity extends AppCompatActivity implements Response.Li
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("IDutente", prefs.getString(IDUTENTE, "").toString());
+                params.put("IDutente", prefs.getString(ID, "").toString());
                 return params;
             }
         };
@@ -136,7 +136,7 @@ public class HelperHomeActivity extends AppCompatActivity implements Response.Li
                         @Override
                         protected Map<String, String> getParams() throws AuthFailureError {
                             Map<String, String> params = new HashMap<>();
-                            params.put("IDutente", prefs.getString(IDUTENTE, "").toString());
+                            params.put("IDutente", prefs.getString(ID, "").toString());
                             params.put("disponibile", "1");
                             return params;
                         }
@@ -165,7 +165,7 @@ public class HelperHomeActivity extends AppCompatActivity implements Response.Li
                         @Override
                         protected Map<String, String> getParams() throws AuthFailureError {
                             Map<String, String> params = new HashMap<>();
-                            params.put("IDutente", prefs.getString(IDUTENTE, "").toString());
+                            params.put("IDutente", prefs.getString(ID, "").toString());
                             params.put("disponibile", "0");
                             return params;
                         }
@@ -233,7 +233,7 @@ public class HelperHomeActivity extends AppCompatActivity implements Response.Li
                 SharedPreferences.Editor editor;
                 editor = prefs.edit().clear();
                 editor.apply();
-                FirebaseAuth.getInstance().signOut();
+                //FirebaseAuth.getInstance().signOut();
                 stopService();
                 in = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(in);
@@ -268,7 +268,7 @@ public class HelperHomeActivity extends AppCompatActivity implements Response.Li
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("IDutente", prefs.getString(IDUTENTE, "").toString());
+                params.put("IDutente", prefs.getString(ID, "").toString());
                 return params;
             }
         };

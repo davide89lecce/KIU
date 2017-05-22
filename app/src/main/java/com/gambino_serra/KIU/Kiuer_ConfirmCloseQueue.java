@@ -32,18 +32,17 @@ import java.util.Map;
 /**
  * La classe modella la Dialog relativa alla chiusura della coda (lato Kiuer)
  */
-public class KiuerCloseQueue extends DialogFragment {
+public class Kiuer_ConfirmCloseQueue extends DialogFragment {
 
     //private DatabaseReference mDatabase;
     TextView title;
     Context context;
 
-    public KiuerCloseQueue() {}
+    public Kiuer_ConfirmCloseQueue() {}
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-        //mDatabase = FirebaseDatabase.getInstance().getReference("/chat/chatstatus/");
         final Bundle bundle = getArguments();
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
@@ -64,7 +63,7 @@ public class KiuerCloseQueue extends DialogFragment {
 
                         final RatingBar rating = (RatingBar) getDialog().findViewById(R.id.rating_kiuer);
 
-                        String url = "http://www.kiu.altervista.org/chiudi_coda_kiuer.php";
+                        String url = "http://www.davideantonio2.altervista.org/chiudi_coda_kiuer.php";
                         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
@@ -72,7 +71,7 @@ public class KiuerCloseQueue extends DialogFragment {
                                 //Se il DB risponde con close_conversation viene avviata la chiusura della conversazione
                                 if (response.equals("close_conversation")) {
 
-                                    closeChat();
+                                    //closeChat();
                                     Log.d("volley","close_conversation");
 
                                 }else if(response.equals("error_update_code_effettuate")){
@@ -93,9 +92,9 @@ public class KiuerCloseQueue extends DialogFragment {
                             protected Map<String, String> getParams() throws AuthFailureError {
                                 Map<String, String> params = new HashMap<>();
                                 params.put("rating", String.valueOf(Float.toString(rating.getRating())));
-                                params.put("id_richiesta", bundle.get("id").toString());
-                                params.put("email_helper", bundle.get("email_helper").toString());
-                                params.put("email_kiuer", bundle.get("email_kiuer").toString());
+                                params.put("ID_richiesta", bundle.get("ID").toString());
+                                params.put("ID_helper", bundle.get("ID_helper").toString());
+                                params.put("ID_kiuer", bundle.get("ID_kiuer").toString());
 
                                 return params;
                             }
@@ -117,18 +116,18 @@ public class KiuerCloseQueue extends DialogFragment {
         return builder.create();
     }
 
-    /**
-     * Il metodo chiude la conversazione con l'Helper.
-     */
-    private void closeChat(){
-        Bundle bundle = getArguments();
-        String my_uid = bundle.get("uid_helper").toString();
-        String other_uid = bundle.get("uid_kiuer").toString();
-       // mDatabase.child(my_uid).child(other_uid).removeValue();
-       // mDatabase.child(other_uid).child(my_uid).removeValue();
-       // DatabaseReference mRef = FirebaseDatabase.getInstance().getReference("/chat/" + other_uid + my_uid);
-       // mRef.removeValue();
-    }
+//    /**
+//     * Il metodo chiude la conversazione con l'Helper.
+//     */
+//    private void closeChat(){
+//        Bundle bundle = getArguments();
+//        String my_uid = bundle.get("uid_helper").toString();
+//        String other_uid = bundle.get("uid_kiuer").toString();
+//       // mDatabase.child(my_uid).child(other_uid).removeValue();
+//       // mDatabase.child(other_uid).child(my_uid).removeValue();
+//       // DatabaseReference mRef = FirebaseDatabase.getInstance().getReference("/chat/" + other_uid + my_uid);
+//       // mRef.removeValue();
+//    }
 
 
     /**
@@ -141,9 +140,11 @@ public class KiuerCloseQueue extends DialogFragment {
         TextView text = (TextView) this.getDialog().findViewById(R.id.dettagli2);
         TextView nome = (TextView) this.getDialog().findViewById(R.id.text_nome_1h);
         nome.setText(bundle.get("nome").toString());
-        text.setText(getResources().getString(R.string.hour_start_queue) + "  " + bundle.get("orario_inizio_coda").toString().substring(11,16) + "\n\n" + getResources().getString(R.string.hour_end_queue) + "  " + bundle.get("orario_fine_coda").toString().substring(11,16) + "\n\n"
-                + getResources().getString(R.string.time_queue)  + "  " + calcoloOre(bundle.get("orario_inizio_coda").toString(),bundle.get("orario_fine_coda").toString()) + "\n\n"
-                + getResources().getString(R.string.payment) + "  " + calcoloCompenso(bundle.get("orario_inizio_coda").toString(),bundle.get("orario_fine_coda").toString(),bundle.getInt("tariffa_oraria")) + "€\n");
+        text.setText(getResources().getString(R.string.hour_start_queue) + "  " + bundle.get("orario_inizio_coda").toString().substring(11,16) + "\n\n"
+                    + getResources().getString(R.string.hour_end_queue) + "  " + bundle.get("orario_fine_coda").toString().substring(11,16) + "\n\n"
+                    + getResources().getString(R.string.time_queue)  + "  " + calcoloOre(bundle.get("orario_inizio_coda").toString(),bundle.get("orario_fine_coda").toString()) + "\n\n"
+                    + getResources().getString(R.string.payment) + "  " + calcoloCompenso(bundle.get("orario_inizio_coda").toString(),bundle.get("orario_fine_coda").toString(),bundle.getInt("tariffa_oraria")) + "€\n");
+
     }
 
     /**

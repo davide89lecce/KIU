@@ -31,7 +31,7 @@ import java.util.Map;
  */
 public class NotificationDetailsHelper extends DialogFragment {
 
-    private DatabaseReference mDatabase;
+    //private DatabaseReference mDatabase;
     TextView title;
     Context context;
 
@@ -43,7 +43,7 @@ public class NotificationDetailsHelper extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-        mDatabase = FirebaseDatabase.getInstance().getReference("/chat/chatstatus/");
+       // mDatabase = FirebaseDatabase.getInstance().getReference("/chat/chatstatus/");
 
         final Bundle bundle = getArguments();
         ((NotificationHelper) getActivity()).updateRichieste();
@@ -64,7 +64,7 @@ public class NotificationDetailsHelper extends DialogFragment {
                     @TargetApi(Build.VERSION_CODES.M)
                     public void onClick(DialogInterface dialog, int id) {
 
-                        String url = "http://www.kiu.altervista.org/accetta_richiesta.php";
+                        String url = "http://www.davideantonio2.altervista.org/accetta_richiesta.php";
                         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                             //Se la richiesta è stata inserita correttamente crea la conversazione relativa alla chat
                             @Override
@@ -81,7 +81,7 @@ public class NotificationDetailsHelper extends DialogFragment {
                             @Override
                             protected Map<String, String> getParams() throws AuthFailureError {
                                 Map<String, String> params = new HashMap<>();
-                                params.put("id_richiesta", bundle.get("id").toString());
+                                params.put("ID_richiesta", bundle.get("ID").toString());
                                 return params;
                             }
                         };
@@ -104,7 +104,7 @@ public class NotificationDetailsHelper extends DialogFragment {
                     @TargetApi(Build.VERSION_CODES.M)
                     public void onClick(DialogInterface dialog, int id) {
 
-                        String url = "http://www.kiu.altervista.org/rifiuta_richiesta.php";
+                        String url = "http://www.davideantonio2.altervista.org/rifiuta_richiesta.php";
                         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
@@ -119,7 +119,7 @@ public class NotificationDetailsHelper extends DialogFragment {
                             @Override
                             protected Map<String, String> getParams() throws AuthFailureError {
                                 Map<String, String> params = new HashMap<>();
-                                params.put("id_richiesta", bundle.get("id").toString());
+                                params.put("ID_richiesta", bundle.get("ID").toString());
                                 return params;
                             }
                         };

@@ -64,7 +64,7 @@
     <string name="queue_terminated">Coda terminata  </string>
 
     <!-- HelperCloseQueue -->
-    <!-- KiuerCloseQueue -->
+    <!-- Kiuer_ConfirmCloseQueue -->
     <string name="close_queue">CHIUDI CODA</string>
     <string name="queue_closed">Coda chiusa</string>
     <string name="hour_start_queue">Ora inizio coda:</string>
@@ -72,7 +72,7 @@
     <string name="time_queue">Tempo coda:</string>
     <string name="payment">Compenso:</string>
 
-    <!-- HelperDetails -->
+    <!-- Kiuer_ShowHelperDetails -->
     <string name="queue_not_finished">La coda non è stata ancora terminata dall\'helper</string>
     <string name="chiudi_coda">Chiudi coda</string>
     <string name="goback">indietro</string>

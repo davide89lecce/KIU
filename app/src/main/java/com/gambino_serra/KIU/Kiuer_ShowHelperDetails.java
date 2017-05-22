@@ -16,26 +16,20 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.gambino_serra.KIU.R;
 import com.gambino_serra.KIU.chat.MessagesActivity;
 import com.gambino_serra.KIU.chat.listener.ValueListenerAdapter;
 import com.gambino_serra.KIU.chat.model.UserCard;
 import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * La classe modella la Dialog relativa ai dettagli di una specifica richiesta di coda (lato Kiuer).
  */
-public class HelperDetails extends DialogFragment {
+public class Kiuer_ShowHelperDetails extends DialogFragment {
 
     TextView title;
     Context context;
-   // private DatabaseReference mDatabase;
-    private String my_uid = "";
-    private String other_uid = "";
 
-    public HelperDetails() {
+    public Kiuer_ShowHelperDetails() {
     }
 
     /**
@@ -63,9 +57,9 @@ public class HelperDetails extends DialogFragment {
                         //Se la coda è terminata avvia la Dialog relativa alla chiusura della coda altrimenti avvisa l'utente che non è possibile chiuderla
                         if (bundle.get("stato_coda").toString().equals(getResources().getString(R.string.queue_terminated))) {
 
-                            DialogFragment newFragment = new KiuerCloseQueue();
+                            DialogFragment newFragment = new Kiuer_ConfirmCloseQueue();
                             newFragment.setArguments(bundle);
-                            newFragment.show(getFragmentManager(), "KiuerCloseQueue");
+                            newFragment.show(getFragmentManager(), "Kiuer_ConfirmCloseQueue");
 
                             dialog.dismiss(); // dismette positivo o neutrale
 
@@ -103,8 +97,6 @@ public class HelperDetails extends DialogFragment {
         nome.setText(bundle.get("nome").toString());
         text.setText(bundle.get("text").toString());
 
-        my_uid = bundle.getString("uid_kiuer");
-        other_uid = bundle.getString("uid_helper");
 
         contatta.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,7 +125,6 @@ public class HelperDetails extends DialogFragment {
         Intent in = new Intent(getActivity().getApplicationContext(), MessagesActivity.class);
         in.putExtra("counterpartID", card.userID);
         in.putExtra("counterpartName", card.user_name);
-        in.putExtra("convname", other_uid + my_uid);
         startActivity(in);
     }
 

@@ -1,7 +1,6 @@
 package com.gambino_serra.KIU;
 
 import android.app.DialogFragment;
-import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -25,13 +24,9 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.gambino_serra.KIU.R;
 import com.gambino_serra.KIU.chat.ConversationsActivity;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.kosalgeek.android.json.JsonConverter;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -223,7 +218,7 @@ public class KiuerHomeActivity extends AppCompatActivity
                 }else if(productList.get(position).stato_coda.toString().equals("2")){
                     statoCoda = getResources().getString(R.string.queue_terminated);
                 }
-                DialogFragment newFragment = new HelperDetails();
+                DialogFragment newFragment = new Kiuer_ShowHelperDetails();
                 bundle.putString("ID", productList.get(position).ID_richiesta.toString());
                 bundle.putString("text", getResources().getString(R.string.queue_assigned_to) + " " + productList.get(position).orario.substring(0,5) + "\n\n"
                                         + getResources().getString(R.string.place) + "  " + productList.get(position).luogo + "\n\n"
@@ -237,7 +232,7 @@ public class KiuerHomeActivity extends AppCompatActivity
                 bundle.putString("ID_kiuer", productList.get(position).ID_kiuer.toString());
                 bundle.putInt("tariffa_oraria", productList.get(position).tariffa_oraria);
                 newFragment.setArguments(bundle);
-                newFragment.show(getFragmentManager(), "HelperDetails");
+                newFragment.show(getFragmentManager(), "Kiuer_ShowHelperDetails");
             }
         });
 

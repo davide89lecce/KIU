@@ -40,7 +40,7 @@ public class NotificationHelper extends AppCompatActivity implements Response.Li
 
     final String TAG = this.getClass().getSimpleName();
     final private static String MY_PREFERENCES = "kiuPreferences";
-    final private static String EMAIL = "email";
+    final private static String ID = "ID";
     private static final String LOGGED_USER = "logged_user";
 
     ListView lvProduct;
@@ -73,7 +73,9 @@ public class NotificationHelper extends AppCompatActivity implements Response.Li
         dictionary.addStringField(R.id.tvText, new StringExtractor<JsonCheckRichiesta>() {
             @Override
             public String getStringValue(JsonCheckRichiesta product, int position) {
-                return getResources().getString(R.string.hour_queue) + " " + product.orario.toString().substring(0, 5) + "\n" + getResources().getString(R.string.kiuer2) + product.nome.toString() + "\n";
+                return getResources().getString(R.string.hour_queue) + " "
+                                    + product.orario.toString().substring(0, 5) + "\n"
+                        + getResources().getString(R.string.kiuer2) + product.nome.toString() + "\n";
 
             }
         }).onClick(new ItemClickListener<JsonCheckRichiesta>() {
@@ -81,7 +83,7 @@ public class NotificationHelper extends AppCompatActivity implements Response.Li
             @Override
             public void onClick(JsonCheckRichiesta item, int position, View view) {
                 DialogFragment newFragment = new NotificationDetailsHelper();
-                bundle.putString("id", productList.get(position).ID_richiesta.toString());
+                bundle.putString("IDutente", productList.get(position).ID_richiesta.toString());
                 bundle.putString("text", productList.get(position).nome + " " + getResources().getString(R.string.text_request_queue) + "  " + productList.get(position).orario.substring(0, 5) + " " + getResources().getString(R.string.text_request_queue2) + " " + productList.get(position).luogo);
                 newFragment.setArguments(bundle);
                 newFragment.show(getFragmentManager(), "NotificationDetailsHelper");
@@ -103,7 +105,7 @@ public class NotificationHelper extends AppCompatActivity implements Response.Li
      */
     public void updateRichieste() {
         final SharedPreferences prefs = getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
-        String url = "http://www.kiu.altervista.org/check_richiesta.php";
+        String url = "http://www.davideantonio2.altervista.org/helper_check_richieste.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, this, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -113,7 +115,7 @@ public class NotificationHelper extends AppCompatActivity implements Response.Li
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("email", prefs.getString(EMAIL, "").toString());
+                params.put("IDutente", prefs.getString(ID, "").toString());
                 return params;
             }
         };

@@ -90,7 +90,7 @@
     <string name="queue_terminated">Queue terminated  </string>
 
     <!-- HelperCloseQueue -->
-    <!-- KiuerCloseQueue -->
+    <!-- Kiuer_ConfirmCloseQueue -->
     <string name="close_queue">CLOSE QUEUE</string>
     <string name="queue_closed">Queue closed</string>
     <string name="hour_start_queue">Hour start queue:</string>
@@ -98,7 +98,7 @@
     <string name="time_queue">Time queue:</string>
     <string name="payment">Payment:</string>
 
-    <!-- HelperDetails -->
+    <!-- Kiuer_ShowHelperDetails -->
     <string name="queue_not_finished">The queue was not yet finished by helper</string>
     <string name="chiudi_coda">Close queue</string>
     <string name="goback">back</string>
