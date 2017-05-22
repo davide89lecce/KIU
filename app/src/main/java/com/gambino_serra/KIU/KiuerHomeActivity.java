@@ -45,9 +45,8 @@ public class KiuerHomeActivity extends AppCompatActivity
 
     final String TAG = this.getClass().getSimpleName();
     final private static String MY_PREFERENCES = "kiuPreferences";
-    final private static String EMAIL = "email";
-    final private static String TIPO_UTENTE = "tipoUtente";
-    final private static String UID = "uid";
+    final private static String ID = "IDutente";
+    final private static String TIPOLOGIA = "tipologia";
     private static final String LOGGED_USER = "logged_user";
 
     Intent in;
@@ -62,9 +61,9 @@ public class KiuerHomeActivity extends AppCompatActivity
         setContentView(R.layout.activity_kiuer_home);
 
         //Elimina le notifiche per Coda Iniziata e Coda Terminata
-        NotificationManager mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        mNotifyMgr.cancel(003);
-        mNotifyMgr.cancel(004);
+        //NotificationManager mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        //mNotifyMgr.cancel(003);
+        //mNotifyMgr.cancel(004);
 
       //  mAuth = FirebaseAuth.getInstance();
       //  mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -166,7 +165,7 @@ public class KiuerHomeActivity extends AppCompatActivity
     public void updateRichieste(){
 
         final SharedPreferences prefs = getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
-        String url = "http://www.kiu.altervista.org/code_kiuer.php";
+        String url = "http://www.davideantonio2.altervista.org/code_kiuer.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, this, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -176,7 +175,7 @@ public class KiuerHomeActivity extends AppCompatActivity
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("email", prefs.getString(EMAIL,"").toString());
+                params.put("IDutente", prefs.getString(ID,"").toString());
                 return params;
             }
         };
@@ -203,11 +202,11 @@ public class KiuerHomeActivity extends AppCompatActivity
             @Override
             public String getStringValue(JsonCheckRichiesta product, int position) {
                 String statoCoda = "";
-                if(product.stato_coda.toString().equals("Non iniziata")){
+                if(product.stato_coda.toString().equals("0")){
                     statoCoda = getResources().getString(R.string.queue_not_started);
-                }else if(product.stato_coda.toString().equals("In coda")){
+                }else if(product.stato_coda.toString().equals("1")){
                     statoCoda = getResources().getString(R.string.queue_in_progress);
-                }else if(product.stato_coda.toString().equals("Coda terminata")){
+                }else if(product.stato_coda.toString().equals("2")){
                     statoCoda = getResources().getString(R.string.queue_terminated);
                 }
                 return getResources().getString(R.string.hour_queue) + "  " + product.orario.toString().substring(0,5) + "\n" + getResources().getString(R.string.helper2) + " " + product.nome.toString() + "\n" + getResources().getString(R.string.state) + "  " + statoCoda.toString() + "\n";
@@ -217,22 +216,25 @@ public class KiuerHomeActivity extends AppCompatActivity
             @Override
             public void onClick(JsonCheckRichiesta item, int position, View view) {
                 String statoCoda = "";
-                if(productList.get(position).stato_coda.toString().equals("Non iniziata")){
+                if(productList.get(position).stato_coda.toString().equals("0")){
                     statoCoda = getResources().getString(R.string.queue_not_started);
-                }else if(productList.get(position).stato_coda.toString().equals("In coda")){
+                }else if(productList.get(position).stato_coda.toString().equals("1")){
                     statoCoda = getResources().getString(R.string.queue_in_progress);
-                }else if(productList.get(position).stato_coda.toString().equals("Coda terminata")){
+                }else if(productList.get(position).stato_coda.toString().equals("2")){
                     statoCoda = getResources().getString(R.string.queue_terminated);
                 }
                 DialogFragment newFragment = new HelperDetails();
-                bundle.putString("id", productList.get(position).ID_richiesta.toString());
-                bundle.putString("text", getResources().getString(R.string.queue_assigned_to) + " " + productList.get(position).orario.substring(0,5) + "\n\n" + getResources().getString(R.string.place) + "  " + productList.get(position).luogo + "\n\n" + getResources().getString(R.string.helper2) + "  " + productList.get(position).nome );
+                bundle.putString("ID", productList.get(position).ID_richiesta.toString());
+                bundle.putString("text", getResources().getString(R.string.queue_assigned_to) + " " + productList.get(position).orario.substring(0,5) + "\n\n"
+                                        + getResources().getString(R.string.place) + "  " + productList.get(position).luogo + "\n\n"
+                                        + "Details:" + "  " + productList.get(position).descrizione +"\n\n"
+                                        + getResources().getString(R.string.helper2) + "  " + productList.get(position).nome );
                 bundle.putString("nome", productList.get(position).nome);
                 bundle.putString("stato_coda", statoCoda.toString());
                 bundle.putString("orario_inizio_coda", productList.get(position).orario_inizio.toString());
                 bundle.putString("orario_fine_coda", productList.get(position).orario_fine.toString());
-                bundle.putString("email_helper", productList.get(position).ID_helper.toString());
-                bundle.putString("email_kiuer", productList.get(position).ID_kiuer.toString());
+                bundle.putString("ID_helper", productList.get(position).ID_helper.toString());
+                bundle.putString("ID_kiuer", productList.get(position).ID_kiuer.toString());
                 bundle.putInt("tariffa_oraria", productList.get(position).tariffa_oraria);
                 newFragment.setArguments(bundle);
                 newFragment.show(getFragmentManager(), "HelperDetails");

@@ -28,10 +28,9 @@
     <string name="insert_name_password">Insert mail and password</string>
 
     <!-- content_main -->
-    <string name="enter_mail"> Enter mail</string>
+    <string name="enter_ID"> Enter Username</string>
     <string name="enter_password">Enter password</string>
     <string name="str_login">LOGIN</string>
-    <string name="str_signin">SIGN IN</string>
     <string name="logo_app">logo kiu application</string>
 
     <!-- RegisterActivity -->

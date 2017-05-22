@@ -11,10 +11,9 @@
     <string name="insert_name_password">Inserire mail e password</string>
 
     <!-- content_main -->
-    <string name="enter_mail"> Inserisci mail</string>
+    <string name="enter_ID"> Inserisci Username</string>
     <string name="enter_password">Inserisci password</string>
     <string name="str_login">ACCEDI</string>
-    <string name="str_signin">REGISTRATI</string>
     <string name="logo_app">logo dell\'applicazione kiu</string>
 
     <!-- RegisterActivity -->

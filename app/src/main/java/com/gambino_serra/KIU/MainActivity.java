@@ -33,7 +33,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * La classe gestisce il login e l'accesso alla registrazione per un nuovo utente.
+ * La classe gestisce il login
  */
 public class MainActivity extends BaseActivity {
 
@@ -71,11 +71,9 @@ public class MainActivity extends BaseActivity {
         etUsername = (EditText) findViewById(R.id.etUsername);
         etPassword = (EditText) findViewById(R.id.etPassword);
         btnLogin = (Button) findViewById(R.id.btnLogin);
-        btnRegister = (Button) findViewById(R.id.btnRegister);
 
         //mAuth = FirebaseAuth.getInstance();
         //mAuthListener = new FirebaseAuth.AuthStateListener() {
-
 
 
         //   @Override
@@ -87,7 +85,6 @@ public class MainActivity extends BaseActivity {
         //            Log.d(TAG, "onAuthStateChanged:signed_out");
         //        }
         //    }
-
 
 
         // si verifica che le SharedPreferences contengano dati, nel caso contrario l'utente
@@ -120,35 +117,35 @@ public class MainActivity extends BaseActivity {
                 }
             }
         });
-
-
-        btnRegister.setOnClickListener(new View.OnClickListener() {
-
-            /**
-             * Il metodo permette di accedere alla schermata di registrazione
-             * di un nuovo utente.
-             * @param v istanza della View
-             */
-            @Override
-            public void onClick(View v) {
-                startRegisterActivity();
-            }
-        });
-
     }
 
-    /**
-     * Il metodo avvia l'activity per la registrazione utente.
-     */
-    private void startRegisterActivity() {
-        Intent in = new Intent(MainActivity.this, RegisterActivity.class);
-        startActivity(in);
-    }
+//       btnRegister.setOnClickListener(new View.OnClickListener() {
+//
+//            /**
+//             * Il metodo permette di accedere alla schermata di registrazione
+//             * di un nuovo utente.
+//             * @param v istanza della View
+//             */
+//            @Override
+//            public void onClick(View v) {
+//                startRegisterActivity();
+//            }
+//        });
+//
+//    }
+//
+//    /**
+//     * Il metodo avvia l'activity per la registrazione utente.
+//     */
+//    private void startRegisterActivity() {
+//        Intent in = new Intent(MainActivity.this, RegisterActivity.class);
+//        startActivity(in);
+//    }
 
     /**
      * Il metodo imposta il messaggio della Dialog.
      */
-    @Override
+    //@Override
     protected void setMessage() {
         mProgressDialog.setMessage(getString(R.string.login));
     }
