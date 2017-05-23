@@ -152,7 +152,7 @@
     <string name="reject">reject</string>
 
 
-    <!-- SettingActivity -->
+    <!-- Helper_Settings -->
     <string name="update_setting">Update settings</string>
     <string name="error_update_setting">Error update settings</string>
 

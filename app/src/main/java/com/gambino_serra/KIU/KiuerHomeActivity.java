@@ -35,8 +35,7 @@ import java.util.Map;
 /**
  * La classe modella l'Activity Home del Kiuer.
  */
-public class KiuerHomeActivity extends AppCompatActivity
-        implements Response.Listener<String>,Response.ErrorListener{
+public class KiuerHomeActivity extends AppCompatActivity implements Response.Listener<String>,Response.ErrorListener{
 
     final String TAG = this.getClass().getSimpleName();
     final private static String MY_PREFERENCES = "kiuPreferences";
@@ -47,37 +46,11 @@ public class KiuerHomeActivity extends AppCompatActivity
     Intent in;
     ListView lvProduct;
 
-   // private FirebaseAuth mAuth;
-   // private FirebaseAuth.AuthStateListener mAuthListener;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kiuer_home);
 
-        //Elimina le notifiche per Coda Iniziata e Coda Terminata
-        //NotificationManager mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        //mNotifyMgr.cancel(003);
-        //mNotifyMgr.cancel(004);
-
-      //  mAuth = FirebaseAuth.getInstance();
-      //  mAuthListener = new FirebaseAuth.AuthStateListener() {
-        /*
-            @Override
-            public void onAuthStateChanged(@NotNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user != null) {
-                    // User is signed in
-                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-
-                } else {
-                    Log.d(TAG, "onAuthStateChanged:signed_out");
-                    Intent in = new Intent(KiuerHomeActivity.this, MainActivity.class);
-                    startActivity(in);
-                }
-            }
-        };
-        */
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab2);
         fab.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -116,16 +89,10 @@ public class KiuerHomeActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
 
         boolean check = false;
-
         final SharedPreferences prefs = getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
 
         switch (item.getItemId()) {
 
-//            case R.id.chat_kiuer:
-//                in = new Intent(getApplicationContext(), ConversationsActivity.class);
-//                startActivity(in);
-//                check = true;
-//                break;
             case R.id.notification_kiuer:
                 in = new Intent(getApplicationContext(), NotificationKiuer.class);
                 startActivity(in);
@@ -135,7 +102,6 @@ public class KiuerHomeActivity extends AppCompatActivity
                 SharedPreferences.Editor editor;
                 editor = prefs.edit().clear();
                 editor.apply();
-                //FirebaseAuth.getInstance().signOut();
                 stopService();
                 in = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(in);
@@ -144,7 +110,6 @@ public class KiuerHomeActivity extends AppCompatActivity
             default:
                 check = super.onOptionsItemSelected(item);
         }
-
         return check;
     }
 
@@ -222,7 +187,7 @@ public class KiuerHomeActivity extends AppCompatActivity
                 bundle.putString("ID", productList.get(position).ID_richiesta.toString());
                 bundle.putString("text", getResources().getString(R.string.queue_assigned_to) + " " + productList.get(position).orario.substring(0,5) + "\n\n"
                                         + getResources().getString(R.string.place) + "  " + productList.get(position).luogo + "\n\n"
-                                        + "Details:" + "  " + productList.get(position).descrizione +"\n\n"
+                                        + "Details:" /*creare stringa descrizione*/ + "  " + productList.get(position).descrizione +"\n\n"
                                         + getResources().getString(R.string.helper2) + "  " + productList.get(position).nome );
                 bundle.putString("nome", productList.get(position).nome);
                 bundle.putString("stato_coda", statoCoda.toString());

@@ -25,9 +25,6 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.gambino_serra.KIU.Manifest;
-import com.gambino_serra.KIU.MapsSettingPermissionsDispatcher;
-import com.gambino_serra.KIU.R;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -68,7 +65,7 @@ public class MapsSetting extends FragmentActivity implements GoogleApiClient.Con
     ImageView checkButton;
     ImageView closeButton;
     final private static String MY_PREFERENCES = "kiuPreferences";
-    final private static String EMAIL = "email";
+    final private static String IDUTENTE = "ID";
     final Bundle bundle = new Bundle();
     Location location;
     LatLng ltln;
@@ -330,7 +327,7 @@ public class MapsSetting extends FragmentActivity implements GoogleApiClient.Con
 
         //Lettura della coordinate del Helper.
         final SharedPreferences prefs = getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
-        String url = "http://www.kiu.altervista.org/read_setting_helper.php";
+        String url = "http://www.davideantonio2.altervista.org/helper_read_settings.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -359,14 +356,14 @@ public class MapsSetting extends FragmentActivity implements GoogleApiClient.Con
                         checkButton.setOnClickListener(new View.OnClickListener() {
                             public void onClick(View v) {
 
-                                Intent setting = new Intent(MapsSetting.this, SettingActivity.class);
+                                Intent setting = new Intent(MapsSetting.this, Helper_Settings.class);
                                 startActivity(setting);
 
                                 final Double latitude = ltln.latitude;
                                 final Double longitude = ltln.longitude;
 
                                 //Invio delle nuove coordinate al database di altervista
-                                String url = "http://www.kiu.altervista.org/update_coordinate.php";
+                                String url = "http://www.davideantonio2.altervista.org/helper_update_coordinate.php";
                                 StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                                     @Override
                                     public void onResponse(String response) {
@@ -386,7 +383,7 @@ public class MapsSetting extends FragmentActivity implements GoogleApiClient.Con
                                     @Override
                                     protected Map<String, String> getParams() throws AuthFailureError {
                                         Map<String, String> params = new HashMap<>();
-                                        params.put("email", prefs.getString(EMAIL, "").toString());
+                                        params.put("ID", prefs.getString(IDUTENTE, "").toString());
                                         params.put("latitudine", latitude.toString());
                                         params.put("longitudine", longitude.toString());
                                         return params;
@@ -397,10 +394,10 @@ public class MapsSetting extends FragmentActivity implements GoogleApiClient.Con
                             }
                         });
 
-                        //chiude l'ActivityMap e visualizza SettingActivity
+                        //chiude l'ActivityMap e visualizza Helper_Settings
                         closeButton.setOnClickListener(new View.OnClickListener() {
                             public void onClick(View v) {
-                                Intent setting = new Intent(MapsSetting.this, SettingActivity.class);
+                                Intent setting = new Intent(MapsSetting.this, Helper_Settings.class);
                                 startActivity(setting);
                             }
                         });
@@ -425,14 +422,14 @@ public class MapsSetting extends FragmentActivity implements GoogleApiClient.Con
                         checkButton.setOnClickListener(new View.OnClickListener() {
                             public void onClick(View v) {
 
-                                Intent setting = new Intent(MapsSetting.this, SettingActivity.class);
+                                Intent setting = new Intent(MapsSetting.this, Helper_Settings.class);
                                 startActivity(setting);
 
                                 final Double latitude = ltln.latitude;
                                 final Double longitude = ltln.longitude;
 
                                 //Invio delle nuove coordinate al database di altervista
-                                String url = "http://www.kiu.altervista.org/update_coordinate.php";
+                                String url = "http://www.davideantonio2.altervista.org/helper_update_coordinate.php";
                                 StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                                     @Override
                                     public void onResponse(String response) {
@@ -452,7 +449,7 @@ public class MapsSetting extends FragmentActivity implements GoogleApiClient.Con
                                     @Override
                                     protected Map<String, String> getParams() throws AuthFailureError {
                                         Map<String, String> params = new HashMap<>();
-                                        params.put("email", prefs.getString(EMAIL, "").toString());
+                                        params.put("ID", prefs.getString(IDUTENTE, "").toString());
                                         params.put("latitudine", latitude.toString());
                                         params.put("longitudine", longitude.toString());
                                         return params;
@@ -462,10 +459,10 @@ public class MapsSetting extends FragmentActivity implements GoogleApiClient.Con
 
                             }
                         });
-                        //chiude l'ActivityMap e visualizza SettingActivity
+                        //chiude l'ActivityMap e visualizza Helper_Settings
                         closeButton.setOnClickListener(new View.OnClickListener() {
                             public void onClick(View v) {
-                                Intent setting = new Intent(MapsSetting.this, SettingActivity.class);
+                                Intent setting = new Intent(MapsSetting.this, Helper_Settings.class);
                                 startActivity(setting);
                             }
                         });
@@ -485,7 +482,7 @@ public class MapsSetting extends FragmentActivity implements GoogleApiClient.Con
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("email", prefs.getString(EMAIL, "").toString());
+                params.put("ID", prefs.getString(IDUTENTE, "").toString());
                 return params;
             }
         };
@@ -495,8 +492,6 @@ public class MapsSetting extends FragmentActivity implements GoogleApiClient.Con
 
     /**
      * Il metodo permette di posizionare il marker sulla mappa.
-     *
-     * @param latLng
      */
     @Override
     public void onMapClick(LatLng latLng) {
@@ -506,7 +501,6 @@ public class MapsSetting extends FragmentActivity implements GoogleApiClient.Con
         map.addMarker(new MarkerOptions()
                 .position(latLng)
                 .title("Io"));
-
 
     }
 

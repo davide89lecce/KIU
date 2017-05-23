@@ -69,7 +69,6 @@ public class KiuerMaps extends FragmentActivity implements
     private static final String IDUTENTE = "IDutente";
     private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
     final private static String MY_PREFERENCES = "kiuPreferences";
-    final private static String EMAIL = "email";
     final Bundle bundle = new Bundle();
     ImageView closeButton;
     View view;
@@ -97,9 +96,6 @@ public class KiuerMaps extends FragmentActivity implements
 
     /**
      * Il metodo formatta l'orario.
-     *
-     * @param c
-     * @return la stringa formattata
      */
     private static String pad(int c) {
         if (c >= 10)
@@ -126,8 +122,6 @@ public class KiuerMaps extends FragmentActivity implements
     /**
      * Il metodo permette di caricare le mappe di Google.
      * N.B.: KiuerMapsPermissionsDispatcher, la classe viene creata in fase di build dell'applicazione.
-     *
-     * @param googleMap
      */
     protected void loadMap(GoogleMap googleMap) {
         map = googleMap;
@@ -143,7 +137,7 @@ public class KiuerMaps extends FragmentActivity implements
     @NeedsPermission({Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION})
     void getMyLocation() {
         if (map != null) {
-            //Adesso che la mappa e' caricata puo' ricevere la psosizione
+            //Adesso che la mappa e' caricata puo' ricevere la posizione
             map.setMyLocationEnabled(true);
             mGoogleApiClient = new GoogleApiClient.Builder(this)
                     .addApi(LocationServices.API)
@@ -172,7 +166,7 @@ public class KiuerMaps extends FragmentActivity implements
         connectClient();
     }
 
-    /*
+    /**
      * Il metodo e' chiamato quando l'Activity perde la visibilita'.
      */
     @Override
@@ -186,10 +180,6 @@ public class KiuerMaps extends FragmentActivity implements
 
     /**
      * Il metodo gestisce i risultati ritornati dal FragmentActivity dei Google Play services.
-     *
-     * @param requestCode
-     * @param resultCode
-     * @param data
      */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -207,10 +197,7 @@ public class KiuerMaps extends FragmentActivity implements
     }
 
     /**
-     * Il metodo verifica che il servizi di Google siano disponibili,
-     * in caso contrario una Dialog viene visualizzata al'utente.
-     *
-     * @return booleano
+     * Il metodo verifica che il servizi di Google siano disponibili, in caso contrario una Dialog viene visualizzata al'utente.
      */
     private boolean isGooglePlayServicesAvailable() {
 
@@ -240,8 +227,6 @@ public class KiuerMaps extends FragmentActivity implements
     /**
      * Il metodo viene invocato dal Location Services quando la richiesta di connessione al client
      * e' avvenuta con successo. In questo momento si puo' richiedere la posizione corrente.
-     *
-     * @param dataBundle
      */
     @Override
     public void onConnected(Bundle dataBundle) {
@@ -279,10 +264,7 @@ public class KiuerMaps extends FragmentActivity implements
     }
 
     /**
-     * Il metodo e' invocato dal Location Services se la connessione con il client
-     * si interrrompe a causa di un errore.
-     *
-     * @param i
+     * Il metodo e' invocato dal Location Services se la connessione con il client si interrrompe a causa di un errore.
      */
     @Override
     public void onConnectionSuspended(int i) {
@@ -295,8 +277,6 @@ public class KiuerMaps extends FragmentActivity implements
 
     /**
      * Il metodo viene invocato dal Location Services se lo stesso servizio fallisce
-     *
-     * @param connectionResult
      */
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
@@ -308,8 +288,7 @@ public class KiuerMaps extends FragmentActivity implements
                 connectionResult.startResolutionForResult(this,
                         CONNECTION_FAILURE_RESOLUTION_REQUEST);
 
-                //L'eccezione e' sollevata nel caso in cui l'Intent viene
-                //eliminato.
+                //L'eccezione e' sollevata nel caso in cui l'Intent viene eliminato.
             } catch (IntentSender.SendIntentException e) {
                 // Log the error
                 e.printStackTrace();
@@ -321,10 +300,7 @@ public class KiuerMaps extends FragmentActivity implements
     }
 
     /**
-     * Il metodo permette di caricare e visualizzare la mappa nella UI dell'applicazione
-     * e le sue componenti invocando il metodo loadMap(map).
-     *
-     * @param map
+     * Il metodo permette di caricare e visualizzare la mappa nella UI dell'applicazione e le sue componenti invocando il metodo loadMap(map).
      */
     @Override
     public void onMapReady(GoogleMap map) {
@@ -343,14 +319,10 @@ public class KiuerMaps extends FragmentActivity implements
         TextView tv = (TextView) view1.findViewById(android.support.design.R.id.snackbar_text);
         tv.setTextColor(Color.WHITE);
         snack.show();
-
     }
 
     /**
-     * Il metodo permete di posizionare il marker dell'utente e di visualizzare sulla mappa
-     * gli Helper disponibili.
-     *
-     * @param latLng
+     * Il metodo permete di posizionare il marker dell'utente e di visualizzare sulla mappa gli Helper disponibili.
      */
     @Override
     public void onMapClick(LatLng latLng) {
@@ -400,7 +372,7 @@ public class KiuerMaps extends FragmentActivity implements
 
         //Lettura degli Helper disponibili
         final SharedPreferences prefs = getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
-        String url = "http://www.kiu.altervista.org/read_helpers.php";
+        String url = "http://www.davideantonio2.altervista.org/read_helpers.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -454,8 +426,6 @@ public class KiuerMaps extends FragmentActivity implements
 
     /**
      * Il metodo gestisce la creazione della Dialog TimePicker.
-     * @param id
-     * @return Dialog
      */
     @Override
     protected Dialog onCreateDialog(int id) {
@@ -469,8 +439,7 @@ public class KiuerMaps extends FragmentActivity implements
     // updates the time we display in the TextView
 
     /**
-     * Il metodo permette di aggiornare il l'orario e visualizzarlo
-     * nella Dialog di richiesta.
+     * Il metodo permette di aggiornare il l'orario e visualizzarlo nella Dialog di richiesta.
      */
     private void updateDisplay() {
         ora_richiesta = new StringBuilder().append(pad(ora)).append(":").append(pad(minuti));
@@ -489,8 +458,6 @@ public class KiuerMaps extends FragmentActivity implements
 
     /**
      * Il metodo e' invocato se l'inoltro della richiesta e' avvenuto con successo (inviata da KiueMapsDetails).
-     *
-     * @param response
      */
     @Override
     public void onResponse(String response) {
@@ -507,7 +474,6 @@ public class KiuerMaps extends FragmentActivity implements
      */
     @Override
     public void onErrorResponse(VolleyError error) {
-
         Toast.makeText(getApplicationContext(), R.string.error_update_volley, Toast.LENGTH_SHORT).show();
     }
 
@@ -515,7 +481,6 @@ public class KiuerMaps extends FragmentActivity implements
      * Il metodo gestisce la visualizzazione della richiesta di coda inviata e lo reindirizza alla home del Kiuer.
      */
     public void richiestaInviata() {
-
         Intent kiuerHomeActivity = new Intent(KiuerMaps.this, KiuerHomeActivity.class);
         startActivity(kiuerHomeActivity);
         Toast.makeText(getApplicationContext(), R.string.request_sent, Toast.LENGTH_SHORT).show();
@@ -525,18 +490,14 @@ public class KiuerMaps extends FragmentActivity implements
      * Il metodo gestisce la visualizzazione della richiesta di coda non inviata.
      */
     public void richiestaNonInviata() {
-
         Toast.makeText(getApplicationContext(), R.string.unused_request, Toast.LENGTH_SHORT).show();
     }
 
     /**
-     * Il metodo gestisce la comunicazione, tramite Dialog, degli errori
-     * che possono verificarsi.
+     * Il metodo gestisce la comunicazione, tramite Dialog, degli errori che possono verificarsi.
      */
     public static class ErrorDialogFragment extends DialogFragment {
-
         private Dialog mDialog;
-
         public ErrorDialogFragment() {
             super();
             mDialog = null;

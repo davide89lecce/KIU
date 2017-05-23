@@ -43,7 +43,7 @@ public class KiuerMapsDetails extends DialogFragment {
 
         builder.setView(inflater.inflate(R.layout.fragment_kiuer_details_maps, null))
 
-                .setTitle(getResources().getString(R.string.send_request).toUpperCase() + " " + bundle.get("cognome").toString().toUpperCase() + " " + bundle.get("nome").toString().toUpperCase())
+                .setTitle(getResources().getString(R.string.send_request).toUpperCase() + " " + bundle.get("nome").toString().toUpperCase())
 
                 .setPositiveButton(R.string.invia_richiesta, new DialogInterface.OnClickListener() {
 
@@ -52,17 +52,17 @@ public class KiuerMapsDetails extends DialogFragment {
 
                         if (!bundle.get("ora_richiesta").equals(getResources().getString(R.string.set_request_time))) {
                             //Registra nel database di altervista la richiesta inviata dal Kiuer
-                            String url = "http://www.kiu.altervista.org/invia_richiesta.php";
+                            String url = "http://www.davideantonio2.altervista.org/kiuer_invia_richiesta.php";
 
                             StringRequest stringRequest = new StringRequest(Request.Method.POST, url, ((KiuerMaps) getActivity()), ((KiuerMaps) getActivity())) {
                                 @Override
                                 protected Map<String, String> getParams() throws AuthFailureError {
                                     Map<String, String> params = new HashMap<>();
-                                    params.put("email_kiuer", bundle.get("email_kiuer").toString());
-                                    params.put("email_helper", bundle.get("email_helper").toString());
+                                    params.put("ID_kiuer", bundle.get("ID_kiuer").toString());
+                                    params.put("ID_helper", bundle.get("ID_helper").toString());
                                     params.put("orario", bundle.get("ora_richiesta").toString());
-                                    params.put("coordinate_latitudine", bundle.get("coordinate_latitudine").toString());
-                                    params.put("coordinate_longitudine", bundle.get("coordinate_longitudine").toString());
+                                    params.put("pos_latitudine", bundle.get("pos_latitudine").toString());
+                                    params.put("pos_longitudine", bundle.get("pos_longitudine").toString());
                                     params.put("luogo", bundle.get("luogo").toString());
                                     return params;
                                 }
@@ -101,8 +101,10 @@ public class KiuerMapsDetails extends DialogFragment {
         Bundle bundle = getArguments();
         rating.setRating(bundle.getFloat("rating") / bundle.getInt("num_feedback"));
         rating.setIsIndicator(true);
-        testo.setText(getResources().getString(R.string.hour_rate) + " " + bundle.get("tariffa_oraria") + "€\n" + getResources().getString(R.string.queue_done) + " " + bundle.get("code_effettuate") + "\n"
-                + getResources().getString(R.string.start_availability) + " " + bundle.get("inizio_disp").toString().substring(0, 5) + "\n" + getResources().getString(R.string.end_availability) + " " + bundle.get("fine_disp").toString().substring(0, 5) + "\n");
+        testo.setText(getResources().getString(R.string.hour_rate) + " " + bundle.get("tariffa_oraria") + "€\n"
+                + getResources().getString(R.string.queue_done) + " " + bundle.get("code_effettuate") + "\n"
+                + getResources().getString(R.string.start_availability) + " " + bundle.get("inizio_disp").toString().substring(0, 5) + "\n"
+                + getResources().getString(R.string.end_availability) + " " + bundle.get("fine_disp").toString().substring(0, 5) + "\n");
 
         GradientDrawable gd = new GradientDrawable();
         gd.setColor(0xBFBFBFBF);
@@ -120,7 +122,6 @@ public class KiuerMapsDetails extends DialogFragment {
                 ((KiuerMaps) getActivity()).showTimePickerRichiesta();
             }
         });
-
     }
 
     @Override

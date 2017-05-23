@@ -72,7 +72,7 @@
         <activity
             android:name="com.gambino_serra.KIU.MapsSetting"
             android:label="@string/title_activity_maps"
-            android:parentActivityName="com.gambino_serra.KIU.SettingActivity"
+            android:parentActivityName="com.gambino_serra.KIU.Helper_Settings"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.gambino_serra.KIU.NotificationHelper"
@@ -95,7 +95,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.noAnim" />
         <activity
-            android:name="com.gambino_serra.KIU.SettingActivity"
+            android:name="com.gambino_serra.KIU.Helper_Settings"
             android:label="@string/title_setting_helper"
             android:parentActivityName="com.gambino_serra.KIU.HelperHomeActivity"
             android:screenOrientation="portrait" />

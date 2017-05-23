@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -25,13 +24,10 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.gambino_serra.KIU.R;
 //import com.gambino_serra.KIU.chat.ConversationsActivity;
 //import com.google.firebase.auth.FirebaseAuth;
 //import com.google.firebase.auth.FirebaseUser;
 import com.kosalgeek.android.json.JsonConverter;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -220,7 +216,7 @@ public class HelperHomeActivity extends AppCompatActivity implements Response.Li
                 check = true;
                 break;
             case R.id.setting:
-                in = new Intent(getApplicationContext(), SettingActivity.class);
+                in = new Intent(getApplicationContext(), Helper_Settings.class);
                 startActivity(in);
                 check = true;
                 break;

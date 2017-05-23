@@ -127,7 +127,7 @@
     <string name="reject">rifiuta</string>
 
 
-    <!-- SettingActivity -->
+    <!-- Helper_Settings -->
     <string name="update_setting">Impostazioni aggiornate</string>
     <string name="error_update_setting">Errore aggiornamento impostazioni</string>
 

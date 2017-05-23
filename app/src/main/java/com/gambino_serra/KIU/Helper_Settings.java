@@ -20,7 +20,6 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.gambino_serra.KIU.R;
 import com.kosalgeek.android.json.JsonConverter;
 
 import java.util.ArrayList;
@@ -30,7 +29,7 @@ import java.util.Map;
 /**
  * La classe gestisce l'Activity relativa alle impostazioni dell'Helper.
  */
-public class SettingActivity extends AppCompatActivity {
+public class Helper_Settings extends AppCompatActivity {
 
     final private static String MY_PREFERENCES = "kiuPreferences";
     private static final String IDUTENTE = "IDutente";
@@ -65,7 +64,7 @@ public class SettingActivity extends AppCompatActivity {
 
         //Lettura delle impostazioni dell'Helper presenti nel database di altervista.
         final SharedPreferences prefs = getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
-        String url = "http://www.davideantonio2.altervista.org/read_setting_helper.php";
+        String url = "http://www.davideantonio2.altervista.org/helper_read_settings.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -117,7 +116,7 @@ public class SettingActivity extends AppCompatActivity {
 
         scegliArea.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent mappa = new Intent(SettingActivity.this, MapsSetting.class);
+                Intent mappa = new Intent(Helper_Settings.this, MapsSetting.class);
                 startActivity(mappa);
             }
         });
