@@ -22,13 +22,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
 import com.gambino_serra.KIU.R;
-import com.gambino_serra.KIU.chat.MessagesActivity;
-import com.gambino_serra.KIU.chat.listener.ValueListenerAdapter;
-import com.gambino_serra.KIU.chat.model.UserCard;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
+//import com.gambino_serra.KIU.chat.MessagesActivity;
 import java.util.HashMap;
 import java.util.Map;
 

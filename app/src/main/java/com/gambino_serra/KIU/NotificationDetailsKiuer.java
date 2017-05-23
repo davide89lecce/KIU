@@ -46,9 +46,9 @@ public class NotificationDetailsKiuer extends DialogFragment {
                     @TargetApi(Build.VERSION_CODES.M)
                     public void onClick(DialogInterface dialog, int id) {
 
-                        if(bundle.get("richiesta_rifiutata").toString().equals("1") || bundle.get("richiesta_accettata").toString().equals("1")) {
+                        if(bundle.get("stato_richiesta").toString().equals("1") || bundle.get("stato_richiesta").toString().equals("2")) {
 
-                            String url = "http://www.kiu.altervista.org/richiesta_kiuer_notificata.php";
+                            String url = "http://www.davideantonio2.altervista.org/richiesta_kiuer_notificata.php";
                             StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
@@ -63,7 +63,7 @@ public class NotificationDetailsKiuer extends DialogFragment {
                                 @Override
                                 protected Map<String, String> getParams() throws AuthFailureError {
                                     Map<String, String> params = new HashMap<>();
-                                    params.put("id_richiesta", bundle.get("id").toString());
+                                    params.put("ID_richiesta", bundle.get("id").toString());
                                     return params;
                                 }
                             };
@@ -86,13 +86,16 @@ public class NotificationDetailsKiuer extends DialogFragment {
         TextView testo = (TextView) this.getDialog().findViewById(R.id.richiesta);
         Bundle bundle = getArguments();
         String status;
-        if(bundle.get("richiesta_accettata").toString().equals("1")){
+        if(bundle.get("stato_richiesta").toString().equals("1")){
             status = getResources().getString(R.string.request_accepted);
-        }else if(bundle.get("richiesta_rifiutata").toString().equals("1")){
+        }else if(bundle.get("stato_richiesta").toString().equals("2")){
             status = getResources().getString(R.string.request_rejected);
         }else{
             status = getResources().getString(R.string.pending_confirmation);
         }
-        testo.setText(status + "\n\n" + getResources().getString(R.string.name) + " " + bundle.get("nome").toString() + "\n" + getResources().getString(R.string.surname) + " " + bundle.get("cognome").toString() + "\n" + getResources().getString(R.string.time) + " " + bundle.get("orario").toString().substring(0,5) + "\n" + getResources().getString(R.string.place) + " " + bundle.get("luogo").toString());
+        testo.setText(status + "\n\n" + getResources().getString(R.string.name) + " " + bundle.get("nome").toString()
+                + "\n" + getResources().getString(R.string.time) + " " + bundle.get("orario").toString().substring(0,5) + "\n"
+                + getResources().getString(R.string.place) + " " + bundle.get("luogo").toString() + "\n"
+                + "Descrizione: " + " " + bundle.get("descrizione").toString());
     }
 }

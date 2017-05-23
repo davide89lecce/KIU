@@ -26,9 +26,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.gambino_serra.KIU.R;
-import com.gambino_serra.KIU.chat.ConversationsActivity;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+//import com.gambino_serra.KIU.chat.ConversationsActivity;
+//import com.google.firebase.auth.FirebaseAuth;
+//import com.google.firebase.auth.FirebaseUser;
 import com.kosalgeek.android.json.JsonConverter;
 
 import org.jetbrains.annotations.NotNull;
@@ -211,11 +211,6 @@ public class HelperHomeActivity extends AppCompatActivity implements Response.Li
         switch (item.getItemId()) {
             case R.id.home_helper:
                 in = new Intent(getApplicationContext(), HelperHomeActivity.class);
-                startActivity(in);
-                check = true;
-                break;
-            case R.id.chat_helper:
-                in = new Intent(getApplicationContext(), ConversationsActivity.class);
                 startActivity(in);
                 check = true;
                 break;

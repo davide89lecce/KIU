@@ -25,7 +25,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.gambino_serra.KIU.R;
-import com.gambino_serra.KIU.chat.ConversationsActivity;
+//import com.gambino_serra.KIU.chat.ConversationsActivity;
 import com.kosalgeek.android.json.JsonConverter;
 
 import java.util.ArrayList;
@@ -39,7 +39,7 @@ public class NotificationKiuer extends AppCompatActivity implements Response.Lis
 
     final String TAG = this.getClass().getSimpleName();
     final private static String MY_PREFERENCES = "kiuPreferences";
-    final private static String EMAIL = "email";
+    private static final String IDUTENTE = "IDutente";
 
     boolean check = false;
     ListView lvProduct;
@@ -94,6 +94,7 @@ public class NotificationKiuer extends AppCompatActivity implements Response.Lis
                 bundle.putString("orario",productList.get(position).orario);
                 bundle.putString("luogo",productList.get(position).luogo);
                 bundle.putString("stato_richiesta", productList.get(position).stato_richiesta);
+                bundle.putString("descrizione", productList.get(position).descrizione);
                 newFragment.setArguments(bundle);
                 newFragment.show(getFragmentManager(), "NotificationDetailsKiuer");
             }
@@ -114,7 +115,7 @@ public class NotificationKiuer extends AppCompatActivity implements Response.Lis
      */
     public void updateRichieste(){
         final SharedPreferences prefs = getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
-        String url = "http://www.kiu.altervista.org/richieste_kiuer.php";
+        String url = "http://www.davideantonio2.altervista.org/richieste_kiuer.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, this, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -124,7 +125,7 @@ public class NotificationKiuer extends AppCompatActivity implements Response.Lis
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("email", prefs.getString(EMAIL,"").toString());
+                params.put("IDutente", prefs.getString(IDUTENTE,"").toString());
                 return params;
             }
         };
@@ -157,11 +158,11 @@ public class NotificationKiuer extends AppCompatActivity implements Response.Lis
                 startActivity(in);
                 check = true;
                 break;
-            case R.id.chat_kiuer:
-                in = new Intent(getApplicationContext(), ConversationsActivity.class);
-                startActivity(in);
-                check = true;
-                break;
+//            case R.id.chat_kiuer:
+//                in = new Intent(getApplicationContext(), ConversationsActivity.class);
+//                startActivity(in);
+//                check = true;
+//                break;
             case R.id.exit_kiuer:
                 SharedPreferences.Editor editor;
                 editor = prefs.edit().clear();

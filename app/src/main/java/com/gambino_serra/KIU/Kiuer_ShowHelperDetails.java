@@ -16,10 +16,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.gambino_serra.KIU.chat.MessagesActivity;
-import com.gambino_serra.KIU.chat.listener.ValueListenerAdapter;
-import com.gambino_serra.KIU.chat.model.UserCard;
-import com.google.firebase.database.DataSnapshot;
+//import com.gambino_serra.KIU.chat.MessagesActivity;
+//import com.google.firebase.database.DataSnapshot;
 
 /**
  * La classe modella la Dialog relativa ai dettagli di una specifica richiesta di coda (lato Kiuer).
@@ -116,36 +114,16 @@ public class Kiuer_ShowHelperDetails extends DialogFragment {
     }
     */
 
-    /**
-     * Il metodo avvia la conversazione con l'altro utente (Helper).
-     *
-     * @param card
-     */
-    private void openConversation(UserCard card) {
-        Intent in = new Intent(getActivity().getApplicationContext(), MessagesActivity.class);
-        in.putExtra("counterpartID", card.userID);
-        in.putExtra("counterpartName", card.user_name);
-        startActivity(in);
+
+//    /**
+//     * La classe modella un listener per l'ascolto delle
+//     * informazione dell'utente.
+//     */
+//    class UserInfoListener extends ValueListenerAdapter {
+//
+//        public UserInfoListener() {
+//        }
+
+
     }
 
-    /**
-     * La classe modella un listener per l'ascolto delle
-     * informazione dell'utente.
-     */
-    class UserInfoListener extends ValueListenerAdapter {
-
-        public UserInfoListener() {
-        }
-
-        /**
-         * Il metodo riceve i dati utente e ne avvia la gestione.
-         *
-         * @param dataSnapshot info dati utente
-         */
-        @Override
-        public void onDataChange(DataSnapshot dataSnapshot) {
-            UserCard card = dataSnapshot.getValue(UserCard.class);
-            openConversation(card);
-        }
-    }
-}

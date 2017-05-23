@@ -25,8 +25,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.gambino_serra.KIU.R;
-import com.gambino_serra.KIU.chat.ConversationsActivity;
-import com.google.firebase.auth.FirebaseAuth;
+//import com.gambino_serra.KIU.chat.ConversationsActivity;
+//import com.google.firebase.auth.FirebaseAuth;
 import com.kosalgeek.android.json.JsonConverter;
 
 import java.util.ArrayList;
@@ -40,8 +40,7 @@ public class NotificationHelper extends AppCompatActivity implements Response.Li
 
     final String TAG = this.getClass().getSimpleName();
     final private static String MY_PREFERENCES = "kiuPreferences";
-    final private static String ID = "ID";
-    private static final String LOGGED_USER = "logged_user";
+    private static final String IDUTENTE = "IDutente";
 
     ListView lvProduct;
 
@@ -115,7 +114,7 @@ public class NotificationHelper extends AppCompatActivity implements Response.Li
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("IDutente", prefs.getString(ID, "").toString());
+                params.put("IDutente", prefs.getString(IDUTENTE, "").toString());
                 return params;
             }
         };
@@ -145,16 +144,16 @@ public class NotificationHelper extends AppCompatActivity implements Response.Li
         final SharedPreferences prefs = getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
 
         switch (item.getItemId()) {
-            case R.id.chat_helper:
-                in = new Intent(getApplicationContext(), ConversationsActivity.class);
-                startActivity(in);
-                check = true;
-                break;
+//            case R.id.chat_helper:
+//                in = new Intent(getApplicationContext(), ConversationsActivity.class);
+//                startActivity(in);
+//                check = true;
+//                break;
             case R.id.exit_helper:
                 SharedPreferences.Editor editor;
                 editor = prefs.edit().clear();
                 editor.apply();
-                FirebaseAuth.getInstance().signOut();
+                //FirebaseAuth.getInstance().signOut();
                 in = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(in);
                 check = true;

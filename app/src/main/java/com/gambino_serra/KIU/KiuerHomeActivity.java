@@ -24,8 +24,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.gambino_serra.KIU.chat.ConversationsActivity;
-import com.google.firebase.auth.FirebaseAuth;
+//import com.gambino_serra.KIU.chat.ConversationsActivity;
+//import com.google.firebase.auth.FirebaseAuth;
 import com.kosalgeek.android.json.JsonConverter;
 
 import java.util.ArrayList;
@@ -121,11 +121,11 @@ public class KiuerHomeActivity extends AppCompatActivity
 
         switch (item.getItemId()) {
 
-            case R.id.chat_kiuer:
-                in = new Intent(getApplicationContext(), ConversationsActivity.class);
-                startActivity(in);
-                check = true;
-                break;
+//            case R.id.chat_kiuer:
+//                in = new Intent(getApplicationContext(), ConversationsActivity.class);
+//                startActivity(in);
+//                check = true;
+//                break;
             case R.id.notification_kiuer:
                 in = new Intent(getApplicationContext(), NotificationKiuer.class);
                 startActivity(in);
@@ -135,7 +135,7 @@ public class KiuerHomeActivity extends AppCompatActivity
                 SharedPreferences.Editor editor;
                 editor = prefs.edit().clear();
                 editor.apply();
-                FirebaseAuth.getInstance().signOut();
+                //FirebaseAuth.getInstance().signOut();
                 stopService();
                 in = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(in);

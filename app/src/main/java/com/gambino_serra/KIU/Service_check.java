@@ -19,11 +19,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.gambino_serra.KIU.R;
-import com.gambino_serra.KIU.chat.ConversationsActivity;
-import com.gambino_serra.KIU.chat.service.ChatService;
-import com.gambino_serra.KIU.chat.service.ConversationServiceListener;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+//import com.gambino_serra.KIU.chat.ConversationsActivity;
+//import com.gambino_serra.KIU.chat.service.ChatService;
+//import com.gambino_serra.KIU.chat.service.ConversationServiceListener;
+//import com.google.firebase.database.DatabaseReference;
+//import com.google.firebase.database.FirebaseDatabase;
 import com.kosalgeek.android.json.JsonConverter;
 
 import java.util.ArrayList;
@@ -33,13 +33,11 @@ import java.util.Map;
 /**
  * Il Service è delegato alla gestione delle notifiche in background dell'applicazione.
  */
-public class Service_check extends IntentService implements ChatService {
+public class Service_check extends IntentService {
 
     final private static String MY_PREFERENCES = "kiuPreferences";
-    final private static String EMAIL = "email";
+    final private static String IDUTENTE = "IDutente";
     final private static String TIPO_UTENTE = "tipoUtente";
-    private static final String LOGGED_USER = "logged_user";
-    private static final String CONV_NAME = "conv_name";
 
     int notificheHelper = 0;
     int notificheKiuer = 0;
@@ -91,8 +89,8 @@ public class Service_check extends IntentService implements ChatService {
 
 
         //Acquisizione dati per la gestione delle notifiche inerenti la chat
-        String uid = prefs.getString(LOGGED_USER, "").toString();
-        String mail = prefs.getString(EMAIL, "").toString();
+        //String uid = prefs.getString(LOGGED_USER, "").toString();
+        //String mail = prefs.getString(EMAIL, "").toString();
       //  mRef = FirebaseDatabase.getInstance().getReference("/chat/chatstatus/" + uid);
       //  mRef.addChildEventListener(new ConversationServiceListener(this));
 
@@ -103,9 +101,8 @@ public class Service_check extends IntentService implements ChatService {
 
             //Se l'utente è loggato come Helper gestisce le notifiche relative all'helper
             if (prefs.getString(TIPO_UTENTE, "").equals("H")) {
-
                 //Richiesta dati dal database di altervista per verificare se sono presenti nuove richieste di coda da notificare
-                String url = "http://www.kiu.altervista.org/check_richiesta.php";
+                String url = "http://www.davideantonio2.altervista.org/helper_check_richieste.php";
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -151,7 +148,7 @@ public class Service_check extends IntentService implements ChatService {
                     @Override
                     protected Map<String, String> getParams() throws AuthFailureError {
                         Map<String, String> params = new HashMap<>();
-                        params.put("email", prefs.getString(EMAIL, "").toString());
+                        params.put("IDutente", prefs.getString(IDUTENTE, "").toString());
                         return params;
                     }
                 };
@@ -163,7 +160,7 @@ public class Service_check extends IntentService implements ChatService {
             else if (prefs.getString(TIPO_UTENTE, "").equals("K")) {
 
                 //Richiesta dati dal database di altervista per verificare se sono presenti nuove richieste di coda accettate/rifiutate da notificare
-                String url = "http://www.kiu.altervista.org/check_richiesta_kiuer.php";
+                String url = "http://www.davideantonio2.altervista.org/kiuer_check_richieste.php";
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -234,13 +231,13 @@ public class Service_check extends IntentService implements ChatService {
                     @Override
                     protected Map<String, String> getParams() throws AuthFailureError {
                         Map<String, String> params = new HashMap<>();
-                        params.put("email", prefs.getString(EMAIL, "").toString());
+                        params.put("IDutente", prefs.getString(IDUTENTE, "").toString());
                         return params;
                     }
                 };
                 MySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
 
-
+/*
                 //Richiesta dati dal database di altervista per verificare se sono presenti nuove code iniziate da notificare
                 String url2 = "http://www.kiu.altervista.org/notifica_coda_iniziata.php";
                 StringRequest stringRequest2 = new StringRequest(Request.Method.POST, url2, new Response.Listener<String>() {
@@ -276,7 +273,7 @@ public class Service_check extends IntentService implements ChatService {
                     @Override
                     protected Map<String, String> getParams() throws AuthFailureError {
                         Map<String, String> params = new HashMap<>();
-                        params.put("email", prefs.getString(EMAIL, "").toString());
+                        params.put("email", prefs.getString(IDUTENTE, "").toString());
                         return params;
                     }
                 };
@@ -317,14 +314,14 @@ public class Service_check extends IntentService implements ChatService {
                     @Override
                     protected Map<String, String> getParams() throws AuthFailureError {
                         Map<String, String> params = new HashMap<>();
-                        params.put("email", prefs.getString(EMAIL, "").toString());
+                        params.put("email", prefs.getString(IDUTENTE, "").toString());
                         return params;
                     }
                 };
                 MySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest3);
+*/
 
             }//fine gestione notifiche Kiuer
-
             Log.d("PROVA SERVICE", "Richiesta database n°." + numeroRichiestaDB++);
             try {
                 Thread.sleep(10000);
@@ -333,32 +330,32 @@ public class Service_check extends IntentService implements ChatService {
         }
     }
 
-    /**
-     *  Il metodo gestisce la notifica quando viene ricevuto un nuovo messaggio e la conversazione
-     *  non è in corso (relativa Activity in primo piano)
-     * @param convname
-     */
-    @Override
-    public void handleNewMessage(String convname) {
-
-        final SharedPreferences prefs = getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
-
-        if (!(convname.equals(prefs.getString(CONV_NAME, "")))) {
-
-            NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext())
-                    .setSmallIcon(R.drawable.ic_notifications)
-                    .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher))
-                    .setContentTitle(getResources().getString(R.string.kiu_chat))
-                    .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
-                    .setContentText(getResources().getString(R.string.new_messages_received));
-            Intent resultIntent = new Intent(getApplicationContext(), ConversationsActivity.class);
-            PendingIntent resultPendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-            mBuilder.setContentIntent(resultPendingIntent);
-            int mNotificationId = 010;
-            NotificationManager mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-            mNotifyMgr.notify(mNotificationId, mBuilder.build());
-        }
-    }
+//    /**
+//     *  Il metodo gestisce la notifica quando viene ricevuto un nuovo messaggio e la conversazione
+//     *  non è in corso (relativa Activity in primo piano)
+//     * @param convname
+//     */
+//    @Override
+//    public void handleNewMessage(String convname) {
+//
+//        final SharedPreferences prefs = getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
+//
+//        if (!(convname.equals(prefs.getString(CONV_NAME, "")))) {
+//
+//            NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext())
+//                    .setSmallIcon(R.drawable.ic_notifications)
+//                    .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher))
+//                    .setContentTitle(getResources().getString(R.string.kiu_chat))
+//                    .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+//                    .setContentText(getResources().getString(R.string.new_messages_received));
+//            Intent resultIntent = new Intent(getApplicationContext(), ConversationsActivity.class);
+//            PendingIntent resultPendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+//            mBuilder.setContentIntent(resultPendingIntent);
+//            int mNotificationId = 010;
+//            NotificationManager mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+//            mNotifyMgr.notify(mNotificationId, mBuilder.build());
+//        }
+//    }
 
     @Override
     public void onDestroy() {
