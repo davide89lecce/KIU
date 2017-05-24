@@ -66,10 +66,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.gambino_serra.KIU.RegisterActivity"
-            android:label="@string/title_register"
-            android:screenOrientation="portrait" />
-        <activity
             android:name="com.gambino_serra.KIU.Helper_MapsSetting"
             android:label="@string/title_activity_maps"
             android:parentActivityName="com.gambino_serra.KIU.Helper_Settings"
@@ -104,20 +100,7 @@
             android:label="@string/title_activity_maps"
             android:parentActivityName="com.gambino_serra.KIU.Kiuer_Home"
             android:screenOrientation="portrait" />
-
-        <!-- Chat Activities - start -->
-        <activity
-            android:name="com.gambino_serra.KIU.chat.ConversationsActivity"
-            android:label="Chat Kiù"
-            android:parentActivityName="com.gambino_serra.KIU.Login"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
-        <activity
-            android:name="com.gambino_serra.KIU.chat.MessagesActivity"
-            android:parentActivityName="com.gambino_serra.KIU.chat.ConversationsActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
-        <!-- Chat Activities - fine -->
+        
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

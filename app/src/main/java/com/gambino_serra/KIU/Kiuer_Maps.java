@@ -48,6 +48,7 @@ import java.util.Locale;
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.RuntimePermissions;
 
+
 /**
  * La classe gestisce l'invio della richiesta, della relativa posizione e la scelta dell'Helper al quale inviare la richiesta di coda,
  * mediante l'uso delle mappe e l'utilizzo delle GoogleApiClient.
@@ -120,7 +121,7 @@ public class Kiuer_Maps extends FragmentActivity implements
     protected void loadMap(GoogleMap googleMap) {
         map = googleMap;
         if (map != null) {
-            KiuerMapsPermissionsDispatcher.getMyLocationWithCheck(this);
+            Kiuer_MapsPermissionsDispatcher.getMyLocationWithCheck(this);
             map.setOnMapClickListener(this);
             }
         else {

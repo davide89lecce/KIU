@@ -90,7 +90,7 @@ public class Helper_MapsSetting extends FragmentActivity implements GoogleApiCli
     protected void loadMap(GoogleMap googleMap) {
         map = googleMap;
         if (map != null) {
-            MapsSettingPermissionsDispatcher.getMyLocationWithCheck(this);
+            Helper_MapsSettingPermissionsDispatcher.getMyLocationWithCheck(this);
             map.setOnMapClickListener(this);
             }
         else {
