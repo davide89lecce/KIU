@@ -19,7 +19,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -38,11 +37,9 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.kosalgeek.android.json.JsonConverter;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.RuntimePermissions;
 
@@ -50,7 +47,7 @@ import permissions.dispatcher.RuntimePermissions;
  * La classe gestisce la relativa posizione del Helper mediante l'uso delle mappe e l'utilizzo delle GoogleApiClient.
  */
 @RuntimePermissions
-public class MapsSetting extends FragmentActivity implements GoogleApiClient.ConnectionCallbacks,
+public class Helper_MapsSetting extends FragmentActivity implements GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener,
         OnMapReadyCallback, GoogleMap.OnMapClickListener {
 
@@ -81,26 +78,25 @@ public class MapsSetting extends FragmentActivity implements GoogleApiClient.Con
         mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.helperpositionmap);
         if (mapFragment != null) {
             mapFragment.getMapAsync(this);
-        } else {
+            }
+        else {
             Toast.makeText(this, R.string.error_loading_maps, Toast.LENGTH_SHORT).show();
-        }
+            }
     }
 
     /**
      * Il metodo permette di caricare le mappe di Google.
-     * N.B.: MapsSettingPermissionsDispatcher, la classe viene creata in fase di build dell'applicazione.
-     * @param googleMap
      */
     protected void loadMap(GoogleMap googleMap) {
         map = googleMap;
         if (map != null) {
             MapsSettingPermissionsDispatcher.getMyLocationWithCheck(this);
             map.setOnMapClickListener(this);
-        } else {
+            }
+        else {
             Toast.makeText(this, R.string.error_loading_maps, Toast.LENGTH_SHORT).show();
-        }
+            }
     }
-
 
     @SuppressWarnings("all")
     @NeedsPermission({Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION})
@@ -132,9 +128,9 @@ public class MapsSetting extends FragmentActivity implements GoogleApiClient.Con
     protected void onStart() {
         super.onStart();
         connectClient();
-    }
+        }
 
-    /*
+    /**
      * Il metodo e' chiamato quando l'Activity perde la visibilita'.
      */
     @Override
@@ -142,16 +138,12 @@ public class MapsSetting extends FragmentActivity implements GoogleApiClient.Con
         // Disconnette il Client
         if (mGoogleApiClient != null) {
             mGoogleApiClient.disconnect();
-        }
+            }
         super.onStop();
-    }
+        }
 
     /**
      * Il metodo gestisce i risultati ritornati dal FragmentActivity dei Google Play services.
-     *
-     * @param requestCode
-     * @param resultCode
-     * @param data
      */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -164,15 +156,11 @@ public class MapsSetting extends FragmentActivity implements GoogleApiClient.Con
                         mGoogleApiClient.connect();
                         break;
                 }
-
         }
     }
 
     /**
-     * Il metodo verifica che il servizi di Google siano disponibili,
-     * in caso contrario una Dialog viene visualizzata al'utente.
-     *
-     * @return booleano
+     * Il metodo verifica che il servizi di Google siano disponibili, in caso contrario una Dialog viene visualizzata al'utente.
      */
     private boolean isGooglePlayServicesAvailable() {
 
@@ -184,7 +172,8 @@ public class MapsSetting extends FragmentActivity implements GoogleApiClient.Con
             // In debug mode, log the status
             Log.d("Location Updates", "Google Play services is available.");
             return true;
-        } else {
+            }
+        else {
             // Ricevo la Error Dialog dai servizi Google Play.
             Dialog errorDialog = GooglePlayServicesUtil.getErrorDialog(resultCode, this,
                     CONNECTION_FAILURE_RESOLUTION_REQUEST);
@@ -192,32 +181,33 @@ public class MapsSetting extends FragmentActivity implements GoogleApiClient.Con
             // Se Google Play services puo' fornire una Error Dialog
             if (errorDialog != null) {
                 // Creazione di un DialogFragment
-                MapsSetting.ErrorDialogFragment errorFragment = new MapsSetting.ErrorDialogFragment();
+                Helper_MapsSetting.ErrorDialogFragment errorFragment = new Helper_MapsSetting.ErrorDialogFragment();
                 errorFragment.setDialog(errorDialog);
                 errorFragment.show(getFragmentManager(), "Location Updates");
-            }
+                }
             return false;
-        }
+            }
     }
 
     /**
      * Il metodo viene invocato dal Location Services quando la richiesta di connessione al client
      * e' avvenuta con successo. In questo momento si puo' richiedere la posizione corrente.
-     *
-     * @param dataBundle
      */
     @Override
     public void onConnected(Bundle dataBundle) {
 
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
             return;
-        }
+            }
 
         location = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
-        if (location != null) {
-        } else {
+        if (location != null) { }
+        else {
             Toast.makeText(this, R.string.enable_gps, Toast.LENGTH_SHORT).show();
-        }
+            }
         startLocationUpdates();
     }
 
@@ -229,36 +219,31 @@ public class MapsSetting extends FragmentActivity implements GoogleApiClient.Con
         mLocationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
         mLocationRequest.setInterval(UPDATE_INTERVAL);
         mLocationRequest.setFastestInterval(FASTEST_INTERVAL);
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
             return;
         }
-        LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient,
-                mLocationRequest, this);
+        LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
     }
-
-    public void onLocationChanged(Location location) {
-    }
-
+    public void onLocationChanged(Location location) { }
 
     /**
-     * Il metodo e' invocato dal Location Services se la connessione con il client
-     * si interrrompe a causa di un errore.
-     *
-     * @param i
+     * Il metodo e' invocato dal Location Services se la connessione con il client si interrrompe a causa di un errore.
      */
     @Override
     public void onConnectionSuspended(int i) {
         if (i == CAUSE_SERVICE_DISCONNECTED) {
             Toast.makeText(this, R.string.disconnected, Toast.LENGTH_SHORT).show();
-        } else if (i == CAUSE_NETWORK_LOST) {
+            }
+        else if (i == CAUSE_NETWORK_LOST) {
             Toast.makeText(this, R.string.network_lost, Toast.LENGTH_SHORT).show();
+            }
         }
-    }
 
     /**
      * Il metodo viene invocato dal Location Services se lo stesso servizio fallisce
-     *
-     * @param connectionResult
      */
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
@@ -267,24 +252,17 @@ public class MapsSetting extends FragmentActivity implements GoogleApiClient.Con
         // inviato un Intent all'Activity predisposta a risolvere il problema.
         if (connectionResult.hasResolution()) {
             try {
-                connectionResult.startResolutionForResult(this,
-                        CONNECTION_FAILURE_RESOLUTION_REQUEST);
-
-                //L'eccezione e' sollevata nel caso in cui l'Intent viene
-                //eliminato.
-            } catch (IntentSender.SendIntentException e) {
-                // Log the error
-                e.printStackTrace();
+                connectionResult.startResolutionForResult(this, CONNECTION_FAILURE_RESOLUTION_REQUEST);
+                } //L'eccezione e' sollevata nel caso in cui l'Intent viene eliminato.
+            catch (IntentSender.SendIntentException e) { e.printStackTrace(); }
             }
-        } else {
-            Toast.makeText(getApplicationContext(),
-                    R.string.location_service_not_available, Toast.LENGTH_LONG).show();
-        }
+        else {
+            Toast.makeText(getApplicationContext(), R.string.location_service_not_available, Toast.LENGTH_LONG).show();
+            }
     }
 
     /**
-     * Il metodo gestisce la comunicazione, tramite Dialog, degli errori
-     * che possono verificarsi.
+     * Il metodo gestisce la comunicazione, tramite Dialog, degli errori che possono verificarsi.
      */
     public static class ErrorDialogFragment extends DialogFragment {
 
@@ -293,23 +271,21 @@ public class MapsSetting extends FragmentActivity implements GoogleApiClient.Con
         public ErrorDialogFragment() {
             super();
             mDialog = null;
-        }
+            }
 
         public void setDialog(Dialog dialog) {
             mDialog = dialog;
-        }
+            }
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             return mDialog;
-        }
+            }
     }
 
     /**
      * Il metodo permette di caricare e visualizzare la mappa nella UI dell'applicazione
      * e le sue componeti invocando il metodo loadMap(map).
-     *
-     * @param maps
      */
     @Override
     public void onMapReady(GoogleMap maps) {
@@ -324,7 +300,6 @@ public class MapsSetting extends FragmentActivity implements GoogleApiClient.Con
         tv.setTextColor(Color.WHITE);
         snack.show();
 
-
         //Lettura della coordinate del Helper.
         final SharedPreferences prefs = getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
         String url = "http://www.davideantonio2.altervista.org/helper_read_settings.php";
@@ -333,7 +308,7 @@ public class MapsSetting extends FragmentActivity implements GoogleApiClient.Con
             public void onResponse(String response) {
 
                 if (!response.equals("null")) {
-                    final ArrayList<JsonProfiloHelper> productList = new JsonConverter<JsonProfiloHelper>().toArrayList(response, JsonProfiloHelper.class);
+                    final ArrayList<Json_Helper> productList = new JsonConverter<Json_Helper>().toArrayList(response, Json_Helper.class);
 
                     // se le coordinate sono già presenti nel database, recupero i dati e setto il marker
                     if(!productList.get(0).pos_latitudine.toString().equals("0.0") && !productList.get(0).pos_longitudine.toString().equals("0.0")){
@@ -341,22 +316,17 @@ public class MapsSetting extends FragmentActivity implements GoogleApiClient.Con
                         ltln = new LatLng(productList.get(0).pos_latitudine, productList.get(0).pos_longitudine);
 
                         try {
-
                             CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(ltln, 17);
                             map.animateCamera(cameraUpdate);
-
-                            map.addMarker(new MarkerOptions()
-                                    .position(ltln)
-                                    .title("Io"));
-                        } catch (SecurityException ex) {
-                            Log.e("MAPPA!", "problema con la localizzazione");
-                        }
+                            map.addMarker(new MarkerOptions().position(ltln).title("Io"));
+                            }
+                        catch (SecurityException ex) { Log.e("MAPPA!", "problema con la localizzazione"); }
 
                         //scelta la posizione invio i dati al database di altervista.
                         checkButton.setOnClickListener(new View.OnClickListener() {
                             public void onClick(View v) {
 
-                                Intent setting = new Intent(MapsSetting.this, Helper_Settings.class);
+                                Intent setting = new Intent(Helper_MapsSetting.this, Helper_Settings.class);
                                 startActivity(setting);
 
                                 final Double latitude = ltln.latitude;
@@ -369,17 +339,19 @@ public class MapsSetting extends FragmentActivity implements GoogleApiClient.Con
                                     public void onResponse(String response) {
                                         if (response.equals("ok")) {
                                             Toast.makeText(getApplicationContext(),R.string.update_coordinates, Toast.LENGTH_SHORT).show();
-                                        } else {
+                                            }
+                                        else {
                                             Toast.makeText(getApplicationContext(), R.string.error_update_coordinates, Toast.LENGTH_SHORT).show();
-                                        }
+                                            }
                                     }
-                                }, new Response.ErrorListener() {
+                                }, new Response.ErrorListener()
+                                {
                                     @Override
                                     public void onErrorResponse(VolleyError error) {
                                         Toast.makeText(getApplicationContext(), R.string.err_read_google, Toast.LENGTH_SHORT).show();
-
-                                    }
-                                }) {
+                                        }
+                                })
+                                {
                                     @Override
                                     protected Map<String, String> getParams() throws AuthFailureError {
                                         Map<String, String> params = new HashMap<>();
@@ -387,42 +359,41 @@ public class MapsSetting extends FragmentActivity implements GoogleApiClient.Con
                                         params.put("latitudine", latitude.toString());
                                         params.put("longitudine", longitude.toString());
                                         return params;
-                                    }
+                                        }
                                 };
                                 MySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
-
                             }
                         });
 
                         //chiude l'ActivityMap e visualizza Helper_Settings
                         closeButton.setOnClickListener(new View.OnClickListener() {
                             public void onClick(View v) {
-                                Intent setting = new Intent(MapsSetting.this, Helper_Settings.class);
+                                Intent setting = new Intent(Helper_MapsSetting.this, Helper_Settings.class);
                                 startActivity(setting);
-                            }
+                                }
                         });
                     //se le coordinate non sono mai state inserite dal Helper nel database allora imposto la posizione attraverso geolocalizzazione
-                    }else{
+                    }
+                    else{
                         try {
                             if (location == null) {
                                 //se geolocalizzazione non disponibile carico coordinate di default
                                 ltln = new LatLng(40.3551668814170, 18.17488800734281);
-                            } else {
+                                }
+                            else {
                                 //altrimenti carico posizione corrente del dispositivo
                                 ltln = new LatLng(location.getLatitude(), location.getLongitude());
-                            }
+                                }
                             CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(ltln, 17);
                             map.animateCamera(cameraUpdate);
                             map.addMarker(new MarkerOptions().position(ltln).title("Io"));
-                        } catch (SecurityException ex) {
-                            Log.e("MAPPA!", "problema con la localizzazione");
-                        }
+                        } catch (SecurityException ex) { Log.e("MAPPA!", "problema con la localizzazione"); }
 
                         //scelta la posizione invio i dati al database di altervista.
                         checkButton.setOnClickListener(new View.OnClickListener() {
                             public void onClick(View v) {
 
-                                Intent setting = new Intent(MapsSetting.this, Helper_Settings.class);
+                                Intent setting = new Intent(Helper_MapsSetting.this, Helper_Settings.class);
                                 startActivity(setting);
 
                                 final Double latitude = ltln.latitude;
@@ -435,17 +406,18 @@ public class MapsSetting extends FragmentActivity implements GoogleApiClient.Con
                                     public void onResponse(String response) {
                                         if (response.equals("ok")) {
                                             Toast.makeText(getApplicationContext(), R.string.update_coordinates, Toast.LENGTH_SHORT).show();
-                                        } else {
+                                            }
+                                        else {
                                             Toast.makeText(getApplicationContext(), R.string.error_update_coordinates, Toast.LENGTH_SHORT).show();
-                                        }
+                                            }
                                     }
                                 }, new Response.ErrorListener() {
                                     @Override
                                     public void onErrorResponse(VolleyError error) {
                                         Toast.makeText(getApplicationContext(), R.string.err_read_google, Toast.LENGTH_SHORT).show();
-
-                                    }
-                                }) {
+                                        }
+                                })
+                                {
                                     @Override
                                     protected Map<String, String> getParams() throws AuthFailureError {
                                         Map<String, String> params = new HashMap<>();
@@ -456,38 +428,37 @@ public class MapsSetting extends FragmentActivity implements GoogleApiClient.Con
                                     }
                                 };
                                 MySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
-
                             }
                         });
                         //chiude l'ActivityMap e visualizza Helper_Settings
                         closeButton.setOnClickListener(new View.OnClickListener() {
                             public void onClick(View v) {
-                                Intent setting = new Intent(MapsSetting.this, Helper_Settings.class);
+                                Intent setting = new Intent(Helper_MapsSetting.this, Helper_Settings.class);
                                 startActivity(setting);
-                            }
-                        });
+                                }
+                            });
                     }
 
-                }else{
-                    Toast.makeText(getApplicationContext(), R.string.error_read_coordinates, Toast.LENGTH_SHORT).show();
                 }
+                else{
+                    Toast.makeText(getApplicationContext(), R.string.error_read_coordinates, Toast.LENGTH_SHORT).show();
+                    }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getApplicationContext(), R.string.err_read_google, Toast.LENGTH_SHORT).show();
-
-            }
-        }) {
+                }
+        })
+        {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("ID", prefs.getString(IDUTENTE, "").toString());
                 return params;
-            }
+                }
         };
         MySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
-
     }
 
     /**
@@ -495,14 +466,8 @@ public class MapsSetting extends FragmentActivity implements GoogleApiClient.Con
      */
     @Override
     public void onMapClick(LatLng latLng) {
-
         map.clear();
         ltln = latLng;
-        map.addMarker(new MarkerOptions()
-                .position(latLng)
-                .title("Io"));
-
-    }
-
-
+        map.addMarker(new MarkerOptions().position(latLng).title("Io"));
+        }
 }

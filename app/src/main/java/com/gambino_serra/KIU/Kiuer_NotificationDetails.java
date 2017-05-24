@@ -10,23 +10,20 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.TextView;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.gambino_serra.KIU.R;
-
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * La classe modella la Dialog relativa ai dettagli di una specifica richiesta di coda pendente (lato Kiuer)
  */
-public class NotificationDetailsKiuer extends DialogFragment {
+public class Kiuer_NotificationDetails extends DialogFragment {
 
-    public NotificationDetailsKiuer() {}
+    public Kiuer_NotificationDetails() {}
 
     /**
      * onCreate della Dialog e Set dello stato dei bottoni nella UI(Button).
@@ -50,16 +47,19 @@ public class NotificationDetailsKiuer extends DialogFragment {
 
                             String url = "http://www.davideantonio2.altervista.org/richiesta_kiuer_notificata.php";
                             StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+
                                 @Override
                                 public void onResponse(String response) {
                                     Log.d("Richiesta","Impostata come Notificata nel DB correttamente");
                                 }
                             }, new Response.ErrorListener() {
+
                                 @Override
                                 public void onErrorResponse(VolleyError error) {
                                     Log.d("Richiesta","Errore nella comunicazione con il DB");
                                 }
-                            }) {
+                            })
+                            {
                                 @Override
                                 protected Map<String, String> getParams() throws AuthFailureError {
                                     Map<String, String> params = new HashMap<>();
@@ -70,10 +70,9 @@ public class NotificationDetailsKiuer extends DialogFragment {
                             MySingleton.getInstance(getActivity().getApplicationContext()).addToRequestQueue(stringRequest);
                         }
                             dialog.dismiss();
-                            ((NotificationKiuer) getActivity()).onResume();
+                            ((Kiuer_Notification) getActivity()).onResume();
                     }
                 });
-
         return builder.create();
     }
 
@@ -88,14 +87,16 @@ public class NotificationDetailsKiuer extends DialogFragment {
         String status;
         if(bundle.get("stato_richiesta").toString().equals("1")){
             status = getResources().getString(R.string.request_accepted);
-        }else if(bundle.get("stato_richiesta").toString().equals("2")){
+            }
+        else if(bundle.get("stato_richiesta").toString().equals("2")){
             status = getResources().getString(R.string.request_rejected);
-        }else{
+            }
+        else{
             status = getResources().getString(R.string.pending_confirmation);
-        }
-        testo.setText(status + "\n\n" + getResources().getString(R.string.name) + " " + bundle.get("nome").toString()
-                + "\n" + getResources().getString(R.string.time) + " " + bundle.get("orario").toString().substring(0,5) + "\n"
+            }
+        testo.setText(status + "\n\n" + getResources().getString(R.string.name) + " " + bundle.get("nome").toString() + "\n"
+                + getResources().getString(R.string.time) + " " + bundle.get("orario").toString().substring(0,5) + "\n"
                 + getResources().getString(R.string.place) + " " + bundle.get("luogo").toString() + "\n"
-                + "Descrizione: " + " " + bundle.get("descrizione").toString());
+                + getResources().getString(R.string.description) + " " + bundle.get("descrizione").toString());
     }
 }

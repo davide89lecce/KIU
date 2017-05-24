@@ -4,7 +4,7 @@
     <string name="title_register">Registrati</string>
     <string name="title_setting_helper">Impostazioni</string>
 
-    <!-- MainActivity -->
+    <!-- Login -->
     <string name="err_read_google"> Errore nella lettura di Google</string>
     <string name="err_login"> username e password non corretti</string>
     <string name="auth_failed">Autenticazione fallita</string>
@@ -46,8 +46,8 @@
     <!-- Conversations_fragmennt -->
     <string name="no_conversation">Non sono presenti conversazioni.</string>
 
-    <!-- HelperHomeActivity -->
-    <!-- KiuerHomeActivity -->
+    <!-- Helper_Home -->
+    <!-- Kiuer_Home -->
     <string name="disp">disponibilità: </string>
     <string name="visible_by_kiuer">Sei visibile ai Kiuer</string>
     <string name="invisible_by_kiuer">Non sei visibile ai Kiuer</string>
@@ -59,12 +59,13 @@
     <string name="queue_start_at">Coda da effettuare alle </string>
     <string name="queue_assigned_to">Coda assegnata alle </string>
     <string name="place">Luogo:  </string>
+    <string name="description">Descrizione:  </string>
     <string name="queue_not_started">Coda non iniziata </string>
     <string name="queue_in_progress">Coda in corso </string>
     <string name="queue_terminated">Coda terminata  </string>
 
-    <!-- HelperCloseQueue -->
-    <!-- Kiuer_ConfirmCloseQueue -->
+    <!-- Helper_CloseQueue -->
+    <!-- Kiuer_ClosingQueue -->
     <string name="close_queue">CHIUDI CODA</string>
     <string name="queue_closed">Coda chiusa</string>
     <string name="hour_start_queue">Ora inizio coda:</string>
@@ -77,12 +78,12 @@
     <string name="chiudi_coda">Chiudi coda</string>
     <string name="goback">indietro</string>
 
-    <!-- KiuerDetails -->
+    <!-- Kiuer_Details -->
     <string name="kiuer_details">DETTAGLI KIUER</string>
     <string name="inizia_coda">Inizia coda</string>
     <string name="termina_coda">Termina coda</string>
 
-    <!-- KiuerMaps, MapsSetting -->
+    <!-- Kiuer_Maps, Helper_MapsSetting -->
     <string name="title_activity_maps">Imposta Posizione</string>
     <string name="error_loading_maps">Errore durante il caricamento delle mappe</string>
     <string name="enable_gps">Abilita GPS</string>
@@ -101,7 +102,7 @@
     <string name="error_read_coordinates">Errore nella lettura delle coordinate</string>
     <string name="address_not_available">Indirizzo non disponibile</string>
 
-    <!-- KiuerMapsDetails -->
+    <!-- Kiuer_MapsDetails -->
     <string name="send_request">Invia richiesta a</string>
     <string name="hour_rate">Tariffa oraria</string>
     <string name="start_availability">Inizio disponibilità:</string>
@@ -111,7 +112,7 @@
     <string name="annulla">annulla</string>
 
 
-    <!-- NotificationDetailsKiuer -->
+    <!-- Kiuer_NotificationDetails -->
     <string name="request_accepted">Richiesta accettata</string>
     <string name="request_rejected">Richiesta rifiutata</string>
     <string name="pending_confirmation">In attesa di conferma</string>
@@ -120,7 +121,7 @@
     <string name="time">Orario</string>
     <string name="details_kiuer">DETTAGLI NOTIFICA</string>
 
-    <!-- NotificationHelper -->
+    <!-- Helper_Notification -->
     <string name="text_request_queue">richiede una coda alle </string>
     <string name="text_request_queue2">presso</string>
     <string name="accept">accetta</string>
@@ -131,7 +132,7 @@
     <string name="update_setting">Impostazioni aggiornate</string>
     <string name="error_update_setting">Errore aggiornamento impostazioni</string>
 
-    <!-- Service_check -->
+    <!-- NotificationService -->
     <string name="waiting_message">In attesa di nuovi messaggi</string>
     <string name="kiu">Kiù</string>
     <string name="kiu_chat">Kiù Chat</string>

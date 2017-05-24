@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
  */
 public abstract class BaseActivity extends AppCompatActivity {
 
-
     public ProgressDialog mProgressDialog;
 
     public void showProgressDialog() {
@@ -16,16 +15,15 @@ public abstract class BaseActivity extends AppCompatActivity {
             mProgressDialog = new ProgressDialog(this);
             setMessage();
             mProgressDialog.setIndeterminate(true);
-        }
-
+            }
         mProgressDialog.show();
-    }
+        }
 
     public void hideProgressDialog() {
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
             mProgressDialog.dismiss();
+            }
         }
-    }
 
     protected abstract void setMessage();
 
@@ -33,6 +31,5 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void onStop() {
         super.onStop();
         hideProgressDialog();
-    }
-
+        }
 }

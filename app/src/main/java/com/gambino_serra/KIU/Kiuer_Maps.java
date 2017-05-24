@@ -22,14 +22,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.gambino_serra.KIU.KiuerMapsPermissionsDispatcher;
-import com.gambino_serra.KIU.Manifest;
-import com.gambino_serra.KIU.R;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -45,12 +41,10 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.kosalgeek.android.json.JsonConverter;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.RuntimePermissions;
 
@@ -59,7 +53,7 @@ import permissions.dispatcher.RuntimePermissions;
  * mediante l'uso delle mappe e l'utilizzo delle GoogleApiClient.
  */
 @RuntimePermissions
-public class KiuerMaps extends FragmentActivity implements
+public class Kiuer_Maps extends FragmentActivity implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
         com.google.android.gms.location.LocationListener, OnMapReadyCallback, GoogleMap.OnMapClickListener,
@@ -102,7 +96,7 @@ public class KiuerMaps extends FragmentActivity implements
             return String.valueOf(c);
         else
             return "0" + String.valueOf(c);
-    }
+        }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,30 +108,30 @@ public class KiuerMaps extends FragmentActivity implements
         mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.kiuerPositionMaps);
         if (mapFragment != null) {
             mapFragment.getMapAsync(this);
-        } else {
+            }
+        else {
             Toast.makeText(this, R.string.error_loading_maps, Toast.LENGTH_SHORT).show();
-        }
+            }
     }
 
     /**
      * Il metodo permette di caricare le mappe di Google.
-     * N.B.: KiuerMapsPermissionsDispatcher, la classe viene creata in fase di build dell'applicazione.
      */
     protected void loadMap(GoogleMap googleMap) {
         map = googleMap;
         if (map != null) {
             KiuerMapsPermissionsDispatcher.getMyLocationWithCheck(this);
             map.setOnMapClickListener(this);
-        } else {
+            }
+        else {
             Toast.makeText(this, R.string.error_loading_maps, Toast.LENGTH_SHORT).show();
-        }
+            }
     }
 
     @SuppressWarnings("all")
     @NeedsPermission({Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION})
     void getMyLocation() {
         if (map != null) {
-            //Adesso che la mappa e' caricata puo' ricevere la posizione
             map.setMyLocationEnabled(true);
             mGoogleApiClient = new GoogleApiClient.Builder(this)
                     .addApi(LocationServices.API)
@@ -154,7 +148,7 @@ public class KiuerMaps extends FragmentActivity implements
         // Connette il Client
         if (isGooglePlayServicesAvailable() && mGoogleApiClient != null) {
             mGoogleApiClient.connect();
-        }
+            }
     }
 
     /**
@@ -164,7 +158,7 @@ public class KiuerMaps extends FragmentActivity implements
     protected void onStart() {
         super.onStart();
         connectClient();
-    }
+        }
 
     /**
      * Il metodo e' chiamato quando l'Activity perde la visibilita'.
@@ -174,7 +168,7 @@ public class KiuerMaps extends FragmentActivity implements
         // Disconnette il Client
         if (mGoogleApiClient != null) {
             mGoogleApiClient.disconnect();
-        }
+            }
         super.onStop();
     }
 
@@ -192,7 +186,6 @@ public class KiuerMaps extends FragmentActivity implements
                         mGoogleApiClient.connect();
                         break;
                 }
-
         }
     }
 
@@ -208,7 +201,8 @@ public class KiuerMaps extends FragmentActivity implements
         if (ConnectionResult.SUCCESS == resultCode) {
             Log.d("Location Updates", "Google Play services is available.");
             return true;
-        } else {
+        }
+        else {
             // Ricevo la Error Dialog dai servizi Google Play.
             Dialog errorDialog = GooglePlayServicesUtil.getErrorDialog(resultCode, this,
                     CONNECTION_FAILURE_RESOLUTION_REQUEST);
@@ -233,15 +227,16 @@ public class KiuerMaps extends FragmentActivity implements
 
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
-        }
+            }
         Location location = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
         if (location != null) {
             LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
             CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 17);
             map.animateCamera(cameraUpdate);
-        } else {
+            }
+        else {
             Toast.makeText(this, R.string.enable_gps, Toast.LENGTH_SHORT).show();
-        }
+            }
         startLocationUpdates();
     }
 
@@ -255,24 +250,19 @@ public class KiuerMaps extends FragmentActivity implements
         mLocationRequest.setFastestInterval(FASTEST_INTERVAL);
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
-        }
-        LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient,
-                mLocationRequest, this);
+            }
+        LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
     }
 
-    public void onLocationChanged(Location location) {
-    }
+    public void onLocationChanged(Location location) { }
 
     /**
      * Il metodo e' invocato dal Location Services se la connessione con il client si interrrompe a causa di un errore.
      */
     @Override
     public void onConnectionSuspended(int i) {
-        if (i == CAUSE_SERVICE_DISCONNECTED) {
-            Toast.makeText(this, R.string.disconnected, Toast.LENGTH_SHORT).show();
-        } else if (i == CAUSE_NETWORK_LOST) {
-            Toast.makeText(this, R.string.network_lost, Toast.LENGTH_SHORT).show();
-        }
+        if (i == CAUSE_SERVICE_DISCONNECTED) { Toast.makeText(this, R.string.disconnected, Toast.LENGTH_SHORT).show(); }
+        else if (i == CAUSE_NETWORK_LOST) { Toast.makeText(this, R.string.network_lost, Toast.LENGTH_SHORT).show(); }
     }
 
     /**
@@ -281,22 +271,14 @@ public class KiuerMaps extends FragmentActivity implements
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
 
-        // Se il problema di connessione e' risolvibile (da Google) allora viene
-        // inviato un Intent all'Activity predisposta a risolvere il problema.
+        // Se il problema di connessione e' risolvibile (da Google) allora viene inviato un Intent all'Activity predisposta a risolvere il problema.
         if (connectionResult.hasResolution()) {
-            try {
-                connectionResult.startResolutionForResult(this,
-                        CONNECTION_FAILURE_RESOLUTION_REQUEST);
-
-                //L'eccezione e' sollevata nel caso in cui l'Intent viene eliminato.
-            } catch (IntentSender.SendIntentException e) {
-                // Log the error
-                e.printStackTrace();
+            try { connectionResult.startResolutionForResult(this, CONNECTION_FAILURE_RESOLUTION_REQUEST); }
+            catch (IntentSender.SendIntentException e) { e.printStackTrace(); }
             }
-        } else {
-            Toast.makeText(getApplicationContext(),
-                    R.string.location_service_not_available, Toast.LENGTH_LONG).show();
-        }
+        else{
+            Toast.makeText(getApplicationContext(), R.string.location_service_not_available, Toast.LENGTH_LONG).show();
+            }
     }
 
     /**
@@ -309,10 +291,10 @@ public class KiuerMaps extends FragmentActivity implements
 
         closeButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent setting = new Intent(KiuerMaps.this, KiuerHomeActivity.class);
+                Intent setting = new Intent(Kiuer_Maps.this, Kiuer_Home.class);
                 startActivity(setting);
-            }
-        });
+                }
+            });
 
         Snackbar snack = Snackbar.make(findViewById(android.R.id.content), R.string.place_marker_on_location, Snackbar.LENGTH_LONG);
         View view1 = snack.getView();
@@ -341,34 +323,34 @@ public class KiuerMaps extends FragmentActivity implements
 
         Geocoder geocoder = new Geocoder(this, Locale.getDefault());
         List<Address> addresses = null;
-        try {
-            addresses = geocoder.getFromLocation(ltln.latitude, ltln.longitude, 1);
-        } catch (IOException ioException) {
-            Log.d("errore", "lettura coordinate");
-        } catch (IllegalArgumentException illegalArgumentException) {
-            Log.d("errore", "coordinate non valide");
-        }
+        try { addresses = geocoder.getFromLocation(ltln.latitude, ltln.longitude, 1); }
+        catch (IOException ioException) { Log.d("errore", "lettura coordinate"); }
+        catch (IllegalArgumentException illegalArgumentException) { Log.d("errore", "coordinate non valide"); }
 
         //Gestione del caso che non sia trovato un indirizzo valido
         if ((addresses != null) && (addresses.size() > 3)) {
             Address addr = addresses.get(0);
             address = addr.getAddressLine(0).toString() + " " + addr.getAddressLine(1).toString() + " " + addr.getAddressLine(2).toString();
             address = address.replace("'", "").toString();
-        } else if ((addresses != null) && (addresses.size() == 3)) {
+            }
+        else if ((addresses != null) && (addresses.size() == 3)) {
             Address addr = addresses.get(0);
             address = addr.getAddressLine(0).toString() + " " + addr.getAddressLine(1).toString() + " " + addr.getAddressLine(2).toString();
             address = address.replace("'", "").toString();
-        } else if ((addresses != null) && (addresses.size() == 2)) {
+            }
+        else if ((addresses != null) && (addresses.size() == 2)) {
             Address addr = addresses.get(0);
             address = addr.getAddressLine(0).toString() + " " + addr.getAddressLine(1).toString();
             address = address.replace("'", "").toString();
-        } else if ((addresses != null) && (addresses.size() == 1)) {
+            }
+        else if ((addresses != null) && (addresses.size() == 1)) {
             Address addr = addresses.get(0);
             address = addr.getAddressLine(0).toString();
             address = address.replace("'", "").toString();
-        } else {
+            }
+        else {
             address = getResources().getString(R.string.address_not_available);
-        }
+            }
 
         //Lettura degli Helper disponibili
         final SharedPreferences prefs = getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
@@ -378,8 +360,8 @@ public class KiuerMaps extends FragmentActivity implements
             public void onResponse(String response) {
                 if (!response.equals("null")) {
                     LatLng ltlnHelpers;
-                    final ArrayList<JsonProfiloHelper> productList = new JsonConverter<JsonProfiloHelper>().toArrayList(response, JsonProfiloHelper.class);
-                    for (final JsonProfiloHelper object : productList) {
+                    final ArrayList<Json_Helper> productList = new JsonConverter<Json_Helper>().toArrayList(response, Json_Helper.class);
+                    for (final Json_Helper object : productList) {
                         ltlnHelpers = new LatLng(object.pos_latitudine, object.pos_longitudine);
                         map.addMarker(new MarkerOptions()
                                 .position(ltlnHelpers)
@@ -390,9 +372,9 @@ public class KiuerMaps extends FragmentActivity implements
                     map.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
                         @Override
                         public void onInfoWindowClick(Marker arg0) {
-                            for (final JsonProfiloHelper object : productList) {
+                            for (final Json_Helper object : productList) {
                                 if ((object.nome.toString()).equals(arg0.getTitle().toString())) {
-                                    DialogFragment newFragment = new KiuerMapsDetails();
+                                    DialogFragment newFragment = new Kiuer_MapsDetails();
                                     bundle.putString("ID_kiuer", prefs.getString(IDUTENTE, ""));
                                     bundle.putString("ID_helper", object.id.toString());
                                     bundle.putString("disp_inizio", object.disp_inizio.toString());
@@ -406,7 +388,7 @@ public class KiuerMaps extends FragmentActivity implements
                                     bundle.putFloat("rating", object.rating);
                                     bundle.putInt("cont_feedback", object.cont_feedback);
                                     newFragment.setArguments(bundle);
-                                    newFragment.show(getFragmentManager(), "KiuerMaps");
+                                    newFragment.show(getFragmentManager(), "Kiuer_Maps");
                                 }
                             }
                         }
@@ -443,10 +425,10 @@ public class KiuerMaps extends FragmentActivity implements
      */
     private void updateDisplay() {
         ora_richiesta = new StringBuilder().append(pad(ora)).append(":").append(pad(minuti));
-        DialogFragment newFragment = new KiuerMapsDetails();
+        DialogFragment newFragment = new Kiuer_MapsDetails();
         bundle.putString("ora_richiesta", ora_richiesta.toString());
         newFragment.setArguments(bundle);
-        newFragment.show(getFragmentManager(), "KiuerMaps");
+        newFragment.show(getFragmentManager(), "Kiuer_Maps");
     }
 
     /**
@@ -481,7 +463,7 @@ public class KiuerMaps extends FragmentActivity implements
      * Il metodo gestisce la visualizzazione della richiesta di coda inviata e lo reindirizza alla home del Kiuer.
      */
     public void richiestaInviata() {
-        Intent kiuerHomeActivity = new Intent(KiuerMaps.this, KiuerHomeActivity.class);
+        Intent kiuerHomeActivity = new Intent(Kiuer_Maps.this, Kiuer_Home.class);
         startActivity(kiuerHomeActivity);
         Toast.makeText(getApplicationContext(), R.string.request_sent, Toast.LENGTH_SHORT).show();
     }

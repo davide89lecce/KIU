@@ -6,8 +6,6 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 
-import com.gambino_serra.KIU.R;
-
 /**
  * La classe modella lo splash screen di avvio dell'applicazione Kiu.
  */
@@ -26,10 +24,10 @@ public class SplashActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent in = new Intent(SplashActivity.this, MainActivity.class);
+                Intent in = new Intent(SplashActivity.this, Login.class);
                 startActivity(in);
                 finish();
-            }
+                }
         }, SPLASH_DISPLAY_LENGTH);
     }
 }

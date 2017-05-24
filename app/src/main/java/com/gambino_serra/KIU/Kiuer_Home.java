@@ -14,7 +14,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import com.amigold.fundapter.BindDictionary;
 import com.amigold.fundapter.FunDapter;
 import com.amigold.fundapter.extractors.StringExtractor;
@@ -24,10 +23,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-//import com.gambino_serra.KIU.chat.ConversationsActivity;
-//import com.google.firebase.auth.FirebaseAuth;
 import com.kosalgeek.android.json.JsonConverter;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -35,7 +31,7 @@ import java.util.Map;
 /**
  * La classe modella l'Activity Home del Kiuer.
  */
-public class KiuerHomeActivity extends AppCompatActivity implements Response.Listener<String>,Response.ErrorListener{
+public class Kiuer_Home extends AppCompatActivity implements Response.Listener<String>,Response.ErrorListener{
 
     final String TAG = this.getClass().getSimpleName();
     final private static String MY_PREFERENCES = "kiuPreferences";
@@ -54,7 +50,7 @@ public class KiuerHomeActivity extends AppCompatActivity implements Response.Lis
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab2);
         fab.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent kiuerMaps = new Intent(KiuerHomeActivity.this, KiuerMaps.class);
+                Intent kiuerMaps = new Intent(Kiuer_Home.this, Kiuer_Maps.class);
                 startActivity(kiuerMaps);
             }
         });
@@ -68,33 +64,26 @@ public class KiuerHomeActivity extends AppCompatActivity implements Response.Lis
 
     /**
      * Il metodo crea il menù sull'ActionBar.
-     *
-     * @param menu
-     * @return booleano
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.kiuer_menu, menu);
         return true;
-    }
+        }
 
     /**
      * Il metodo gestisce il menù sull'ActionBar
-     *
-     * @param item
-     * @return booleano
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         boolean check = false;
         final SharedPreferences prefs = getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
 
         switch (item.getItemId()) {
 
             case R.id.notification_kiuer:
-                in = new Intent(getApplicationContext(), NotificationKiuer.class);
+                in = new Intent(getApplicationContext(), Kiuer_Notification.class);
                 startActivity(in);
                 check = true;
                 break;
@@ -103,7 +92,7 @@ public class KiuerHomeActivity extends AppCompatActivity implements Response.Lis
                 editor = prefs.edit().clear();
                 editor.apply();
                 stopService();
-                in = new Intent(getApplicationContext(), MainActivity.class);
+                in = new Intent(getApplicationContext(), Login.class);
                 startActivity(in);
                 check = true;
                 break;
@@ -117,7 +106,7 @@ public class KiuerHomeActivity extends AppCompatActivity implements Response.Lis
     public void onResume(){
         super.onResume();
         updateRichieste();
-    }
+        }
 
     /**
      * Il metodo esegue la richiesta di lettura dei dati presenti nel DB remoto relativi alle code richieste dal Kiuer per l'aggiornamento della ListView.
@@ -127,17 +116,19 @@ public class KiuerHomeActivity extends AppCompatActivity implements Response.Lis
         final SharedPreferences prefs = getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
         String url = "http://www.davideantonio2.altervista.org/code_kiuer.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, this, new Response.ErrorListener() {
+
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getApplicationContext(), R.string.error_update_volley, Toast.LENGTH_SHORT).show();
-            }
-        }) {
+                }
+        })
+        {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("IDutente", prefs.getString(ID,"").toString());
                 return params;
-            }
+                }
         };
 
         MySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
@@ -147,47 +138,51 @@ public class KiuerHomeActivity extends AppCompatActivity implements Response.Lis
     /**
      * Il metodo e' invocato alla risposta (dati ricevuti da database altervista) della richiesta di invio della informazioni.
      * Si occupa di convertire il JSON ricevuto e di valorizzare la ListView e le rispettive Dialog.
-     *
-     * @param response
      */
     @Override
     public void onResponse(String response) {
         Log.d(TAG, response);
         final Bundle bundle = new Bundle();
         final SharedPreferences prefs = getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
-        final ArrayList<JsonCheckRichiesta> productList = new JsonConverter<JsonCheckRichiesta>().toArrayList(response, JsonCheckRichiesta.class);
+        final ArrayList<Json_Richiesta> productList = new JsonConverter<Json_Richiesta>().toArrayList(response, Json_Richiesta.class);
 
-        final BindDictionary<JsonCheckRichiesta> dictionary = new BindDictionary<>();
-        dictionary.addStringField(R.id.tvText, new StringExtractor<JsonCheckRichiesta>() {
+        final BindDictionary<Json_Richiesta> dictionary = new BindDictionary<>();
+        dictionary.addStringField(R.id.tvText, new StringExtractor<Json_Richiesta>() {
             @Override
-            public String getStringValue(JsonCheckRichiesta product, int position) {
+            public String getStringValue(Json_Richiesta product, int position) {
                 String statoCoda = "";
                 if(product.stato_coda.toString().equals("0")){
                     statoCoda = getResources().getString(R.string.queue_not_started);
-                }else if(product.stato_coda.toString().equals("1")){
+                    }
+                else if(product.stato_coda.toString().equals("1")){
                     statoCoda = getResources().getString(R.string.queue_in_progress);
-                }else if(product.stato_coda.toString().equals("2")){
+                    }
+                else if(product.stato_coda.toString().equals("2")){
                     statoCoda = getResources().getString(R.string.queue_terminated);
-                }
-                return getResources().getString(R.string.hour_queue) + "  " + product.orario.toString().substring(0,5) + "\n" + getResources().getString(R.string.helper2) + " " + product.nome.toString() + "\n" + getResources().getString(R.string.state) + "  " + statoCoda.toString() + "\n";
+                    }
+                return getResources().getString(R.string.hour_queue) + "  " + product.orario.toString().substring(0,5) + "\n"
+                        + getResources().getString(R.string.helper2) + " " + product.nome.toString() + "\n"
+                        + getResources().getString(R.string.state) + "  " + statoCoda.toString() + "\n";
             }
-        }).onClick(new ItemClickListener<JsonCheckRichiesta>() {
+        }).onClick(new ItemClickListener<Json_Richiesta>() {
 
             @Override
-            public void onClick(JsonCheckRichiesta item, int position, View view) {
+            public void onClick(Json_Richiesta item, int position, View view) {
                 String statoCoda = "";
                 if(productList.get(position).stato_coda.toString().equals("0")){
                     statoCoda = getResources().getString(R.string.queue_not_started);
-                }else if(productList.get(position).stato_coda.toString().equals("1")){
+                    }
+                else if(productList.get(position).stato_coda.toString().equals("1")){
                     statoCoda = getResources().getString(R.string.queue_in_progress);
-                }else if(productList.get(position).stato_coda.toString().equals("2")){
+                    }
+                else if(productList.get(position).stato_coda.toString().equals("2")){
                     statoCoda = getResources().getString(R.string.queue_terminated);
-                }
+                    }
                 DialogFragment newFragment = new Kiuer_ShowHelperDetails();
                 bundle.putString("ID", productList.get(position).ID_richiesta.toString());
                 bundle.putString("text", getResources().getString(R.string.queue_assigned_to) + " " + productList.get(position).orario.substring(0,5) + "\n\n"
                                         + getResources().getString(R.string.place) + "  " + productList.get(position).luogo + "\n\n"
-                                        + "Details:" /*creare stringa descrizione*/ + "  " + productList.get(position).descrizione +"\n\n"
+                                        + getResources().getString(R.string.description)  + "  " + productList.get(position).descrizione +"\n\n"
                                         + getResources().getString(R.string.helper2) + "  " + productList.get(position).nome );
                 bundle.putString("nome", productList.get(position).nome);
                 bundle.putString("stato_coda", statoCoda.toString());
@@ -201,7 +196,7 @@ public class KiuerHomeActivity extends AppCompatActivity implements Response.Lis
             }
         });
 
-        FunDapter<JsonCheckRichiesta> adapter = new FunDapter<>(getApplicationContext(), productList, R.layout.product_layout, dictionary);
+        FunDapter<Json_Richiesta> adapter = new FunDapter<>(getApplicationContext(), productList, R.layout.product_layout, dictionary);
         lvProduct.setAdapter(adapter);
     }
 
@@ -211,22 +206,19 @@ public class KiuerHomeActivity extends AppCompatActivity implements Response.Lis
     @Override
     public void onErrorResponse(VolleyError error) {
         Toast.makeText(getApplicationContext(), R.string.error_update_volley, Toast.LENGTH_SHORT).show();
-    }
+        }
 
     /**
      * Avvia il servizio per la gestione delle notifiche e messaggi.
      */
-    public void startService()
-    {
-        startService(new Intent(this,Service_check.class));
-    }
+    public void startService() {
+        startService(new Intent(this,NotificationService.class));
+        }
 
     /**
      * Stop del servizio per la gestione delle notifiche e messaggi (eseguito al logout).
      */
-    public void stopService()
-    {
-        stopService(new Intent(this,Service_check.class));
-    }
-
+    public void stopService() {
+        stopService(new Intent(this,NotificationService.class));
+        }
 }

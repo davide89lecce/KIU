@@ -31,9 +31,9 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.github.hotchemi:permissionsdispatcher:2.0.7'
-    //permission per maps Google - KiuerMaps e MapsSetting
+    //permission per maps Google - Kiuer_Maps e Helper_MapsSetting
     apt 'com.github.hotchemi:permissionsdispatcher-processor:2.0.7'
-    //permission per maps Google - KiuerMaps e MapsSetting
+    //permission per maps Google - Kiuer_Maps e Helper_MapsSetting
     testCompile 'junit:junit:4.12'
     compile files('libs/KGJsonConverter.jar')
     compile files('libs/gson-2.2.4.jar')

@@ -14,15 +14,10 @@ import android.view.LayoutInflater;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
-import com.gambino_serra.KIU.R;
-//import com.google.firebase.database.DatabaseReference;
-//import com.google.firebase.database.FirebaseDatabase;
-
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -32,13 +27,12 @@ import java.util.Map;
 /**
  * La classe modella la Dialog relativa alla chiusura della coda (lato Kiuer)
  */
-public class Kiuer_ConfirmCloseQueue extends DialogFragment {
+public class Kiuer_ClosingQueue extends DialogFragment {
 
-    //private DatabaseReference mDatabase;
     TextView title;
     Context context;
 
-    public Kiuer_ConfirmCloseQueue() {}
+    public Kiuer_ClosingQueue() {}
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -70,24 +64,19 @@ public class Kiuer_ConfirmCloseQueue extends DialogFragment {
 
                                 //Se il DB risponde con close_conversation viene avviata la chiusura della conversazione
                                 if (response.equals("close_conversation")) {
-
-                                    //closeChat();
-                                    Log.d("volley","close_conversation");
-
-                                }else if(response.equals("error_update_code_effettuate")){
-
+                                    Log.d("volley","close_conversation");   //closeChat(); TODO
+                                    }
+                                else if(response.equals("error_update_code_effettuate")){
                                     Log.d("volley","error_update_code_effettuate");
-
-                                }else if(response.equals("error_update_coda_completata")){
-
+                                    }
+                                else if(response.equals("error_update_coda_completata")){
                                     Log.d("volley","error_update_coda_completata");
-
-                                }else if(response.equals("close_queue")){
-
+                                    }
+                                else if(response.equals("close_queue")){
                                     Log.d("volley","close_queue");
-                                }
+                                    }
                             }
-                        },((KiuerHomeActivity) getActivity())) {
+                        },((Kiuer_Home) getActivity())) {
                             @Override
                             protected Map<String, String> getParams() throws AuthFailureError {
                                 Map<String, String> params = new HashMap<>();
@@ -95,7 +84,6 @@ public class Kiuer_ConfirmCloseQueue extends DialogFragment {
                                 params.put("ID_richiesta", bundle.get("ID").toString());
                                 params.put("ID_helper", bundle.get("ID_helper").toString());
                                 params.put("ID_kiuer", bundle.get("ID_kiuer").toString());
-
                                 return params;
                             }
                         };
@@ -104,31 +92,16 @@ public class Kiuer_ConfirmCloseQueue extends DialogFragment {
                         Toast.makeText(getActivity().getApplicationContext(), R.string.queue_closed, Toast.LENGTH_SHORT).show();
 
                         dialog.dismiss(); // dismette positivo o neutrale
-                        ((KiuerHomeActivity) getActivity()).onResume();
+                        ((Kiuer_Home) getActivity()).onResume();
                     }
                 })
                 .setNeutralButton(R.string.goback, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-
                         dialog.cancel(); // dismette con rifiuto
-                    }
+                        }
                 });
         return builder.create();
     }
-
-//    /**
-//     * Il metodo chiude la conversazione con l'Helper.
-//     */
-//    private void closeChat(){
-//        Bundle bundle = getArguments();
-//        String my_uid = bundle.get("uid_helper").toString();
-//        String other_uid = bundle.get("uid_kiuer").toString();
-//       // mDatabase.child(my_uid).child(other_uid).removeValue();
-//       // mDatabase.child(other_uid).child(my_uid).removeValue();
-//       // DatabaseReference mRef = FirebaseDatabase.getInstance().getReference("/chat/" + other_uid + my_uid);
-//       // mRef.removeValue();
-//    }
-
 
     /**
      *  Il metodo inizializza la Dialog con i dati ricevuti dal Bundle.
@@ -149,10 +122,6 @@ public class Kiuer_ConfirmCloseQueue extends DialogFragment {
 
     /**
      * Il metodo calcola il la durata della coda (ore:minuti)
-     *
-     * @param orarioInizio
-     * @param orarioFine
-     * @return  tempo durata della coda.
      */
     private String calcoloOre(String orarioInizio, String orarioFine) {
         String ore = "";
@@ -176,32 +145,22 @@ public class Kiuer_ConfirmCloseQueue extends DialogFragment {
             int hours = (int) (millisDiff / 3600000 % 24);
             int days = (int) (millisDiff / 86400000);
 
-            if (hours >= 10)
-                ore = String.valueOf(hours);
-            else
-                ore = "0" + String.valueOf(hours);
+            if (hours >= 10)  ore = String.valueOf(hours);
+            else  ore = "0" + String.valueOf(hours);
 
-            if (minutes >= 10)
-                minuti = String.valueOf(minutes);
-            else
-                minuti = "0" + String.valueOf(minutes);
+            if (minutes >= 10) minuti = String.valueOf(minutes);
+            else minuti = "0" + String.valueOf(minutes);
 
             tempo = ore + ":" + minuti;
 
-        } catch (Exception e) {
-            System.err.println(e);
         }
+        catch (Exception e) { System.err.println(e); }
 
         return tempo;
     }
 
     /**
      * Il metodo calcola il compenso in base alla durata della coda e la tariffa.
-     *
-     * @param orarioInizio
-     * @param orarioFine
-     * @param tariffa
-     * @return compenso
      */
     private String calcoloCompenso(String orarioInizio, String orarioFine, int tariffa) {
 
@@ -222,13 +181,9 @@ public class Kiuer_ConfirmCloseQueue extends DialogFragment {
 
             compenso = (Double.valueOf(tariffa) / 60) * minutes;
 
-        } catch (Exception e) {
-            System.err.println(e);
         }
+        catch (Exception e) { System.err.println(e); }
 
         return String.valueOf(df2.format(compenso));
     }
 }
-
-
-

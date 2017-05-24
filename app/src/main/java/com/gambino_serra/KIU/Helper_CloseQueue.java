@@ -11,15 +11,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
-import com.gambino_serra.KIU.R;
-//import com.google.firebase.database.DatabaseReference;
-//import com.google.firebase.database.FirebaseDatabase;
-
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -29,17 +24,12 @@ import java.util.Map;
 /**
  * La classe modella la Dialog relativa alla chiusura della coda (lato Helper).
  */
-public class HelperCloseQueue extends DialogFragment {
+public class Helper_CloseQueue extends DialogFragment {
 
-    //private DatabaseReference mDatabase;
-
-    public HelperCloseQueue() {
-    }
+    public Helper_CloseQueue() {}
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-
-       // mDatabase = FirebaseDatabase.getInstance().getReference("/chat/chatstatus/");
 
         final Bundle bundle = getArguments();
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -57,26 +47,12 @@ public class HelperCloseQueue extends DialogFragment {
                             @Override
                             public void onResponse(String response) {
 
-                                //Se il DB risponde con close_conversation viene avviata la chiusura della conversazione
-                                if (response.equals("close_conversation")) {
-
-                                   // closeChat();
-                                    Log.d("volley", "close_conversation");
-
-                                } else if (response.equals("error_update_code_effettuate")) {
-
-                                    Log.d("volley", "error_update_code_effettuate");
-
-                                } else if (response.equals("error_update_coda_completata")) {
-
-                                    Log.d("volley", "error_update_coda_completata");
-
-                                } else if (response.equals("close_queue")) {
-
-                                    Log.d("volley", "close_queue");
-                                }
+                                if (response.equals("close_conversation")) { Log.d("volley", "close_conversation"); }
+                                else if (response.equals("error_update_code_effettuate")) { Log.d("volley", "error_update_code_effettuate"); }
+                                else if (response.equals("error_update_coda_completata")) { Log.d("volley", "error_update_coda_completata"); }
+                                else if (response.equals("close_queue")) { Log.d("volley", "close_queue"); }
                             }
-                        }, ((HelperHomeActivity) getActivity())) {
+                        }, ((Helper_Home) getActivity())) {
                             @Override
                             protected Map<String, String> getParams() throws AuthFailureError {
                                 Map<String, String> params = new HashMap<>();
@@ -93,34 +69,17 @@ public class HelperCloseQueue extends DialogFragment {
 
                         dialog.dismiss(); // dismette positivo o neutrale
 
-                        //aggiornamento della lista in HelperHomeActivity
-                        ((HelperHomeActivity) getActivity()).onResume();
+                        //aggiornamento della lista in Helper_Home
+                        ((Helper_Home) getActivity()).onResume();
                     }
                 })
                 .setNeutralButton(R.string.goback, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-
                         dialog.cancel(); // dismette con rifiuto
                     }
                 });
-
         return builder.create();
     }
-
-    /**
-     * Il metodo chiude la conversazione con il Kiuer.
-     */
-    /*
-    private void closeChat() {
-        Bundle bundle = getArguments();
-        String my_uid = bundle.get("uid_helper").toString();
-        String other_uid = bundle.get("uid_kiuer").toString();
-        mDatabase.child(my_uid).child(other_uid).removeValue();
-        mDatabase.child(other_uid).child(my_uid).removeValue();
-        DatabaseReference mRef = FirebaseDatabase.getInstance().getReference("/chat/" + my_uid + other_uid);
-        mRef.removeValue();
-    }
-    */
 
     /**
      * Il metodo inizializza la Dialog con i dati ricevuti dal Bundle
@@ -132,17 +91,17 @@ public class HelperCloseQueue extends DialogFragment {
         TextView text = (TextView) this.getDialog().findViewById(R.id.dettagli2);
         TextView nome = (TextView) this.getDialog().findViewById(R.id.text_nome_1h);
         nome.setText(bundle.get("nome").toString());
-        text.setText(getResources().getString(R.string.hour_start_queue) + "   " + bundle.get("orario_inizio").toString().substring(11, 16) + "\n\n" + getResources().getString(R.string.hour_end_queue) + "  " + bundle.get("orario_fine").toString().substring(11, 16) + "\n\n"
-                + getResources().getString(R.string.time_queue) + "  " + calcoloOre(bundle.get("orario_inizio").toString(), bundle.get("orario_fine").toString()) + "\n\n"
-                + getResources().getString(R.string.payment) + "  " + calcoloCompenso(bundle.get("orario_inizio").toString(), bundle.get("orario_fine").toString(), bundle.getInt("tariffa_oraria")) + "€\n");
+        text.setText(getResources().getString(R.string.hour_start_queue)
+                + "   " + bundle.get("orario_inizio").toString().substring(11, 16) + "\n\n" + getResources().getString(R.string.hour_end_queue)
+                + "  " + bundle.get("orario_fine").toString().substring(11, 16) + "\n\n"
+                + getResources().getString(R.string.time_queue)
+                + "  " + calcoloOre(bundle.get("orario_inizio").toString(), bundle.get("orario_fine").toString()) + "\n\n"
+                + getResources().getString(R.string.payment)
+                + "  " + calcoloCompenso(bundle.get("orario_inizio").toString(), bundle.get("orario_fine").toString(), bundle.getInt("tariffa_oraria")) + "€\n");
     }
 
     /**
      *Il metodo calcola la durata della coda (ore:minuti).
-     *
-     * @param orarioInizio
-     * @param orarioFine
-     * @return tempo durata della coda.
      */
     private String calcoloOre(String orarioInizio, String orarioFine) {
         String ore = "";
@@ -166,31 +125,20 @@ public class HelperCloseQueue extends DialogFragment {
             int hours = (int) (millisDiff / 3600000 % 24);
             int days = (int) (millisDiff / 86400000);
 
-            if (hours >= 10)
-                ore = String.valueOf(hours);
-            else
-                ore = "0" + String.valueOf(hours);
+            if (hours >= 10) ore = String.valueOf(hours);
+            else ore = "0" + String.valueOf(hours);
 
-            if (minutes >= 10)
-                minuti = String.valueOf(minutes);
-            else
-                minuti = "0" + String.valueOf(minutes);
+            if (minutes >= 10) minuti = String.valueOf(minutes);
+            else minuti = "0" + String.valueOf(minutes);
 
             tempo = ore + ":" + minuti;
-
-        } catch (Exception e) {
-            System.err.println(e);
         }
-
+        catch (Exception e) { System.err.println(e); }
         return tempo;
     }
 
     /**
      * Il metodo calcola il compenso in base alla durata della coda e la tariffa.
-     * @param orarioInizio
-     * @param orarioFine
-     * @param tariffa
-     * @return valore compenso
      */
     private String calcoloCompenso(String orarioInizio, String orarioFine, int tariffa) {
 
@@ -211,14 +159,8 @@ public class HelperCloseQueue extends DialogFragment {
 
             compenso = (Double.valueOf(tariffa) / 60) * minutes;
 
-        } catch (Exception e) {
-            System.err.println(e);
         }
-
+        catch (Exception e) { System.err.println(e); }
         return String.valueOf(df2.format(compenso));
     }
-
 }
-
-
-

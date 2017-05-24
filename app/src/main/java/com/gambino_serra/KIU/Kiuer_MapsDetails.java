@@ -15,24 +15,20 @@ import android.view.View;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
-import com.gambino_serra.KIU.R;
-
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * La classe modella l'interazione per l'inoltro della richiesta di coda.
  */
-public class KiuerMapsDetails extends DialogFragment {
+public class Kiuer_MapsDetails extends DialogFragment {
 
     public TextView ora_richiesta;
 
-    public KiuerMapsDetails() {
-    }
+    public Kiuer_MapsDetails() {}
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -54,7 +50,7 @@ public class KiuerMapsDetails extends DialogFragment {
                             //Registra nel database di altervista la richiesta inviata dal Kiuer
                             String url = "http://www.davideantonio2.altervista.org/kiuer_invia_richiesta.php";
 
-                            StringRequest stringRequest = new StringRequest(Request.Method.POST, url, ((KiuerMaps) getActivity()), ((KiuerMaps) getActivity())) {
+                            StringRequest stringRequest = new StringRequest(Request.Method.POST, url, ((Kiuer_Maps) getActivity()), ((Kiuer_Maps) getActivity())) {
                                 @Override
                                 protected Map<String, String> getParams() throws AuthFailureError {
                                     Map<String, String> params = new HashMap<>();
@@ -70,12 +66,13 @@ public class KiuerMapsDetails extends DialogFragment {
 
                             MySingleton.getInstance(getActivity().getApplicationContext()).addToRequestQueue(stringRequest);
                             dialog.dismiss();
-                        } else {
-                            Toast.makeText(getActivity().getApplicationContext(), R.string.set_request_time, Toast.LENGTH_SHORT).show();
-                            DialogFragment newFragment = new KiuerMapsDetails();
-                            newFragment.setArguments(bundle);
-                            newFragment.show(getFragmentManager(), "KiuerMaps");
                         }
+                        else {
+                            Toast.makeText(getActivity().getApplicationContext(), R.string.set_request_time, Toast.LENGTH_SHORT).show();
+                            DialogFragment newFragment = new Kiuer_MapsDetails();
+                            newFragment.setArguments(bundle);
+                            newFragment.show(getFragmentManager(), "Kiuer_Maps");
+                            }
 
                     }
                 })
@@ -83,9 +80,8 @@ public class KiuerMapsDetails extends DialogFragment {
                     @TargetApi(Build.VERSION_CODES.M)
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();
-                    }
+                        }
                 });
-
         return builder.create();
     }
 
@@ -103,8 +99,8 @@ public class KiuerMapsDetails extends DialogFragment {
         rating.setIsIndicator(true);
         testo.setText(getResources().getString(R.string.hour_rate) + " " + bundle.get("tariffa_oraria") + "€\n"
                 + getResources().getString(R.string.queue_done) + " " + bundle.get("code_effettuate") + "\n"
-                + getResources().getString(R.string.start_availability) + " " + bundle.get("inizio_disp").toString().substring(0, 5) + "\n"
-                + getResources().getString(R.string.end_availability) + " " + bundle.get("fine_disp").toString().substring(0, 5) + "\n");
+                + getResources().getString(R.string.start_availability) + " " + bundle.get("disp_fine").toString().substring(0, 5) + "\n"
+                + getResources().getString(R.string.end_availability) + " " + bundle.get("disp_inizio").toString().substring(0, 5) + "\n");
 
         GradientDrawable gd = new GradientDrawable();
         gd.setColor(0xBFBFBFBF);
@@ -119,7 +115,7 @@ public class KiuerMapsDetails extends DialogFragment {
         ora_richiesta.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 getDialog().dismiss();
-                ((KiuerMaps) getActivity()).showTimePickerRichiesta();
+                ((Kiuer_Maps) getActivity()).showTimePickerRichiesta();
             }
         });
     }
@@ -150,4 +146,3 @@ public class KiuerMapsDetails extends DialogFragment {
     }
 
 }
-

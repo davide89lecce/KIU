@@ -9,54 +9,33 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.gambino_serra.KIU.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-//import com.google.firebase.auth.FirebaseAuth;
-//import com.google.firebase.auth.FirebaseUser;
-//import com.google.firebase.database.DataSnapshot;
-//import com.google.firebase.database.DatabaseReference;
-//import com.google.firebase.database.FirebaseDatabase;
-
-import org.jetbrains.annotations.NotNull;
-
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * La classe gestisce il login
  */
-public class MainActivity extends BaseActivity {
+public class Login extends BaseActivity {
 
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "Login";
     private static final String MY_PREFERENCES = "kiuPreferences";
     private static final String IDUTENTE = "IDutente";
     private static final String PASSWORD = "password";
-
     private static final String TIPO_UTENTE = "tipoUtente";
     private static final String LOGGED_USER = "logged_user";
     private static final String CONV_NAME = "_conv_name";
 
     EditText etUsername, etPassword;
     Button btnLogin;
-    Button btnRegister;
-
-    //private FirebaseAuth mAuth;
-    //private FirebaseAuth.AuthStateListener mAuthListener;
-    //private DatabaseReference mDatabase;
 
     /**
      * Il metodo si occupa dell'inizializzazione degli elementi della UI di accesso all'applicazione.
      * Verifica che l'utente sia connesso, se vero, allora lo indirizza nella sua Activity principale.
-     *
-     * @param savedInstanceState
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,38 +49,21 @@ public class MainActivity extends BaseActivity {
         etPassword = (EditText) findViewById(R.id.etPassword);
         btnLogin = (Button) findViewById(R.id.btnLogin);
 
-        //mAuth = FirebaseAuth.getInstance();
-        //mAuthListener = new FirebaseAuth.AuthStateListener() {
-
-
-        //   @Override
-        //    public void onAuthStateChanged(@NotNull FirebaseAuth firebaseAuth) {
-        //        FirebaseUser user = firebaseAuth.getCurrentUser();
-        //        if (user != null) {
-        //            Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-        //        } else {
-        //            Log.d(TAG, "onAuthStateChanged:signed_out");
-        //        }
-        //    }
-
-
-        // si verifica che le SharedPreferences contengano dati, nel caso contrario l'utente
-        // risultera non connesso.
+        // si verifica che le SharedPreferences contengano dati, nel caso contrario l'utente risultera non connesso.
         final SharedPreferences sharedPrefs = getSharedPreferences(MY_PREFERENCES, MODE_PRIVATE);
         if (!sharedPrefs.getAll().isEmpty()) {
             Log.d("Utente", "Connesso");
             getStatusAndGoHome();
-        } else {
+            }
+        else {
             Log.d("Utente", "Non connesso");
-        }
+            }
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
 
             /**
              * Il metodo permette di acquisire i dati inseriti dall'utente, verifica che i campi
              * di testo non siano vuoti ed effettua il login.
-             *
-             * @param v istanza della View
              */
             @Override
             public void onClick(View v) {
@@ -110,35 +72,13 @@ public class MainActivity extends BaseActivity {
                 String psw = etPassword.getText().toString();
                 if (!etUsername.getText().toString().equals("") && !etPassword.getText().toString().equals("")) {
                     signIn(username, psw);
-                } else {
+                    }
+                else {
                     Toast.makeText(getApplicationContext(), R.string.insert_name_password, Toast.LENGTH_LONG).show();
-                }
+                    }
             }
         });
     }
-
-//       btnRegister.setOnClickListener(new View.OnClickListener() {
-//
-//            /**
-//             * Il metodo permette di accedere alla schermata di registrazione
-//             * di un nuovo utente.
-//             * @param v istanza della View
-//             */
-//            @Override
-//            public void onClick(View v) {
-//                startRegisterActivity();
-//            }
-//        });
-//
-//    }
-//
-//    /**
-//     * Il metodo avvia l'activity per la registrazione utente.
-//     */
-//    private void startRegisterActivity() {
-//        Intent in = new Intent(MainActivity.this, RegisterActivity.class);
-//        startActivity(in);
-//    }
 
     /**
      * Il metodo imposta il messaggio della Dialog.
@@ -146,13 +86,10 @@ public class MainActivity extends BaseActivity {
     //@Override
     protected void setMessage() {
         mProgressDialog.setMessage(getString(R.string.login));
-    }
+        }
 
     /**
      * Il metodo gestisce l'evento di autenticazione.
-     *
-     * @param IDutente
-     * @param password
      */
     private void signIn(String IDutente, String password) {
 
@@ -165,24 +102,22 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onResponse(String response) {
                 if (response.contains("correct_login_helper")) {
-
                     setAllAndGoHome(etUsername.getText().toString(), etPassword.getText().toString(), "H");
-
-                } else if(response.contains("correct_login_kiuer")) {
-
+                    }
+                else if(response.contains("correct_login_kiuer")) {
                     setAllAndGoHome(etUsername.getText().toString(), etPassword.getText().toString(), "K");
-
-                }else if(response.contains("no_login")){
-
+                    }
+                else if(response.contains("no_login")){
                     Toast.makeText(getApplicationContext(), "Username o password errata", Toast.LENGTH_SHORT).show();
-                }
+                    }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getApplicationContext(), R.string.error_update_volley, Toast.LENGTH_SHORT).show();
             }
-        }) {
+        })
+        {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
@@ -193,39 +128,12 @@ public class MainActivity extends BaseActivity {
         };
 
         MySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
-
-        /*
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NotNull Task<AuthResult> task) {
-
-                        Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
-
-                        if (!task.isSuccessful()) {
-                            Log.w(TAG, "signInWithEmail:failed", task.getException());
-                            Toast.makeText(MainActivity.this, R.string.auth_failed, Toast.LENGTH_SHORT).show();
-                            hideProgressDialog();
-                        } else {
-                            String str = mAuth.getCurrentUser().getUid();
-                            mDatabase =
-                                    FirebaseDatabase.getInstance().getReference("/chat/cards/" + str);
-                            mDatabase.addListenerForSingleValueEvent(new UserInfoListener());
-                        }
-                    }
-                });
-        */
     }
 
     /**
      * Il metodo inizializza le SharedPreferences dell'applicazione.
-     *
-     * @param username
-     * @param password
-     * @param tipologia
      */
     private void setPrefs(String username, String password, String tipologia) {
-
         final SharedPreferences sharedPrefs = getSharedPreferences(MY_PREFERENCES, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPrefs.edit();
         editor.putString(IDUTENTE, username);   // identificativo utente in altervista.
@@ -241,13 +149,13 @@ public class MainActivity extends BaseActivity {
 
         final SharedPreferences sharedPrefs = getSharedPreferences(MY_PREFERENCES, MODE_PRIVATE);
         if (sharedPrefs.getString(TIPO_UTENTE, "").equals("H")) {
-            Intent in = new Intent(MainActivity.this, HelperHomeActivity.class);
+            Intent in = new Intent(Login.this, Helper_Home.class);
             startActivity(in);
-        } else if (sharedPrefs.getString(TIPO_UTENTE, "").equals("K")) {
-            Intent in = new Intent(MainActivity.this, KiuerHomeActivity.class);
+            }
+        else if (sharedPrefs.getString(TIPO_UTENTE, "").equals("K")) {
+            Intent in = new Intent(Login.this, Kiuer_Home.class);
             startActivity(in);
-
-        }
+            }
     }
 
     /**
@@ -257,45 +165,16 @@ public class MainActivity extends BaseActivity {
         hideProgressDialog();
         setPrefs(username, password, tipologia);
         getStatusAndGoHome();
-    }
+        }
 
     @Override
     public void onStart() {
         super.onStart();
-        //mAuth.addAuthStateListener(mAuthListener);
-
-    }
+        }
 
     @Override
     public void onStop() {
         super.onStop();
-        //if (mAuthListener != null) {
-        //    mAuth.removeAuthStateListener(mAuthListener);
-        //}
-
-    }
-
-    /**
-     * La classe modella un listener per l'ascolto delle
-     * informazione dell'utente.
-     */
-    /*
-    class UserInfoListener extends ValueListenerAdapter {
-
-        public UserInfoListener() {
         }
-
-        /**
-         * Il metodo riceve i dati utente e ne avvia la gestione.
-         *
-         * @param dataSnapshot info dati utente
-         */
-    /*
-        @Override
-        public void onDataChange(DataSnapshot dataSnapshot) {
-            setAllAndGoHome(dataSnapshot.getValue(UserCard.class));
-        }
-    }
-    */
 
 }

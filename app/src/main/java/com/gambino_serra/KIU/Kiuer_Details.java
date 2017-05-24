@@ -16,29 +16,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
-import com.gambino_serra.KIU.R;
-//import com.gambino_serra.KIU.chat.MessagesActivity;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * La classe modella la Dialog relativa ai dettagli di una specifica coda assegnata all'helper (lato Helper).
  */
-public class KiuerDetails extends DialogFragment {
+public class Kiuer_Details extends DialogFragment {
 
-   // private DatabaseReference mDatabase;
     TextView title;
     Context context;
 
-    private String my_uid = "";
-    private String other_uid ="";
-
-    public KiuerDetails() {}
+    public Kiuer_Details() {}
 
     /**
      * onCreate della Dialog e Set dei comportamenti dei Button.
@@ -62,11 +55,13 @@ public class KiuerDetails extends DialogFragment {
         String btnAlertDialog = "";
         if (bundle.get("stato_coda").toString().equals(getResources().getString(R.string.queue_terminated))) {
             btnAlertDialog = getResources().getString(R.string.chiudi_coda);
-        } else if (bundle.get("stato_coda").toString().equals(getResources().getString(R.string.queue_in_progress))) {
+            }
+        else if (bundle.get("stato_coda").toString().equals(getResources().getString(R.string.queue_in_progress))) {
             btnAlertDialog = getResources().getString(R.string.termina_coda);
-        } else if (bundle.get("stato_coda").toString().equals(getResources().getString(R.string.queue_not_started))) {
+            }
+        else if (bundle.get("stato_coda").toString().equals(getResources().getString(R.string.queue_not_started))) {
             btnAlertDialog = getResources().getString(R.string.inizia_coda);
-        }
+            }
 
         builder.setTitle(R.string.kiuer_details);
         builder.setView(inflater.inflate(R.layout.fragment_kiuer_details, null))
@@ -78,68 +73,67 @@ public class KiuerDetails extends DialogFragment {
                         //Se la coda è terminata --> avvia la Dialog relativa alla chiusura della coda
                         //Se la coda non è avviata --> avvia la coda registrando lo stato sul DB
                         //Se la coda è avviata --> termina la coda registrando lo stato sul DB
-                        if (bundle.get("stato_coda").toString().equals(getResources().getString(R.string.queue_terminated))) {
-
-                        } else if (bundle.get("stato_coda").toString().equals(getResources().getString(R.string.queue_not_started))) {
-
+                        if (bundle.get("stato_coda").toString().equals(getResources().getString(R.string.queue_terminated))) {}
+                        else if (bundle.get("stato_coda").toString().equals(getResources().getString(R.string.queue_not_started))) {
                             String url = "http://www.davideantonio2.altervista.org/inizio_coda_helper.php";
                             StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+
                                 @Override
                                 public void onResponse(String response) {
                                     Log.d("volley","inizio coda helper");
-                                }
-                            }, ((HelperHomeActivity) getActivity())) {
+                                    }
+
+                                }, ((Helper_Home) getActivity())) {
+
                                 @Override
                                 protected Map<String, String> getParams() throws AuthFailureError {
                                     Map<String, String> params = new HashMap<>();
                                     params.put("ID_richiesta", bundle.get("ID").toString());
                                     return params;
-                                }
+                                    }
                             };
                             MySingleton.getInstance(getActivity().getApplicationContext()).addToRequestQueue(stringRequest);
-
-                        } else if (bundle.get("stato_coda").toString().equals(getResources().getString(R.string.queue_in_progress))) {
-
+                            }
+                        else if (bundle.get("stato_coda").toString().equals(getResources().getString(R.string.queue_in_progress))) {
                             String url = "http://www.davideantonio2.altervista.org/fine_coda_helper.php";
                             StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+
                                 @Override
                                 public void onResponse(String response) {
                                     Log.d("volley","fine coda helper");
+                                    }
 
-                                }
-                            }, ((HelperHomeActivity) getActivity())) {
+                            }, ((Helper_Home) getActivity()))
+                            {
                                 @Override
                                 protected Map<String, String> getParams() throws AuthFailureError {
                                     Map<String, String> params = new HashMap<>();
                                     params.put("ID_richiesta", bundle.get("ID").toString());
                                     return params;
-                                }
+                                    }
                             };
                             MySingleton.getInstance(getActivity().getApplicationContext()).addToRequestQueue(stringRequest);
-                            DialogFragment newFragment = new HelperCloseQueue();
+                            DialogFragment newFragment = new Helper_CloseQueue();
                             newFragment.setArguments(bundle);
-                            newFragment.show(getFragmentManager(), "HelperCloseQueue");
+                            newFragment.show(getFragmentManager(), "Helper_CloseQueue");
                         }
 
                         dialog.dismiss(); // dismette positivo o neutrale
-                        ((HelperHomeActivity) getActivity()).onResume();
+                        ((Helper_Home) getActivity()).onResume();
                     }
                 })
                 .setNeutralButton(R.string.goback, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-
                         dialog.cancel(); // dismette con rifiuto
-                    }
+                        }
                 });
         return builder.create(); //renderizza la dialog
     }
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-      //  mDatabase = FirebaseDatabase.getInstance().getReference("/chat/chatstatus/");
-    }
+        }
 
     /**
      *  Il metodo inizializza la Dialog con i dati ricevuti dal Bundle.
@@ -168,57 +162,7 @@ public class KiuerDetails extends DialogFragment {
 
         contatta.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-               // getUserInfo();
-            }
-        });
+            public void onClick(View v) { }
+            });
     }
-
-    /**
-     * Il metodo permette di ricevere le informazioni dell'utente Kiuer.
-     */
-    /*
-    private void getUserInfo(){
-        mDatabase = FirebaseDatabase.getInstance().getReference("/chat/cards/" + other_uid);
-        mDatabase.addListenerForSingleValueEvent(new KiuerDetails.UserInfoListener());
-    }
-    */
-
-    /**
-     * Il metodo avvia la conversazione con l'altro utente (Kiuer).
-     *
-     * @param card
-     */
-    /*
-    private void openConversation(UserCard card) {
-        Intent in = new Intent(getActivity().getApplicationContext(), MessagesActivity.class);
-        in.putExtra("counterpartID", card.userID);
-        in.putExtra("counterpartName", card.user_name);
-        in.putExtra("convname", my_uid + other_uid);
-        startActivity(in);
-    }
-    */
-
-    /**
-     * La classe modella un listener per l'ascolto delle
-     * informazione dell'utente.
-     */
-    /*
-    class UserInfoListener extends ValueListenerAdapter {
-
-        public UserInfoListener(){}
-
-        /**
-         * Il metodo riceve i dati utente e ne avvia la gestione.
-         *
-         * @param dataSnapshot info dati utente
-         */
-    /*
-        @Override
-        public void onDataChange(DataSnapshot dataSnapshot) {
-            UserCard card = dataSnapshot.getValue(UserCard.class);
-           // openConversation(card);
-        }
-    }
-    */
 }

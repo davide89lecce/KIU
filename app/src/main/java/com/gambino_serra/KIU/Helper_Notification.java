@@ -14,7 +14,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import com.amigold.fundapter.BindDictionary;
 import com.amigold.fundapter.FunDapter;
 import com.amigold.fundapter.extractors.StringExtractor;
@@ -24,11 +23,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.gambino_serra.KIU.R;
-//import com.gambino_serra.KIU.chat.ConversationsActivity;
-//import com.google.firebase.auth.FirebaseAuth;
 import com.kosalgeek.android.json.JsonConverter;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -36,7 +31,7 @@ import java.util.Map;
 /**
  * La classe gestisce l'Activity relativa alle richieste di coda pendenti ricevute dall'Helper
  */
-public class NotificationHelper extends AppCompatActivity implements Response.Listener<String> {
+public class Helper_Notification extends AppCompatActivity implements Response.Listener<String> {
 
     final String TAG = this.getClass().getSimpleName();
     final private static String MY_PREFERENCES = "kiuPreferences";
@@ -55,7 +50,6 @@ public class NotificationHelper extends AppCompatActivity implements Response.Li
 
         //Lettura dal database di altervista tramite Volley delle richieste di coda pendenti
         updateRichieste();
-
     }
 
     /**
@@ -67,29 +61,30 @@ public class NotificationHelper extends AppCompatActivity implements Response.Li
         Log.d(TAG, response);
         final Bundle bundle = new Bundle();
         final SharedPreferences prefs = getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
-        final ArrayList<JsonCheckRichiesta> productList = new JsonConverter<JsonCheckRichiesta>().toArrayList(response, JsonCheckRichiesta.class);
-        final BindDictionary<JsonCheckRichiesta> dictionary = new BindDictionary<>();
-        dictionary.addStringField(R.id.tvText, new StringExtractor<JsonCheckRichiesta>() {
+        final ArrayList<Json_Richiesta> productList = new JsonConverter<Json_Richiesta>().toArrayList(response, Json_Richiesta.class);
+        final BindDictionary<Json_Richiesta> dictionary = new BindDictionary<>();
+        dictionary.addStringField(R.id.tvText, new StringExtractor<Json_Richiesta>() {
             @Override
-            public String getStringValue(JsonCheckRichiesta product, int position) {
-                return getResources().getString(R.string.hour_queue) + " "
-                                    + product.orario.toString().substring(0, 5) + "\n"
+            public String getStringValue(Json_Richiesta product, int position) {
+                return getResources().getString(R.string.hour_queue) + " " + product.orario.toString().substring(0, 5) + "\n"
                         + getResources().getString(R.string.kiuer2) + product.nome.toString() + "\n";
-
             }
-        }).onClick(new ItemClickListener<JsonCheckRichiesta>() {
+        }).onClick(new ItemClickListener<Json_Richiesta>() {
 
             @Override
-            public void onClick(JsonCheckRichiesta item, int position, View view) {
-                DialogFragment newFragment = new NotificationDetailsHelper();
-                bundle.putString("IDutente", productList.get(position).ID_richiesta.toString());
-                bundle.putString("text", productList.get(position).nome + " " + getResources().getString(R.string.text_request_queue) + "  " + productList.get(position).orario.substring(0, 5) + " " + getResources().getString(R.string.text_request_queue2) + " " + productList.get(position).luogo);
+            public void onClick(Json_Richiesta item, int position, View view) {
+                DialogFragment newFragment = new Helper_NotificationDetails();
+                bundle.putString("ID", productList.get(position).ID_richiesta.toString());
+                bundle.putString("text", productList.get(position).nome
+                        + " " + getResources().getString(R.string.text_request_queue)
+                        + " " + productList.get(position).orario.substring(0, 5)
+                        + " " + getResources().getString(R.string.text_request_queue2)
+                        + " " + productList.get(position).luogo);
                 newFragment.setArguments(bundle);
-                newFragment.show(getFragmentManager(), "NotificationDetailsHelper");
+                newFragment.show(getFragmentManager(), "Helper_NotificationDetails");
             }
         });
-
-        FunDapter<JsonCheckRichiesta> adapter = new FunDapter<>(getApplicationContext(), productList, R.layout.notification_layout_helper, dictionary);
+        FunDapter<Json_Richiesta> adapter = new FunDapter<>(getApplicationContext(), productList, R.layout.notification_layout_helper, dictionary);
         lvProduct.setAdapter(adapter);
     }
 
@@ -144,17 +139,11 @@ public class NotificationHelper extends AppCompatActivity implements Response.Li
         final SharedPreferences prefs = getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
 
         switch (item.getItemId()) {
-//            case R.id.chat_helper:
-//                in = new Intent(getApplicationContext(), ConversationsActivity.class);
-//                startActivity(in);
-//                check = true;
-//                break;
             case R.id.exit_helper:
                 SharedPreferences.Editor editor;
                 editor = prefs.edit().clear();
                 editor.apply();
-                //FirebaseAuth.getInstance().signOut();
-                in = new Intent(getApplicationContext(), MainActivity.class);
+                in = new Intent(getApplicationContext(), Login.class);
                 startActivity(in);
                 check = true;
                 break;

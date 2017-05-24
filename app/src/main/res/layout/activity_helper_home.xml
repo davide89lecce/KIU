@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.gambino_serra.KIU.HelperHomeActivity">
+    tools:context="com.gambino_serra.KIU.Helper_Home">
 
     <LinearLayout
         android:layout_width="match_parent"

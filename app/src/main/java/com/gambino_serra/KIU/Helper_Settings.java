@@ -14,14 +14,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.kosalgeek.android.json.JsonConverter;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -33,20 +31,17 @@ public class Helper_Settings extends AppCompatActivity {
 
     final private static String MY_PREFERENCES = "kiuPreferences";
     private static final String IDUTENTE = "IDutente";
-
     private TextView textInizioDisp;
     private TextView textFineDisp;
     private TextView textTariffaOraria;
     private Button scegliArea;
     private Button menoButton;
     private Button piuButton;
-
     private int oraInizio;
     private int minutiInizio;
     private int oraFine;
     private int minutiFine;
     private int setOrario;
-
     static final int TIME_DIALOG_ID1 = 1;
     static final int TIME_DIALOG_ID2 = 2;
 
@@ -71,7 +66,7 @@ public class Helper_Settings extends AppCompatActivity {
 
                 //Se le impostazioni non sono state ancora inizializzate, le inizializza altrimenti legge le impostazioni dal database di altervista e avvalora i campi.
                 if (!response.equals("null")) {
-                    final ArrayList<JsonProfiloHelper> productList = new JsonConverter<JsonProfiloHelper>().toArrayList(response, JsonProfiloHelper.class);
+                    final ArrayList<Json_Helper> productList = new JsonConverter<Json_Helper>().toArrayList(response, Json_Helper.class);
                     textInizioDisp.setText(productList.get(0).disp_inizio.toString().subSequence(0,5));
                     textFineDisp.setText(productList.get(0).disp_fine.toString().subSequence(0,5));
                     textTariffaOraria.setText(productList.get(0).tariffa_oraria.toString());
@@ -87,7 +82,8 @@ public class Helper_Settings extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), R.string.err_read_google, Toast.LENGTH_SHORT).show();
 
             }
-        }) {
+        })
+        {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
@@ -116,7 +112,7 @@ public class Helper_Settings extends AppCompatActivity {
 
         scegliArea.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent mappa = new Intent(Helper_Settings.this, MapsSetting.class);
+                Intent mappa = new Intent(Helper_Settings.this, Helper_MapsSetting.class);
                 startActivity(mappa);
             }
         });
@@ -143,49 +139,43 @@ public class Helper_Settings extends AppCompatActivity {
      * Il metodo aggiorna il tempo visualizzato nelle TextView.
      */
     private void updateDisplay() {
-        textInizioDisp.setText(new StringBuilder().append(pad(oraInizio)).append(":")
-                .append(pad(minutiInizio)));
-        textFineDisp.setText(new StringBuilder().append(pad(oraFine)).append(":")
-                .append(pad(minutiFine)));
+        textInizioDisp.setText(new StringBuilder().append(pad(oraInizio)).append(":").append(pad(minutiInizio)));
+        textFineDisp.setText(new StringBuilder().append(pad(oraFine)).append(":").append(pad(minutiFine)));
     }
 
     private static String pad(int c) {
-        if (c >= 10)
-            return String.valueOf(c);
-        else
-            return "0" + String.valueOf(c);
+        if (c >= 10)   return String.valueOf(c);
+        else           return "0" + String.valueOf(c);
     }
 
     /**
      * Il metodo viene invocata quando l'utente imposta il tempo nella Dialog e preme il bottone "OK".
      */
-    private android.app.TimePickerDialog.OnTimeSetListener mTimeSetListener = new android.app.TimePickerDialog.OnTimeSetListener() {
-        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-           if(setOrario == 1) {
-               oraInizio = hourOfDay;
-               minutiInizio = minute;
-           }else{
-               oraFine = hourOfDay;
-               minutiFine = minute;
-           }
-            updateDisplay();
-        }
-    };
+    private android.app.TimePickerDialog.OnTimeSetListener mTimeSetListener =
+            new android.app.TimePickerDialog.OnTimeSetListener() {
+                public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                   if(setOrario == 1) {
+                       oraInizio = hourOfDay;
+                       minutiInizio = minute;
+                   }
+                   else {
+                       oraFine = hourOfDay;
+                       minutiFine = minute;
+                   }
+                   updateDisplay();
+                }
+            };
 
     /**
      * Il metodo gestisce la creazione della Dialog TimePicker.
-     * @param id
-     * @return Dialog
      */
     @Override
     protected Dialog onCreateDialog(int id) {
         switch (id) {
             case TIME_DIALOG_ID1:
-                return new android.app.TimePickerDialog(this, mTimeSetListener, oraInizio, minutiInizio,
-                        false);
+                return new android.app.TimePickerDialog(this, mTimeSetListener, oraInizio, minutiInizio, false);
             case TIME_DIALOG_ID2:
-                return new android.app.TimePickerDialog(this, mTimeSetListener, oraFine, minutiFine,
-                        false);
+                return new android.app.TimePickerDialog(this, mTimeSetListener, oraFine, minutiFine, false);
         }
         return null;
     }
@@ -202,7 +192,8 @@ public class Helper_Settings extends AppCompatActivity {
             public void onResponse(String response) {
                 if (response.equals("ok")) {
                     Toast.makeText(getApplicationContext(), R.string.update_setting, Toast.LENGTH_SHORT).show();
-                } else {
+                }
+                else {
                     Toast.makeText(getApplicationContext(), R.string.error_update_setting, Toast.LENGTH_SHORT).show();
                 }
             }
@@ -210,9 +201,9 @@ public class Helper_Settings extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getApplicationContext(), R.string.err_read_google, Toast.LENGTH_SHORT).show();
-
             }
-        }) {
+        })
+        {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
@@ -231,7 +222,6 @@ public class Helper_Settings extends AppCompatActivity {
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.helper_setting_menu, menu);
         return true;
@@ -242,14 +232,13 @@ public class Helper_Settings extends AppCompatActivity {
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         Intent in;
         boolean check = false;
         final SharedPreferences prefs = getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
 
         switch (item.getItemId()) {
             case R.id.home_helper:
-                in = new Intent(getApplicationContext(), HelperHomeActivity.class);
+                in = new Intent(getApplicationContext(), Helper_Home.class);
                 startActivity(in);
                 check = true;
                 break;
@@ -257,7 +246,7 @@ public class Helper_Settings extends AppCompatActivity {
                 SharedPreferences.Editor editor;
                 editor = prefs.edit().clear();
                 editor.apply();
-                in = new Intent(getApplicationContext(), MainActivity.class);
+                in = new Intent(getApplicationContext(), Login.class);
                 startActivity(in);
                 check = true;
                 break;
@@ -273,4 +262,3 @@ public class Helper_Settings extends AppCompatActivity {
         updateDatabase();
     }
 }
-

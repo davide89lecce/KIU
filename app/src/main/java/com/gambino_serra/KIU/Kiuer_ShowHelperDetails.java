@@ -6,7 +6,6 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -16,9 +15,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-//import com.gambino_serra.KIU.chat.MessagesActivity;
-//import com.google.firebase.database.DataSnapshot;
-
 /**
  * La classe modella la Dialog relativa ai dettagli di una specifica richiesta di coda (lato Kiuer).
  */
@@ -27,8 +23,7 @@ public class Kiuer_ShowHelperDetails extends DialogFragment {
     TextView title;
     Context context;
 
-    public Kiuer_ShowHelperDetails() {
-    }
+    public Kiuer_ShowHelperDetails() {}
 
     /**
      * onCreate della Dialog e Set dello stato dei bottoni nella UI(Button).
@@ -55,32 +50,28 @@ public class Kiuer_ShowHelperDetails extends DialogFragment {
                         //Se la coda è terminata avvia la Dialog relativa alla chiusura della coda altrimenti avvisa l'utente che non è possibile chiuderla
                         if (bundle.get("stato_coda").toString().equals(getResources().getString(R.string.queue_terminated))) {
 
-                            DialogFragment newFragment = new Kiuer_ConfirmCloseQueue();
+                            DialogFragment newFragment = new Kiuer_ClosingQueue();
                             newFragment.setArguments(bundle);
-                            newFragment.show(getFragmentManager(), "Kiuer_ConfirmCloseQueue");
-
+                            newFragment.show(getFragmentManager(), "Kiuer_ClosingQueue");
                             dialog.dismiss(); // dismette positivo o neutrale
-
-                        } else {
-                            Toast.makeText(getActivity().getApplicationContext(), R.string.queue_not_finished, Toast.LENGTH_LONG).show();
                         }
+                        else {
+                            Toast.makeText(getActivity().getApplicationContext(), R.string.queue_not_finished, Toast.LENGTH_LONG).show();
+                            }
                     }
                 })
                 .setNeutralButton(R.string.goback, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-
                         dialog.cancel(); // dismette con rifiuto
                     }
                 });
-
         return builder.create();
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // mDatabase = FirebaseDatabase.getInstance().getReference("/chat/chatstatus/");
-    }
+        }
 
     /**
      * Il metodo inizializza la Dialog con i dati ricevuti dal Bundle
@@ -94,36 +85,10 @@ public class Kiuer_ShowHelperDetails extends DialogFragment {
         Button contatta = (Button) this.getDialog().findViewById(R.id.contatta_helper);
         nome.setText(bundle.get("nome").toString());
         text.setText(bundle.get("text").toString());
-
-
         contatta.setOnClickListener(new View.OnClickListener() {
+
             @Override
-            public void onClick(View v) {
-               // getUserInfo();
-            }
+            public void onClick(View v) { }
         });
     }
-
-    /**
-     * Il metodo permette di ricevere le informazioni dell'utente Helper.
-     */
-    /*
-    private void getUserInfo() {
-        mDatabase = FirebaseDatabase.getInstance().getReference("/chat/cards/" + other_uid);
-        mDatabase.addListenerForSingleValueEvent(new UserInfoListener());
-    }
-    */
-
-
-//    /**
-//     * La classe modella un listener per l'ascolto delle
-//     * informazione dell'utente.
-//     */
-//    class UserInfoListener extends ValueListenerAdapter {
-//
-//        public UserInfoListener() {
-//        }
-
-
-    }
-
+}

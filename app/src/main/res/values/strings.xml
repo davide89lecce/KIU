@@ -21,7 +21,7 @@
     <string name="notification_message"> This is a message of work!!</string>
 
 
-    <!-- MainActivity -->
+    <!-- Login -->
     <string name="err_read_google"> Error while reading Google</string>
     <string name="err_login">Incorrect username and password</string>
     <string name="auth_failed">Authentication failed</string>
@@ -72,8 +72,8 @@
     <!-- Conversations_fragmennt -->
     <string name="no_conversation">There isn\'t conversation here.</string>
 
-    <!-- HelperHomeActivity -->
-    <!-- KiuerHomeActivity -->
+    <!-- Helper_Home -->
+    <!-- Kiuer_Home -->
     <string name="disp">availability:  </string>
     <string name="visible_by_kiuer">You are visible from Kiuer</string>
     <string name="invisible_by_kiuer">You are not visible from Kiuer</string>
@@ -85,12 +85,13 @@
     <string name="queue_start_at">queue to be carried out at </string>
     <string name="queue_assigned_to">Queue assigned to </string>
     <string name="place">Place:  </string>
+    <string name="description">Description:  </string>
     <string name="queue_not_started">Queue not started </string>
     <string name="queue_in_progress">Queue in progress </string>
     <string name="queue_terminated">Queue terminated  </string>
 
-    <!-- HelperCloseQueue -->
-    <!-- Kiuer_ConfirmCloseQueue -->
+    <!-- Helper_CloseQueue -->
+    <!-- Kiuer_ClosingQueue -->
     <string name="close_queue">CLOSE QUEUE</string>
     <string name="queue_closed">Queue closed</string>
     <string name="hour_start_queue">Hour start queue:</string>
@@ -103,12 +104,12 @@
     <string name="chiudi_coda">Close queue</string>
     <string name="goback">back</string>
 
-    <!-- KiuerDetails -->
+    <!-- Kiuer_Details -->
     <string name="kiuer_details">KIUER DETAILS</string>
     <string name="inizia_coda">Start queue</string>
     <string name="termina_coda">End queue</string>
 
-    <!-- KiuerMaps, MapsSetting -->
+    <!-- Kiuer_Maps, Helper_MapsSetting -->
     <string name="title_activity_maps">Location Setting</string>
     <string name="error_loading_maps">Errore loading maps</string>
     <string name="enable_gps">Enable GPS</string>
@@ -127,7 +128,7 @@
     <string name="error_read_coordinates">Error read coordinates</string>
     <string name="address_not_available">Unavailable address</string>
 
-    <!-- KiuerMapsDetails -->
+    <!-- Kiuer_MapsDetails -->
     <string name="send_request">Send request</string>
     <string name="hour_rate">Hour rate</string>
     <string name="start_availability">Start availability:</string>
@@ -136,7 +137,7 @@
     <string name="invia_richiesta">send request</string>
     <string name="annulla">cancel</string>
 
-    <!-- NotificationDetailsKiuer -->
+    <!-- Kiuer_NotificationDetails -->
     <string name="request_accepted">Request accepted</string>
     <string name="request_rejected">Request rejected</string>
     <string name="pending_confirmation">Pending confirmation</string>
@@ -145,7 +146,7 @@
     <string name="time">Time</string>
     <string name="details_kiuer">NOTIFICATION DETAILS</string>
 
-    <!-- NotificationHelper -->
+    <!-- Helper_Notification -->
     <string name="text_request_queue">want you to do the queue for him at </string>
     <string name="text_request_queue2">in</string>
     <string name="accept">accept</string>
@@ -157,7 +158,7 @@
     <string name="error_update_setting">Error update settings</string>
 
 
-    <!-- Service_check -->
+    <!-- NotificationService -->
     <string name="waiting_message">Waiting for new messages</string>
     <string name="kiu">Kiù</string>
     <string name="kiu_chat">Kiù Chat</string>

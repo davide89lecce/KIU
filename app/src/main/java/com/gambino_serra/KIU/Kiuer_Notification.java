@@ -14,7 +14,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import com.amigold.fundapter.BindDictionary;
 import com.amigold.fundapter.FunDapter;
 import com.amigold.fundapter.extractors.StringExtractor;
@@ -24,10 +23,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.gambino_serra.KIU.R;
-//import com.gambino_serra.KIU.chat.ConversationsActivity;
 import com.kosalgeek.android.json.JsonConverter;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -35,7 +31,7 @@ import java.util.Map;
 /**
  * La classe gestisce l'Activity relativa alle richieste di Coda pendenti inviate agli Helper
  */
-public class NotificationKiuer extends AppCompatActivity implements Response.Listener<String> {
+public class Kiuer_Notification extends AppCompatActivity implements Response.Listener<String> {
 
     final String TAG = this.getClass().getSimpleName();
     final private static String MY_PREFERENCES = "kiuPreferences";
@@ -67,28 +63,30 @@ public class NotificationKiuer extends AppCompatActivity implements Response.Lis
         Log.d(TAG, response);
         final Bundle bundle = new Bundle();
 
-        final ArrayList<JsonCheckRichiesta> productList = new JsonConverter<JsonCheckRichiesta>().toArrayList(response, JsonCheckRichiesta.class);
+        final ArrayList<Json_Richiesta> productList = new JsonConverter<Json_Richiesta>().toArrayList(response, Json_Richiesta.class);
 
-        final BindDictionary<JsonCheckRichiesta> dictionary = new BindDictionary<>();
-        dictionary.addStringField(R.id.tvText, new StringExtractor<JsonCheckRichiesta>() {
+        final BindDictionary<Json_Richiesta> dictionary = new BindDictionary<>();
+        dictionary.addStringField(R.id.tvText, new StringExtractor<Json_Richiesta>() {
             @Override
-            public String getStringValue(JsonCheckRichiesta product, int position) {
+            public String getStringValue(Json_Richiesta product, int position) {
                 String info = getResources().getString(R.string.hour_start_queue) + " " + product.orario.toString().substring(0,5) + "\n" + getResources().getString(R.string.helper2) + " " + product.nome.toString() + "\n";
                 String status;
                 if(product.stato_richiesta.equals("1")){
                     status = getResources().getString(R.string.request_accepted);
-                }else if(product.stato_richiesta.equals("2")){
+                    }
+                else if(product.stato_richiesta.equals("2")){
                     status = getResources().getString(R.string.request_rejected);
-                }else{
+                    }
+                else{
                     status = getResources().getString(R.string.pending_confirmation);
-                }
+                    }
                 return info + status + "\n";
             }
-        }).onClick(new ItemClickListener<JsonCheckRichiesta>() {
+        }).onClick(new ItemClickListener<Json_Richiesta>() {
 
             @Override
-            public void onClick(JsonCheckRichiesta item, int position, View view) {
-                DialogFragment newFragment = new NotificationDetailsKiuer();
+            public void onClick(Json_Richiesta item, int position, View view) {
+                DialogFragment newFragment = new Kiuer_NotificationDetails();
                 bundle.putString("id", productList.get(position).ID_richiesta.toString());
                 bundle.putString("nome", productList.get(position).nome);
                 bundle.putString("orario",productList.get(position).orario);
@@ -96,11 +94,11 @@ public class NotificationKiuer extends AppCompatActivity implements Response.Lis
                 bundle.putString("stato_richiesta", productList.get(position).stato_richiesta);
                 bundle.putString("descrizione", productList.get(position).descrizione);
                 newFragment.setArguments(bundle);
-                newFragment.show(getFragmentManager(), "NotificationDetailsKiuer");
+                newFragment.show(getFragmentManager(), "Kiuer_NotificationDetails");
             }
         });
 
-        FunDapter<JsonCheckRichiesta> adapter = new FunDapter<>(getApplicationContext(), productList, R.layout.notification_layout_kiuer, dictionary);
+        FunDapter<Json_Richiesta> adapter = new FunDapter<>(getApplicationContext(), productList, R.layout.notification_layout_kiuer, dictionary);
         lvProduct.setAdapter(adapter);
     }
 
@@ -121,7 +119,8 @@ public class NotificationKiuer extends AppCompatActivity implements Response.Lis
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getApplicationContext(), R.string.err_read_google, Toast.LENGTH_SHORT).show();
             }
-        }) {
+        })
+        {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
@@ -154,27 +153,21 @@ public class NotificationKiuer extends AppCompatActivity implements Response.Lis
 
         switch (item.getItemId()) {
             case R.id.home_kiuer:
-                in = new Intent(getApplicationContext(), KiuerHomeActivity.class);
+                in = new Intent(getApplicationContext(), Kiuer_Home.class);
                 startActivity(in);
                 check = true;
                 break;
-//            case R.id.chat_kiuer:
-//                in = new Intent(getApplicationContext(), ConversationsActivity.class);
-//                startActivity(in);
-//                check = true;
-//                break;
             case R.id.exit_kiuer:
                 SharedPreferences.Editor editor;
                 editor = prefs.edit().clear();
                 editor.apply();
-                in = new Intent(getApplicationContext(), MainActivity.class);
+                in = new Intent(getApplicationContext(), Login.class);
                 startActivity(in);
                 check = true;
                 break;
             default:
                 check = super.onOptionsItemSelected(item);
         }
-
         return check;
     }
 }
