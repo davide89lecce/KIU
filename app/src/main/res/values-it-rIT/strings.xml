@@ -38,6 +38,7 @@
     <string name="queue_not_started">Coda non iniziata </string>
     <string name="queue_in_progress">Coda in corso </string>
     <string name="queue_terminated">Coda terminata  </string>
+    <string name="cont_code">Numero di code effettuate =  </string>
 
     <!-- Helper_CloseQueue -->
     <!-- Kiuer_CloseQueue -->
@@ -100,7 +101,6 @@
     <string name="text_request_queue2">presso</string>
     <string name="accept">accetta</string>
     <string name="reject">rifiuta</string>
-
 
     <!-- Helper_Settings -->
     <string name="update_setting">Impostazioni aggiornate</string>

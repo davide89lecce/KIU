@@ -46,12 +46,11 @@ public class Helper_CloseQueue extends DialogFragment {
                         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
-
                                 if (response.equals("close_conversation")) { Log.d("volley", "close_conversation"); }
                                 else if (response.equals("error_update_code_effettuate")) { Log.d("volley", "error_update_code_effettuate"); }
                                 else if (response.equals("error_update_coda_completata")) { Log.d("volley", "error_update_coda_completata"); }
                                 else if (response.equals("close_queue")) { Log.d("volley", "close_queue"); }
-                            }
+                                }
                         }, ((Helper_Home) getActivity())) {
                             @Override
                             protected Map<String, String> getParams() throws AuthFailureError {
@@ -76,7 +75,7 @@ public class Helper_CloseQueue extends DialogFragment {
                 .setNeutralButton(R.string.goback, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel(); // dismette con rifiuto
-                    }
+                        }
                 });
         return builder.create();
     }

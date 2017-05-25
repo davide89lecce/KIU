@@ -113,7 +113,7 @@ public class Helper_Settings extends AppCompatActivity {
         scegliArea.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent mappa = new Intent(Helper_Settings.this, Helper_MapsSetting.class);
-                startActivity(mappa); //////////////////////// TODO: 24/05/17
+                startActivity(mappa);
             }
         });
 

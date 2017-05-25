@@ -15,5 +15,5 @@ public class Json_Helper {
     @SerializedName("disponibile")      public String disponibile;
     @SerializedName("nome")             public String nome;
     @SerializedName("rating")           public float rating;
-    @SerializedName("cont_feedback")    public int cont_feedback;
+    @SerializedName("cont_feedback")    public Integer cont_feedback;
 }

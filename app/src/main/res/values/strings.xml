@@ -49,6 +49,7 @@
     <string name="queue_not_started">Queue not started </string>
     <string name="queue_in_progress">Queue in progress </string>
     <string name="queue_terminated">Queue terminated  </string>
+    <string name="cont_code">Number of completed queues =  </string>
 
     <!-- Helper_CloseQueue -->
     <!-- Kiuer_CloseQueue -->
@@ -188,6 +189,7 @@
 
     <!-- splash_layout-->
     <string name="splash_descr">image load app</string>
+
 
 
 </resources>

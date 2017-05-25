@@ -41,6 +41,7 @@ public class Helper_Home extends AppCompatActivity implements Response.Listener<
     Switch switchDisponibilita;
     ListView lvProduct;
     RatingBar rating;
+    TextView cont_code;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -161,6 +162,13 @@ public class Helper_Home extends AppCompatActivity implements Response.Listener<
                 rating = (RatingBar) findViewById(R.id.rating_helper);
                 rating.setRating(productList.get(0).rating / productList.get(0).cont_feedback);
                 rating.setIsIndicator(true);
+
+
+                cont_code = (TextView) findViewById(R.id.num_cont_code);
+                cont_code.setText(productList.get(0).cont_feedback.toString());
+                //cont_code.setText("antoniogayo");
+
+
             }
         }, new Response.ErrorListener() {
             @Override
