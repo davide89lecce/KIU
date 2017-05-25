@@ -6,6 +6,8 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -85,10 +87,17 @@ public class Kiuer_ShowHelperDetails extends DialogFragment {
         Button contatta = (Button) this.getDialog().findViewById(R.id.contatta_helper);
         nome.setText(bundle.get("nome").toString());
         text.setText(bundle.get("text").toString());
-        contatta.setOnClickListener(new View.OnClickListener() {
 
+        contatta.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { }
+            public void onClick(View v) {
+                String telefono = "3335566475";
+                //Bundle bundle = getArguments();
+                //telefono = bundle.get("telefono").toString();
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + telefono));
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
         });
     }
 }

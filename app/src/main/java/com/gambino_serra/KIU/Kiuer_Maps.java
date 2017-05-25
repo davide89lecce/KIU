@@ -388,6 +388,7 @@ public class Kiuer_Maps extends FragmentActivity implements
                                     bundle.putString("nome", object.nome.toString());
                                     bundle.putFloat("rating", object.rating);
                                     bundle.putInt("cont_feedback", object.cont_feedback);
+                                    bundle.putString("descrizione", "");
                                     newFragment.setArguments(bundle);
                                     newFragment.show(getFragmentManager(), "Kiuer_Maps");
                                 }
@@ -404,7 +405,7 @@ public class Kiuer_Maps extends FragmentActivity implements
             }
         });
 
-        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
+        Volley.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
     }
 
     /**

@@ -92,7 +92,7 @@ public class Kiuer_Details extends DialogFragment {
                                     return params;
                                     }
                             };
-                            MySingleton.getInstance(getActivity().getApplicationContext()).addToRequestQueue(stringRequest);
+                            Volley.getInstance(getActivity().getApplicationContext()).addToRequestQueue(stringRequest);
                             }
                         else if (bundle.get("stato_coda").toString().equals(getResources().getString(R.string.queue_in_progress))) {
                             String url = "http://www.davideantonio2.altervista.org/fine_coda_helper.php";
@@ -112,7 +112,7 @@ public class Kiuer_Details extends DialogFragment {
                                     return params;
                                     }
                             };
-                            MySingleton.getInstance(getActivity().getApplicationContext()).addToRequestQueue(stringRequest);
+                            Volley.getInstance(getActivity().getApplicationContext()).addToRequestQueue(stringRequest);
                             DialogFragment newFragment = new Helper_CloseQueue();
                             newFragment.setArguments(bundle);
                             newFragment.show(getFragmentManager(), "Helper_CloseQueue");
@@ -146,6 +146,19 @@ public class Kiuer_Details extends DialogFragment {
         TextView nome = (TextView) this.getDialog().findViewById(R.id.text_nome_1);
         Button luogo = (Button) this.getDialog().findViewById(R.id.luogo);
         Button contatta = (Button) this.getDialog().findViewById(R.id.contatta_kiuer);
+
+        contatta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String telefono = "3335566475";
+                //Bundle bundle = getArguments();
+                //telefono = bundle.get("telefono").toString();
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + telefono));
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
+
         nome.setText(bundle.get("nome").toString());
         text.setText(bundle.get("text").toString());
 
@@ -160,9 +173,5 @@ public class Kiuer_Details extends DialogFragment {
             }
         });
 
-        contatta.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) { }
-            });
     }
 }

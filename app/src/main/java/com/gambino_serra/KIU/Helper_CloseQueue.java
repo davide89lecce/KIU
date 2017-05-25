@@ -63,7 +63,7 @@ public class Helper_CloseQueue extends DialogFragment {
                             }
                         };
 
-                        MySingleton.getInstance(getActivity().getApplicationContext()).addToRequestQueue(stringRequest);
+                        Volley.getInstance(getActivity().getApplicationContext()).addToRequestQueue(stringRequest);
 
                         Toast.makeText(getActivity().getApplicationContext(), R.string.queue_closed, Toast.LENGTH_SHORT).show();
 

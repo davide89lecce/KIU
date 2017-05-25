@@ -11,6 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,6 +40,7 @@ public class Helper_Home extends AppCompatActivity implements Response.Listener<
     TextView disponibilita;
     Switch switchDisponibilita;
     ListView lvProduct;
+    RatingBar rating;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +80,7 @@ public class Helper_Home extends AppCompatActivity implements Response.Listener<
                 }
         };
 
-        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
+        Volley.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
 
         //Gestione dello switch disponibilita' per settare la disponibilita' dell'helper nel DB
         switchDisponibilita.setOnClickListener(new View.OnClickListener() {
@@ -113,7 +115,7 @@ public class Helper_Home extends AppCompatActivity implements Response.Listener<
                             return params;
                         }
                     };
-                    MySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
+                    Volley.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
                 }
                 else {
                     //Aggiornamento dell'attributo disponibilità helper del DB su "Non Disponibile"
@@ -145,10 +147,38 @@ public class Helper_Home extends AppCompatActivity implements Response.Listener<
                             return params;
                         }
                     };
-                    MySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
+                    Volley.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
                 }
             }
         });
+
+        //Lettura con volley dell'attributo rating e visualizzazione
+        url = "http://www.davideantonio2.altervista.org/helper_detail_rating.php";
+        stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                final ArrayList<Json_Helper> productList = new JsonConverter<Json_Helper>().toArrayList(response, Json_Helper.class);
+                rating = (RatingBar) findViewById(R.id.rating_helper);
+                rating.setRating(productList.get(0).rating / productList.get(0).cont_feedback);
+                rating.setIsIndicator(true);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), R.string.error_update_volley, Toast.LENGTH_SHORT).show();
+            }
+        })
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("IDutente", prefs.getString(ID, "").toString());
+                return params;
+            }
+        };
+
+        Volley.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
+
 
         //Lettura dal DB tramite Volley delle Code assegnate all'helper
         updateRichieste();
@@ -234,7 +264,7 @@ public class Helper_Home extends AppCompatActivity implements Response.Listener<
                 return params;
             }
         };
-        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
+        Volley.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
         lvProduct = (ListView) findViewById(R.id.lvProduct);
     }
 

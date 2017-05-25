@@ -131,7 +131,7 @@ public class Kiuer_Home extends AppCompatActivity implements Response.Listener<S
                 }
         };
 
-        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
+        Volley.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
         lvProduct = (ListView) findViewById(R.id.lvProduct);
     }
 

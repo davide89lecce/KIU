@@ -1,8 +1,10 @@
 package com.gambino_serra.KIU;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -20,7 +22,7 @@ import java.util.Map;
 /**
  * La classe gestisce il login
  */
-public class Login extends BaseActivity {
+public class Login extends AppCompatActivity {
 
     private static final String TAG = "Login";
     private static final String MY_PREFERENCES = "kiuPreferences";
@@ -127,7 +129,7 @@ public class Login extends BaseActivity {
             }
         };
 
-        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
+        Volley.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
     }
 
     /**
@@ -167,14 +169,27 @@ public class Login extends BaseActivity {
         getStatusAndGoHome();
         }
 
-    @Override
-    public void onStart() {
-        super.onStart();
+
+    public ProgressDialog mProgressDialog;
+
+    public void showProgressDialog() {
+        if (mProgressDialog == null) {
+            mProgressDialog = new ProgressDialog(this);
+            setMessage();
+            mProgressDialog.setIndeterminate(true);
         }
+        mProgressDialog.show();
+    }
+
+    public void hideProgressDialog() {
+        if (mProgressDialog != null && mProgressDialog.isShowing()) {
+            mProgressDialog.dismiss();
+        }
+    }
 
     @Override
     public void onStop() {
         super.onStop();
-        }
-
+        hideProgressDialog();
+    }
 }

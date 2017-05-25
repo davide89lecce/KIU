@@ -128,7 +128,7 @@ public class Kiuer_Notification extends AppCompatActivity implements Response.Li
                 return params;
             }
         };
-        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
+        Volley.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
         lvProduct = (ListView) findViewById(R.id.lvProduct);
     }
 

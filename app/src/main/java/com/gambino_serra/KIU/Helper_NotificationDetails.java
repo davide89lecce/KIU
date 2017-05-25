@@ -76,7 +76,7 @@ public class Helper_NotificationDetails extends DialogFragment {
                                 return params;
                             }
                         };
-                        MySingleton.getInstance(getActivity().getApplicationContext()).addToRequestQueue(stringRequest);
+                        Volley.getInstance(getActivity().getApplicationContext()).addToRequestQueue(stringRequest);
                         dialog.dismiss();
                         ((Helper_Notification) getActivity()).onResume();
                     }
@@ -113,7 +113,7 @@ public class Helper_NotificationDetails extends DialogFragment {
                                 return params;
                             }
                         };
-                        MySingleton.getInstance(getActivity().getApplicationContext()).addToRequestQueue(stringRequest);
+                        Volley.getInstance(getActivity().getApplicationContext()).addToRequestQueue(stringRequest);
                         dialog.cancel();
                         ((Helper_Notification) getActivity()).onResume();
                     }

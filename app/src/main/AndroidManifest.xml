@@ -43,7 +43,7 @@
         <service android:name="com.gambino_serra.KIU.NotificationService" />
 
         <receiver
-            android:name="com.gambino_serra.KIU.BootCompletedReceiver"
+            android:name="com.gambino_serra.KIU.StartService"
             android:enabled="true"
             android:exported="false">
             <intent-filter>

@@ -62,7 +62,7 @@ public class Helper_MapsSetting extends FragmentActivity implements GoogleApiCli
     ImageView checkButton;
     ImageView closeButton;
     final private static String MY_PREFERENCES = "kiuPreferences";
-    final private static String IDUTENTE = "ID";
+    final private static String IDUTENTE = "IDutente";
     final Bundle bundle = new Bundle();
     Location location;
     LatLng ltln;
@@ -355,13 +355,13 @@ public class Helper_MapsSetting extends FragmentActivity implements GoogleApiCli
                                     @Override
                                     protected Map<String, String> getParams() throws AuthFailureError {
                                         Map<String, String> params = new HashMap<>();
-                                        params.put("ID", prefs.getString(IDUTENTE, "").toString());
-                                        params.put("latitudine", latitude.toString());
-                                        params.put("longitudine", longitude.toString());
+                                        params.put("IDutente", prefs.getString(IDUTENTE, "").toString());
+                                        params.put("pos_latitudine", latitude.toString());
+                                        params.put("pos_longitudine", longitude.toString());
                                         return params;
                                         }
                                 };
-                                MySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
+                                Volley.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
                             }
                         });
 
@@ -421,13 +421,13 @@ public class Helper_MapsSetting extends FragmentActivity implements GoogleApiCli
                                     @Override
                                     protected Map<String, String> getParams() throws AuthFailureError {
                                         Map<String, String> params = new HashMap<>();
-                                        params.put("ID", prefs.getString(IDUTENTE, "").toString());
-                                        params.put("latitudine", latitude.toString());
-                                        params.put("longitudine", longitude.toString());
+                                        params.put("IDutente", prefs.getString(IDUTENTE, "").toString());
+                                        params.put("pos_latitudine", latitude.toString());
+                                        params.put("pos_longitudine", longitude.toString());
                                         return params;
                                     }
                                 };
-                                MySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
+                                Volley.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
                             }
                         });
                         //chiude l'ActivityMap e visualizza Helper_Settings
@@ -454,11 +454,11 @@ public class Helper_MapsSetting extends FragmentActivity implements GoogleApiCli
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("ID", prefs.getString(IDUTENTE, "").toString());
+                params.put("IDutente", prefs.getString(IDUTENTE, "").toString());
                 return params;
                 }
         };
-        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
+        Volley.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
     }
 
     /**
@@ -468,6 +468,6 @@ public class Helper_MapsSetting extends FragmentActivity implements GoogleApiCli
     public void onMapClick(LatLng latLng) {
         map.clear();
         ltln = latLng;
-        map.addMarker(new MarkerOptions().position(latLng).title("Io"));
+        map.addMarker(new MarkerOptions().position(latLng).title("La tua posizione"));
         }
 }

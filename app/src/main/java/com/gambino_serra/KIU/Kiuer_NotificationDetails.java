@@ -67,7 +67,7 @@ public class Kiuer_NotificationDetails extends DialogFragment {
                                     return params;
                                 }
                             };
-                            MySingleton.getInstance(getActivity().getApplicationContext()).addToRequestQueue(stringRequest);
+                            Volley.getInstance(getActivity().getApplicationContext()).addToRequestQueue(stringRequest);
                         }
                             dialog.dismiss();
                             ((Kiuer_Notification) getActivity()).onResume();

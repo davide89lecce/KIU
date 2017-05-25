@@ -7,7 +7,7 @@ import android.content.Intent;
 /**
  * La classe modella l'attivazione del servizio di notifica all'avvio del sistema.
  */
-public class BootCompletedReceiver extends BroadcastReceiver {
+public class StartService extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {

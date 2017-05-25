@@ -133,7 +133,7 @@ public class NotificationService extends IntentService {
                         return params;
                         }
                 };
-                MySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
+                Volley.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
             } //fine gestione notifiche Helper
 
             //Se l'utente è loggato come Kiuer gestisce le notifiche relative al Kiuer
@@ -217,7 +217,7 @@ public class NotificationService extends IntentService {
                         return params;
                         }
                 };
-                MySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
+                Volley.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
 
             }//fine gestione notifiche Kiuer
             Log.d("PROVA SERVICE", "Richiesta database n°." + numeroRichiestaDB++);

@@ -113,7 +113,7 @@ public class Helper_Notification extends AppCompatActivity implements Response.L
                 return params;
             }
         };
-        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
+        Volley.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
         lvProduct = (ListView) findViewById(R.id.lvProduct);
 
     }

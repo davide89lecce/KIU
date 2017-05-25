@@ -29,7 +29,7 @@ public class Kiuer_MapsDetails extends DialogFragment {
 
     public TextView ora_richiesta;
     public EditText casella_descrizione;
-
+    public Bundle bundle;
     public Kiuer_MapsDetails() {}
 
     @Override
@@ -62,11 +62,12 @@ public class Kiuer_MapsDetails extends DialogFragment {
                                     params.put("pos_latitudine", bundle.get("pos_latitudine").toString());
                                     params.put("pos_longitudine", bundle.get("pos_longitudine").toString());
                                     params.put("luogo", bundle.get("luogo").toString());
+                                    params.put("descrizione", casella_descrizione.getText().toString());
                                     return params;
                                 }
                             };
 
-                            MySingleton.getInstance(getActivity().getApplicationContext()).addToRequestQueue(stringRequest);
+                            Volley.getInstance(getActivity().getApplicationContext()).addToRequestQueue(stringRequest);
                             dialog.dismiss();
                         }
                         else {
@@ -96,21 +97,18 @@ public class Kiuer_MapsDetails extends DialogFragment {
         TextView testo = (TextView) this.getDialog().findViewById(R.id.msg_richiesta);
         RatingBar rating = (RatingBar) this.getDialog().findViewById(R.id.rating_helper);
         ora_richiesta = (TextView) this.getDialog().findViewById(R.id.ora_richiesta);
-        ////////////////
         casella_descrizione = (EditText) this.getDialog().findViewById(R.id.casella_descrizione);
-        String descr = casella_descrizione.getText().toString();
-        casella_descrizione.setText(descr);
-        ////////////////
-        Bundle bundle = getArguments();
+
+        bundle = getArguments();
         rating.setRating(bundle.getFloat("rating") / bundle.getInt("cont_feedback"));
         rating.setIsIndicator(true);
         testo.setText(getResources().getString(R.string.hour_rate) + " " + bundle.get("tariffa_oraria") + "€\n"
                 + getResources().getString(R.string.queue_done) + " " + bundle.get("cont_feedback") + "\n"
                 + getResources().getString(R.string.start_availability) + " " + bundle.get("disp_inizio").toString().substring(0, 5) + "\n"
                 + getResources().getString(R.string.end_availability) + " " + bundle.get("disp_fine").toString().substring(0, 5) + "\n");
-                //+ getResources().getString(R.string.description) + " " + bundle.get("descrizione").toString() + "\n");
-                // TODO: 25/05/17 aggiungere campo descrizione
 
+
+        casella_descrizione.setText(bundle.get("descrizione").toString());
 
         GradientDrawable gd = new GradientDrawable();
         gd.setColor(0xBFBFBFBF);
@@ -124,6 +122,7 @@ public class Kiuer_MapsDetails extends DialogFragment {
 
         ora_richiesta.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                bundle.putString("descrizione", casella_descrizione.getText().toString());
                 getDialog().dismiss();
                 ((Kiuer_Maps) getActivity()).showTimePickerRichiesta();
             }

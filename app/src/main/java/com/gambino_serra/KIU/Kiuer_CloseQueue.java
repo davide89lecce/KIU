@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.widget.RatingBar;
@@ -60,22 +59,7 @@ public class Kiuer_CloseQueue extends DialogFragment {
                         String url = "http://www.davideantonio2.altervista.org/chiudi_coda_kiuer.php";
                         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                             @Override
-                            public void onResponse(String response) {
-
-                                //Se il DB risponde con close_conversation viene avviata la chiusura della conversazione
-                                if (response.equals("close_conversation")) {
-                                    Log.d("volley","close_conversation");   //closeChat(); TODO
-                                    }
-                                else if(response.equals("error_update_code_effettuate")){
-                                    Log.d("volley","error_update_code_effettuate");
-                                    }
-                                else if(response.equals("error_update_coda_completata")){
-                                    Log.d("volley","error_update_coda_completata");
-                                    }
-                                else if(response.equals("close_queue")){
-                                    Log.d("volley","close_queue");
-                                    }
-                            }
+                            public void onResponse(String response) { }
                         },((Kiuer_Home) getActivity())) {
                             @Override
                             protected Map<String, String> getParams() throws AuthFailureError {
@@ -87,7 +71,7 @@ public class Kiuer_CloseQueue extends DialogFragment {
                                 return params;
                             }
                         };
-                        MySingleton.getInstance(getActivity().getApplicationContext()).addToRequestQueue(stringRequest);
+                        Volley.getInstance(getActivity().getApplicationContext()).addToRequestQueue(stringRequest);
 
                         Toast.makeText(getActivity().getApplicationContext(), R.string.queue_closed, Toast.LENGTH_SHORT).show();
 

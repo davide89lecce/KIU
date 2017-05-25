@@ -91,7 +91,7 @@ public class Helper_Settings extends AppCompatActivity {
                 return params;
             }
         };
-        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
+        Volley.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
 
 
         textInizioDisp.setOnClickListener(new View.OnClickListener() {
@@ -214,7 +214,7 @@ public class Helper_Settings extends AppCompatActivity {
                 return params;
             }
         };
-        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
+        Volley.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
     }
 
     /**
