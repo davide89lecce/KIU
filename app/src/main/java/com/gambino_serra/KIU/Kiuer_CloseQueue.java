@@ -27,12 +27,12 @@ import java.util.Map;
 /**
  * La classe modella la Dialog relativa alla chiusura della coda (lato Kiuer)
  */
-public class Kiuer_ClosingQueue extends DialogFragment {
+public class Kiuer_CloseQueue extends DialogFragment {
 
     TextView title;
     Context context;
 
-    public Kiuer_ClosingQueue() {}
+    public Kiuer_CloseQueue() {}
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {

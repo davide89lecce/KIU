@@ -278,8 +278,7 @@ public class Helper_Home extends AppCompatActivity implements Response.Listener<
                 bundle.putString("ID", productList.get(position).ID_richiesta.toString());
                 bundle.putString("text", getResources().getString(R.string.queue_start_at) + " " + productList.get(position).orario.substring(0, 5) + "\n\n"
                         + getResources().getString(R.string.place) + "  " + productList.get(position).luogo + "\n\n"
-                        + getResources().getString(R.string.description) + "  " + productList.get(position).descrizione + "\n\n"
-                        + getResources().getString(R.string.state) + "  " + productList.get(position).stato_coda.toString() + "\n");
+                        + getResources().getString(R.string.description) + "  " + productList.get(position).descrizione + "\n\n");
                 bundle.putString("nome", productList.get(position).nome);
                 bundle.putString("latitudine", productList.get(position).pos_latitudine);
                 bundle.putString("longitudine", productList.get(position).pos_longitudine);

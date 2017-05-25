@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="title_register">Registrati</string>
     <string name="title_setting_helper">Impostazioni</string>
 
     <!-- Login -->
@@ -16,35 +15,11 @@
     <string name="str_login">ACCEDI</string>
     <string name="logo_app">logo dell\'applicazione kiu</string>
 
-    <!-- RegisterActivity -->
-    <string name="name_surname_insert">Inserire il nome o il cognome</string>
-    <string name="name_surname_invalid">Il nome o il cognome sono non validi</string>
-    <string name="mail_invalid">per favore, inserire una mail valida</string>
-    <string name="empty_fields">Alcuni campi sono vuoti. Per favore, inserisci i valori </string>
-    <string name="psw_len_incorrect">Lunghezza password deve essere maggiore di 5</string>
-    <string name="type_user">Per favore, scegli una tipologia di utente</string>
-    <string name="registration_problem">Un errore si è verificato durante la registrazione</string>
-    <string name="connection_failed">Connessione fallita!</string>
-
-    <!-- activity_register -->
-    <string name="hint_name">Nome</string>
-    <string name="hint_surname">Cognome</string>
-    <string name="hint_email">E-mail</string>
-    <string name="label_activation_mode">ATTIVA IL PROFILO COME:</string>
-    <string name="confirm">CONFERMA</string>
-
-    <!-- dialog_registration_success -->
-    <string name="registration_detail">DETTAGLI REGISTRAZIONE</string>
-    <string name="registration_success">Registrazione avvenuta con successo.\n\n
-        Premere ok per entrare nella propria area personale. </string>
-
-    <!-- BaseActivity -->
-    <string name="loading">Registrazione in corso...</string>
-
-    <!-- MessagesActivity -->
-    <string name="send_btn">INVIA</string>
-    <!-- Conversations_fragmennt -->
-    <string name="no_conversation">Non sono presenti conversazioni.</string>
+    <!-- Items string -->
+    <string name="setting">Impostazioni</string>
+    <string name="home">Homepage</string>
+    <string name="notification">Notifiche</string>
+    <string name="exit">Disconnetti</string>
 
     <!-- Helper_Home -->
     <!-- Kiuer_Home -->
@@ -65,7 +40,7 @@
     <string name="queue_terminated">Coda terminata  </string>
 
     <!-- Helper_CloseQueue -->
-    <!-- Kiuer_ClosingQueue -->
+    <!-- Kiuer_CloseQueue -->
     <string name="close_queue">CHIUDI CODA</string>
     <string name="queue_closed">Coda chiusa</string>
     <string name="hour_start_queue">Ora inizio coda:</string>
@@ -117,7 +92,6 @@
     <string name="request_rejected">Richiesta rifiutata</string>
     <string name="pending_confirmation">In attesa di conferma</string>
     <string name="name">Nome</string>
-    <string name="surname">Cognome</string>
     <string name="time">Orario</string>
     <string name="details_kiuer">DETTAGLI NOTIFICA</string>
 
@@ -133,12 +107,10 @@
     <string name="error_update_setting">Errore aggiornamento impostazioni</string>
 
     <!-- NotificationService -->
-    <string name="waiting_message">In attesa di nuovi messaggi</string>
-    <string name="kiu">Kiù</string>
-    <string name="kiu_chat">Kiù Chat</string>
+    <string name="waiting_message">In esecuzione...</string>
+    <string name="kiu">KIU\'</string>
     <string name="queue_started">ha iniziato la coda</string>
     <string name="queue_end">ha terminato la coda</string>
-    <string name="new_messages_received">Nuovi messaggi ricevuti</string>
     <plurals name="incoming_queue_request">
         <item quantity="one">%d Richiesta di coda da effettuare</item>
         <item quantity="other">%d Richieste di coda da effettuare</item>
@@ -155,10 +127,6 @@
     <!-- activity_kiuer_maps-->
     <string name="img_content">icona uscita mappa</string>
     <string name="img_content1">icona action mappe</string>
-
-    <!-- activity_messages-->
-    <string name="send_msg_field">scrivi messaggio</string>
-    <string name="send_msg_btn">bottone invio messaggio</string>
 
     <!-- activity_settings-->
     <string name="plus_sign">+</string>

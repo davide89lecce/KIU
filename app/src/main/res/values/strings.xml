@@ -8,18 +8,15 @@
     <string name="title_home_helper">Home Helper</string>
     <string name="title_home_kiuer">Home Kiuer</string>
     <string name="title_register">Sign In</string>
-    <string name="ok">ok</string>
+    <string name="ok">OK</string>
 
     <!-- Items string -->
-    <string name="setting">Setting</string>
-    <string name="home">home</string>
-    <string name="chat">chat</string>
-    <string name="notification">notification</string>
-    <string name="exit">exit</string>
-
+    <string name="setting">Settings</string>
+    <string name="home">Home</string>
+    <string name="notification">Notifications</string>
+    <string name="exit">Log out</string>
 
     <string name="notification_message"> This is a message of work!!</string>
-
 
     <!-- Login -->
     <string name="err_read_google"> Error while reading Google</string>
@@ -33,41 +30,13 @@
     <string name="str_login">LOGIN</string>
     <string name="logo_app">logo kiu application</string>
 
-    <!-- RegisterActivity -->
-    <string name="name_surname_insert">Insert name or surname</string>
-    <string name="name_surname_invalid">Invalid name or surname</string>
-    <string name="mail_invalid">Please, insert valid mail</string>
-    <string name="empty_fields">Some fields are empty. Please, insert the values </string>
-    <string name="psw_len_incorrect">Password length incorrect, must be greater then 5</string>
-    <string name="type_user">Please, choose a type of user</string>
-    <string name="registration_problem">An error occured while registration</string>
-    <string name="connection_failed">Connection failded!</string>
-
-    <!-- activity_register -->
-    <string name="hint_name">Name</string>
-    <string name="hint_surname">Surname</string>
-    <string name="hint_email">Email</string>
-    <string name="hint_password">Password</string> <!-- no traslation -->
-    <string name="label_activation_mode">ACTIVE PROFILE AS:</string>
-    <string name="helper">HELPER</string>  <!-- no traslation -->
-    <string name="kiuer">KIUER</string>  <!-- no traslation -->
-    <string name="confirm">CONFIRM</string>
-
-    <!-- dialog_registration_success -->
-    <string name="registration_detail">REGISTRATION DETAILS</string>
-    <string name="registration_success">Registration successfully occurred.\n\nPress
-        ok to enter in your personal area. </string>
     <!-- BaseActivity extended message -->
-
     <string name="loading">Registration in progress...</string>
     <string name="login"> Login in progress... </string>
     <string name="title_activity_base">BaseActivity</string>
 
     <!-- MessagesActivity extended message -->
     <string name="send_btn">SEND</string>
-
-    <!-- ConversationsActivity -->
-    <string name="actionbar_chat_one_title">Chat</string>
 
     <!-- Conversations_fragmennt -->
     <string name="no_conversation">There isn\'t conversation here.</string>
@@ -91,7 +60,7 @@
     <string name="queue_terminated">Queue terminated  </string>
 
     <!-- Helper_CloseQueue -->
-    <!-- Kiuer_ClosingQueue -->
+    <!-- Kiuer_CloseQueue -->
     <string name="close_queue">CLOSE QUEUE</string>
     <string name="queue_closed">Queue closed</string>
     <string name="hour_start_queue">Hour start queue:</string>
@@ -135,14 +104,13 @@
     <string name="end_availability">End availability:</string>
     <string name="queue_done">Queue done:</string>
     <string name="invia_richiesta">send request</string>
-    <string name="annulla">cancel</string>
+    <string name="annulla">Cancel</string>
 
     <!-- Kiuer_NotificationDetails -->
     <string name="request_accepted">Request accepted</string>
     <string name="request_rejected">Request rejected</string>
     <string name="pending_confirmation">Pending confirmation</string>
     <string name="name">Name</string>
-    <string name="surname">Surname</string>
     <string name="time">Time</string>
     <string name="details_kiuer">NOTIFICATION DETAILS</string>
 
@@ -159,9 +127,8 @@
 
 
     <!-- NotificationService -->
-    <string name="waiting_message">Waiting for new messages</string>
-    <string name="kiu">Kiù</string>
-    <string name="kiu_chat">Kiù Chat</string>
+    <string name="waiting_message">Running...</string>
+    <string name="kiu">KIU\'</string>
     <string name="queue_started">started the queue</string>
     <string name="queue_end">ended the queue</string>
     <string name="new_messages_received">New messages received</string>
@@ -181,10 +148,6 @@
     <!-- activity_kiuer_maps-->
     <string name="img_content">exit maps symbol icon</string>
     <string name="img_content1">action maps symbol icon</string>
-
-    <!-- activity_messages-->
-    <string name="send_msg_field">write message</string>
-    <string name="send_msg_btn">send message button</string>
 
     <!-- activity_settings-->
     <string name="plus_sign">+</string>
@@ -210,7 +173,6 @@
     <string name="img_user_kiuer">user kiuer image icon</string>
     <string name="img_details_kiuer">image kiuer icon</string>
     <string name="detail_kiuer_title">KIUER DETAILS</string>
-
 
     <!-- fragment_helper_details-->
     <string name="btn_details_helper">contact</string>

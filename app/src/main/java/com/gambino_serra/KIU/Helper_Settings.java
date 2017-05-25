@@ -113,7 +113,7 @@ public class Helper_Settings extends AppCompatActivity {
         scegliArea.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent mappa = new Intent(Helper_Settings.this, Helper_MapsSetting.class);
-                startActivity(mappa);
+                startActivity(mappa); //////////////////////// TODO: 24/05/17
             }
         });
 
@@ -145,7 +145,7 @@ public class Helper_Settings extends AppCompatActivity {
 
     private static String pad(int c) {
         if (c >= 10)   return String.valueOf(c);
-        else           return "0" + String.valueOf(c);
+        else     return "0" + String.valueOf(c);
     }
 
     /**
@@ -181,7 +181,7 @@ public class Helper_Settings extends AppCompatActivity {
     }
 
     /**
-     * Update nel databse di altervista delle impostazioni dell'Helper.
+     * Update nel database di altervista delle impostazioni dell'Helper.
      */
     private void updateDatabase(){
 

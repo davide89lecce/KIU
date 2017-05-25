@@ -73,7 +73,7 @@ public class Kiuer_Details extends DialogFragment {
                         //Se la coda è terminata --> avvia la Dialog relativa alla chiusura della coda
                         //Se la coda non è avviata --> avvia la coda registrando lo stato sul DB
                         //Se la coda è avviata --> termina la coda registrando lo stato sul DB
-                        if (bundle.get("stato_coda").toString().equals(getResources().getString(R.string.queue_terminated))) {}
+                        if (bundle.get("stato_coda").toString().equals(getResources().getString(R.string.queue_terminated))) {}// TODO: 25/05/17 dialog con rating 
                         else if (bundle.get("stato_coda").toString().equals(getResources().getString(R.string.queue_not_started))) {
                             String url = "http://www.davideantonio2.altervista.org/inizio_coda_helper.php";
                             StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {

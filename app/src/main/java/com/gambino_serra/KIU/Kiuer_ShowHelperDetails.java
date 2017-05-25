@@ -50,9 +50,9 @@ public class Kiuer_ShowHelperDetails extends DialogFragment {
                         //Se la coda è terminata avvia la Dialog relativa alla chiusura della coda altrimenti avvisa l'utente che non è possibile chiuderla
                         if (bundle.get("stato_coda").toString().equals(getResources().getString(R.string.queue_terminated))) {
 
-                            DialogFragment newFragment = new Kiuer_ClosingQueue();
+                            DialogFragment newFragment = new Kiuer_CloseQueue();
                             newFragment.setArguments(bundle);
-                            newFragment.show(getFragmentManager(), "Kiuer_ClosingQueue");
+                            newFragment.show(getFragmentManager(), "Kiuer_CloseQueue");
                             dialog.dismiss(); // dismette positivo o neutrale
                         }
                         else {

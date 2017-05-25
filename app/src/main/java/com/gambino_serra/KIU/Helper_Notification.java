@@ -95,7 +95,7 @@ public class Helper_Notification extends AppCompatActivity implements Response.L
     }
 
     /**
-     * Il metodo esegue la richiesta di lettura dei dati presenti nel databse altervista relativi alle richieste di coda pendenti per l'aggiornamento della ListView
+     * Il metodo esegue la richiesta di lettura dei dati presenti nel database altervista relativi alle richieste di coda pendenti per l'aggiornamento della ListView
      */
     public void updateRichieste() {
         final SharedPreferences prefs = getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);

@@ -9,17 +9,11 @@
         android:id="@+id/home_helper"
         android:icon="@drawable/ic_action_home"
         android:title="@string/home"
-        app:showAsAction="always" />
-
-    <item
-        android:id="@+id/chat_helper"
-        android:icon="@drawable/ic_chat"
-        android:title="@string/chat"
-        app:showAsAction="always" />
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/exit_helper"
         android:icon="@drawable/ic_exit_to_app"
         android:title="@string/exit"
-        app:showAsAction="always" />
+        app:showAsAction="never" />
 </menu>

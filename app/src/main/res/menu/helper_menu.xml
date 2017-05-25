@@ -11,11 +11,6 @@
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/chat_helper"
-        android:title="@string/chat"
-        app:showAsAction="never" />
-
-    <item
         android:id="@+id/notification_helper"
         android:title="@string/notification"
         app:showAsAction="never" />

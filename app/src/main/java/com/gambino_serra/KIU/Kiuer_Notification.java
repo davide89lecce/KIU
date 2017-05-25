@@ -109,7 +109,7 @@ public class Kiuer_Notification extends AppCompatActivity implements Response.Li
     }
 
     /**
-     * Il metodo esegue la richiesta di lettura dei dati presenti nel datbase di altervista relativi alle richieste di coda pendenti per l'aggiornamento della ListView
+     * Il metodo esegue la richiesta di lettura dei dati presenti nel database di altervista relativi alle richieste di coda pendenti per l'aggiornamento della ListView
      */
     public void updateRichieste(){
         final SharedPreferences prefs = getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
