@@ -132,3 +132,4 @@ public class Helper_NotificationDetails extends DialogFragment {
         testo.setText(bundle.get("text").toString());
     }
 }
+// TODO: 26/05/17 dialog  dettagli su richiesta (accetta/rifiuta) da aggiungere descrizione

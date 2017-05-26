@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -42,11 +43,27 @@ public class Helper_Home extends AppCompatActivity implements Response.Listener<
     ListView lvProduct;
     RatingBar rating;
     TextView cont_code;
+    SwipeRefreshLayout mSwipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_helper_home);
+
+
+        //per aggiornare la lista nella home con uno swipe
+        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
+        mSwipeRefreshLayout.setOnRefreshListener(
+                new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+                        updateRichieste();
+                        mSwipeRefreshLayout.setRefreshing(false);
+                        }
+                }
+        );
+
+
 
         disponibilita = (TextView) findViewById(R.id.disponibilita);
         switchDisponibilita = (Switch) findViewById(R.id.switchDisponibilita);
@@ -166,8 +183,6 @@ public class Helper_Home extends AppCompatActivity implements Response.Listener<
 
                 cont_code = (TextView) findViewById(R.id.num_cont_code);
                 cont_code.setText(productList.get(0).cont_feedback.toString());
-                //cont_code.setText("antoniogayo");
-
 
             }
         }, new Response.ErrorListener() {

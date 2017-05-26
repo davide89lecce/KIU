@@ -60,7 +60,8 @@ public class Kiuer_CloseQueue extends DialogFragment {
                         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) { }
-                        },((Kiuer_Home) getActivity())) {
+                        },
+                                ((Kiuer_Home) getActivity())) {
                             @Override
                             protected Map<String, String> getParams() throws AuthFailureError {
                                 Map<String, String> params = new HashMap<>();
@@ -71,11 +72,13 @@ public class Kiuer_CloseQueue extends DialogFragment {
                                 return params;
                             }
                         };
+
                         Volley.getInstance(getActivity().getApplicationContext()).addToRequestQueue(stringRequest);
 
                         Toast.makeText(getActivity().getApplicationContext(), R.string.queue_closed, Toast.LENGTH_SHORT).show();
 
                         dialog.dismiss(); // dismette positivo o neutrale
+
                         ((Kiuer_Home) getActivity()).onResume();
                     }
                 })
@@ -97,11 +100,10 @@ public class Kiuer_CloseQueue extends DialogFragment {
         TextView text = (TextView) this.getDialog().findViewById(R.id.dettagli2);
         TextView nome = (TextView) this.getDialog().findViewById(R.id.text_nome_1h);
         nome.setText(bundle.get("nome").toString());
-        text.setText(getResources().getString(R.string.hour_start_queue) + "  " + bundle.get("orario_inizio_coda").toString().substring(11,16) + "\n\n"
+        text.setText( getResources().getString(R.string.hour_start_queue) + "  " + bundle.get("orario_inizio_coda").toString().substring(11,16) + "\n\n"
                     + getResources().getString(R.string.hour_end_queue) + "  " + bundle.get("orario_fine_coda").toString().substring(11,16) + "\n\n"
-                    + getResources().getString(R.string.time_queue)  + "  " + calcoloOre(bundle.get("orario_inizio_coda").toString(),bundle.get("orario_fine_coda").toString()) + "\n\n"
+                    + getResources().getString(R.string.time_queue) + "  " + calcoloOre(bundle.get("orario_inizio_coda").toString(),bundle.get("orario_fine_coda").toString()) + "\n\n"
                     + getResources().getString(R.string.payment) + "  " + calcoloCompenso(bundle.get("orario_inizio_coda").toString(),bundle.get("orario_fine_coda").toString(),bundle.getInt("tariffa_oraria")) + "€\n");
-
     }
 
     /**

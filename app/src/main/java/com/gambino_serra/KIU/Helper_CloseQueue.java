@@ -9,6 +9,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.android.volley.AuthFailureError;
@@ -42,20 +43,19 @@ public class Helper_CloseQueue extends DialogFragment {
                     @TargetApi(Build.VERSION_CODES.M)
                     public void onClick(DialogInterface dialog, int id) {
 
-                        String url = "http://www.kiu.altervista.org/chiudi_coda_helper.php";
+                        final RatingBar rating = (RatingBar) getDialog().findViewById(R.id.rating_helper);
+
+                        String url = "http://www.davideantonio2.altervista.org/chiudi_coda_helper.php";
                         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                             @Override
-                            public void onResponse(String response) {
-                                if (response.equals("close_conversation")) { Log.d("volley", "close_conversation"); }
-                                else if (response.equals("error_update_code_effettuate")) { Log.d("volley", "error_update_code_effettuate"); }
-                                else if (response.equals("error_update_coda_completata")) { Log.d("volley", "error_update_coda_completata"); }
-                                else if (response.equals("close_queue")) { Log.d("volley", "close_queue"); }
-                                }
-                        }, ((Helper_Home) getActivity())) {
+                            public void onResponse(String response) { }
+                        },
+                                ((Helper_Home) getActivity())) {
                             @Override
                             protected Map<String, String> getParams() throws AuthFailureError {
                                 Map<String, String> params = new HashMap<>();
-                                params.put("ID_richiesta", bundle.get("ID").toString());
+                                params.put("rating", String.valueOf(Float.toString(rating.getRating())));
+                                params.put("ID_richiesta", bundle.get("ID_richiesta").toString());
                                 params.put("ID_helper", bundle.get("ID_helper").toString());
                                 params.put("ID_kiuer", bundle.get("ID_kiuer").toString());
                                 return params;
@@ -68,8 +68,7 @@ public class Helper_CloseQueue extends DialogFragment {
 
                         dialog.dismiss(); // dismette positivo o neutrale
 
-                        //aggiornamento della lista in Helper_Home
-                        ((Helper_Home) getActivity()).onResume();
+                        ((Helper_Home) getActivity()).onResume(); //aggiornamento della lista in Helper_Home
                     }
                 })
                 .setNeutralButton(R.string.goback, new DialogInterface.OnClickListener() {
@@ -90,17 +89,14 @@ public class Helper_CloseQueue extends DialogFragment {
         TextView text = (TextView) this.getDialog().findViewById(R.id.dettagli2);
         TextView nome = (TextView) this.getDialog().findViewById(R.id.text_nome_1h);
         nome.setText(bundle.get("nome").toString());
-        text.setText(getResources().getString(R.string.hour_start_queue)
-                + "   " + bundle.get("orario_inizio").toString().substring(11, 16) + "\n\n" + getResources().getString(R.string.hour_end_queue)
-                + "  " + bundle.get("orario_fine").toString().substring(11, 16) + "\n\n"
-                + getResources().getString(R.string.time_queue)
-                + "  " + calcoloOre(bundle.get("orario_inizio").toString(), bundle.get("orario_fine").toString()) + "\n\n"
-                + getResources().getString(R.string.payment)
-                + "  " + calcoloCompenso(bundle.get("orario_inizio").toString(), bundle.get("orario_fine").toString(), bundle.getInt("tariffa_oraria")) + "€\n");
+        text.setText( getResources().getString(R.string.hour_start_queue) + "  " + bundle.get("orario_inizio").toString().substring(11, 16) + "\n\n"
+                    + getResources().getString(R.string.hour_end_queue) + "  " + bundle.get("orario_fine").toString().substring(11, 16) + "\n\n"
+                    + getResources().getString(R.string.time_queue) + "  " + calcoloOre(bundle.get("orario_inizio").toString(), bundle.get("orario_fine").toString()) + "\n\n"
+                    + getResources().getString(R.string.payment) + "  " + calcoloCompenso(bundle.get("orario_inizio").toString(), bundle.get("orario_fine").toString(), bundle.getInt("tariffa_oraria")) + "€\n");
     }
 
     /**
-     *Il metodo calcola la durata della coda (ore:minuti).
+     * Il metodo calcola la durata della coda (ore:minuti).
      */
     private String calcoloOre(String orarioInizio, String orarioFine) {
         String ore = "";

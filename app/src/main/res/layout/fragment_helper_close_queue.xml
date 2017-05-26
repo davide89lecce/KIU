@@ -46,6 +46,20 @@
         android:layout_marginRight="10dp"
         android:textSize="@dimen/font_size_small" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:text="@string/txt_rating"
+        android:textSize="@dimen/font_size_medium" />
+
+    <RatingBar
+        android:id="@+id/rating_helper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
 </LinearLayout>
 
 
