@@ -107,8 +107,11 @@
     <string name="details_kiuer">NOTIFICATION DETAILS</string>
 
     <!-- Helper_Notification -->
-    <string name="text_request_queue">want you to do the queue for him at </string>
-    <string name="text_request_queue2">in</string>
+    <string name="text_request_queue">wants you to do the queue for him </string>
+    <string name="text_request_queue1">at </string>
+    <string name="text_request_queue2">in </string>
+    <string name="text_request_queue3">Description : </string>
+
     <string name="accept">accept</string>
     <string name="reject">reject</string>
 

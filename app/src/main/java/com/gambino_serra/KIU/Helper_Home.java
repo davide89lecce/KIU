@@ -50,7 +50,6 @@ public class Helper_Home extends AppCompatActivity implements Response.Listener<
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_helper_home);
 
-
         //per aggiornare la lista nella home con uno swipe
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
         mSwipeRefreshLayout.setOnRefreshListener(
@@ -62,8 +61,6 @@ public class Helper_Home extends AppCompatActivity implements Response.Listener<
                         }
                 }
         );
-
-
 
         disponibilita = (TextView) findViewById(R.id.disponibilita);
         switchDisponibilita = (Switch) findViewById(R.id.switchDisponibilita);
@@ -179,11 +176,8 @@ public class Helper_Home extends AppCompatActivity implements Response.Listener<
                 rating = (RatingBar) findViewById(R.id.rating_helper);
                 rating.setRating(productList.get(0).rating / productList.get(0).cont_feedback);
                 rating.setIsIndicator(true);
-
-
                 cont_code = (TextView) findViewById(R.id.num_cont_code);
                 cont_code.setText(productList.get(0).cont_feedback.toString());
-
             }
         }, new Response.ErrorListener() {
             @Override
@@ -329,7 +323,8 @@ public class Helper_Home extends AppCompatActivity implements Response.Listener<
                     }
                 DialogFragment newFragment = new Kiuer_Details(); //dialog che appare al click sulla lista
                 bundle.putString("ID", productList.get(position).ID_richiesta.toString());
-                bundle.putString("text", getResources().getString(R.string.queue_start_at) + " " + productList.get(position).orario.substring(0, 5) + "\n\n"
+                bundle.putString("text",
+                          getResources().getString(R.string.queue_start_at) + " " + productList.get(position).orario.substring(0, 5) + "\n\n"
                         + getResources().getString(R.string.place) + "  " + productList.get(position).luogo + "\n\n"
                         + getResources().getString(R.string.description) + "  " + productList.get(position).descrizione + "\n\n");
                 bundle.putString("nome", productList.get(position).nome);

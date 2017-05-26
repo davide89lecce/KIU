@@ -97,8 +97,10 @@
     <string name="details_kiuer">DETTAGLI NOTIFICA</string>
 
     <!-- Helper_Notification -->
-    <string name="text_request_queue">richiede una coda alle </string>
-    <string name="text_request_queue2">presso</string>
+    <string name="text_request_queue">richiede una coda </string>
+    <string name="text_request_queue1">alle ore </string>
+    <string name="text_request_queue2">in </string>
+    <string name="text_request_queue3">Descrizione : </string>
     <string name="accept">accetta</string>
     <string name="reject">rifiuta</string>
 

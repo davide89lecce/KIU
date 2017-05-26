@@ -92,9 +92,12 @@ public class Helper_Notification extends AppCompatActivity implements Response.L
                 bundle.putString("ID", productList.get(position).ID_richiesta.toString());
                 bundle.putString("text", productList.get(position).nome
                         + " " + getResources().getString(R.string.text_request_queue)
+                        + " \n" + getResources().getString(R.string.text_request_queue1)
                         + " " + productList.get(position).orario.substring(0, 5)
-                        + " " + getResources().getString(R.string.text_request_queue2)
-                        + " " + productList.get(position).luogo);
+                        + " \n" + getResources().getString(R.string.text_request_queue2)
+                        + " " + productList.get(position).luogo
+                        + " \n" + getResources().getString(R.string.text_request_queue3)
+                        + " " + productList.get(position).descrizione );
                 newFragment.setArguments(bundle);
                 newFragment.show(getFragmentManager(), "Helper_NotificationDetails");
             }

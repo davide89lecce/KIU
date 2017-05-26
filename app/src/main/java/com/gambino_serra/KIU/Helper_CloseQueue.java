@@ -55,7 +55,7 @@ public class Helper_CloseQueue extends DialogFragment {
                             protected Map<String, String> getParams() throws AuthFailureError {
                                 Map<String, String> params = new HashMap<>();
                                 params.put("rating", String.valueOf(Float.toString(rating.getRating())));
-                                params.put("ID_richiesta", bundle.get("ID_richiesta").toString());
+                                params.put("ID_richiesta", bundle.get("ID").toString());
                                 params.put("ID_helper", bundle.get("ID_helper").toString());
                                 params.put("ID_kiuer", bundle.get("ID_kiuer").toString());
                                 return params;
