@@ -58,6 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btn_details_kiuer"
+            android:drawableRight="@drawable/ic_go"
             android:textAppearance="@style/TextAppearance.AppCompat.Button"
             tools:ignore="ButtonStyle" />
 
@@ -65,6 +66,7 @@
             android:id="@+id/contatta_kiuer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:drawableRight="@drawable/ic_contact"
             android:text="@string/btn2_details_kiuer"
             android:textAppearance="@style/TextAppearance.AppCompat.Button"
             tools:ignore="ButtonStyle" />

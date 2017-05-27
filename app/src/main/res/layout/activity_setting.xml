@@ -113,7 +113,9 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/minus_sign" />
+            android:text="@string/minus_sign"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tariffa_oraria"
@@ -132,7 +134,9 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/plus_sign" />
+            android:text="@string/plus_sign"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

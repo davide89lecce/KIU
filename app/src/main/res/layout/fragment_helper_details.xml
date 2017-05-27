@@ -53,6 +53,7 @@
         android:layout_gravity="center"
         android:layout_marginBottom="10dp"
         android:text="@string/btn_details_helper"
+        android:drawableLeft="@drawable/ic_contact"
         android:textAppearance="@style/TextAppearance.AppCompat.Button" />
 
 </LinearLayout>

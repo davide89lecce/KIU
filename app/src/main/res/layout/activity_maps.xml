@@ -15,8 +15,6 @@
 
     <ImageButton
         android:id="@+id/closeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
@@ -25,12 +23,13 @@
         android:layout_marginTop="15dp"
         android:background="@color/trans"
         android:contentDescription="@string/img_content"
-        android:src="@drawable/ic_action_cancel" />
+        android:src="@drawable/button_cancel"
+        android:scaleType="fitXY"
+        android:layout_width="30dp"
+        android:layout_height="30dp"/>
 
     <ImageButton
         android:id="@+id/checkButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
@@ -39,7 +38,10 @@
         android:layout_marginTop="15dp"
         android:background="@color/trans"
         android:contentDescription="@string/img_content1"
-        android:src="@drawable/ic_action_tick" />
+        android:src="@drawable/button_accept"
+        android:scaleType="fitXY"
+        android:layout_width="30dp"
+        android:layout_height="30dp"/>
 
 
 </RelativeLayout>
