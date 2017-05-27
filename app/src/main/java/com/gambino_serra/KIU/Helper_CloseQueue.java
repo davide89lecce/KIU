@@ -45,7 +45,7 @@ public class Helper_CloseQueue extends DialogFragment {
 
                         final RatingBar rating = (RatingBar) getDialog().findViewById(R.id.rating_helper);
 
-                        String url = "http://www.davideantonio2.altervista.org/chiudi_coda_helper.php";
+                        String url = "http://www.davideantonio2.altervista.org/helper_chiudiCoda.php";
                         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) { }

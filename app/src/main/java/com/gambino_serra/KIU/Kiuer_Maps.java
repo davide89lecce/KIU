@@ -355,7 +355,7 @@ public class Kiuer_Maps extends FragmentActivity implements
 
         //Lettura degli Helper disponibili
         final SharedPreferences prefs = getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
-        String url = "http://www.davideantonio2.altervista.org/read_helpers.php";
+        String url = "http://www.davideantonio2.altervista.org/kiuer_trovaHelpersDisponibili.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

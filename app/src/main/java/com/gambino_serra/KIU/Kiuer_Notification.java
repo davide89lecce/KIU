@@ -128,7 +128,7 @@ public class Kiuer_Notification extends AppCompatActivity implements Response.Li
      */
     public void updateRichieste(){
         final SharedPreferences prefs = getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
-        String url = "http://www.davideantonio2.altervista.org/richieste_kiuer.php";
+        String url = "http://www.davideantonio2.altervista.org/kiuer_richieste.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, this, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {

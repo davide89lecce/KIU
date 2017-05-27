@@ -13,5 +13,5 @@ public class StartService extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         Intent serviceIntent = new Intent(context, NotificationService.class);
         context.startService(serviceIntent);
-    }
+        }
 }

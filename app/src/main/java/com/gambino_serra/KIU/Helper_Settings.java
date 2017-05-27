@@ -59,7 +59,7 @@ public class Helper_Settings extends AppCompatActivity {
 
         //Lettura delle impostazioni dell'Helper presenti nel database di altervista.
         final SharedPreferences prefs = getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
-        String url = "http://www.davideantonio2.altervista.org/helper_read_settings.php";
+        String url = "http://www.davideantonio2.altervista.org/helper_letturaImpostazioni.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -186,7 +186,7 @@ public class Helper_Settings extends AppCompatActivity {
     private void updateDatabase(){
 
         final SharedPreferences prefs = getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
-        String url = "http://www.davideantonio2.altervista.org/update_setting.php";
+        String url = "http://www.davideantonio2.altervista.org/helper_aggiornaImpostazioni.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

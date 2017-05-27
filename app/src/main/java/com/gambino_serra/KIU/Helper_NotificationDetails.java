@@ -54,7 +54,7 @@ public class Helper_NotificationDetails extends DialogFragment {
                     @TargetApi(Build.VERSION_CODES.M)
                     public void onClick(DialogInterface dialog, int id) {
 
-                        String url = "http://www.davideantonio2.altervista.org/accetta_richiesta.php";
+                        String url = "http://www.davideantonio2.altervista.org/helper_accettaRichiesta.php";
                         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
@@ -94,7 +94,7 @@ public class Helper_NotificationDetails extends DialogFragment {
                     @TargetApi(Build.VERSION_CODES.M)
                     public void onClick(DialogInterface dialog, int id) {
 
-                        String url = "http://www.davideantonio2.altervista.org/rifiuta_richiesta.php";
+                        String url = "http://www.davideantonio2.altervista.org/helper_rifiutaRichiesta.php";
                         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
@@ -132,4 +132,3 @@ public class Helper_NotificationDetails extends DialogFragment {
         testo.setText(bundle.get("text").toString());
     }
 }
-// TODO: 26/05/17 dialog  dettagli su richiesta (accetta/rifiuta) da aggiungere descrizione

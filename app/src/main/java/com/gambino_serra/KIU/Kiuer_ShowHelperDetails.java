@@ -91,7 +91,7 @@ public class Kiuer_ShowHelperDetails extends DialogFragment {
         contatta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String telefono = "3335566475";
+                String telefono = "0987654321";
                 //Bundle bundle = getArguments();
                 //telefono = bundle.get("telefono").toString();
                 Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + telefono));

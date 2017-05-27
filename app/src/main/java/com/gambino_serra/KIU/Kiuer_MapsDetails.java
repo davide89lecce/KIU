@@ -50,7 +50,7 @@ public class Kiuer_MapsDetails extends DialogFragment {
 
                         if (!bundle.get("ora_richiesta").equals(getResources().getString(R.string.set_request_time))) {
                             //Registra nel database di altervista la richiesta inviata dal Kiuer
-                            String url = "http://www.davideantonio2.altervista.org/kiuer_invia_richiesta.php";
+                            String url = "http://www.davideantonio2.altervista.org/kiuer_inviaRichiesta.php";
 
                             StringRequest stringRequest = new StringRequest(Request.Method.POST, url, ((Kiuer_Maps) getActivity()), ((Kiuer_Maps) getActivity())) {
                                 @Override
