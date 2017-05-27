@@ -113,6 +113,7 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:elevation="5dp"
             android:text="@string/minus_sign"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -134,6 +135,7 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:elevation="5dp"
             android:text="@string/plus_sign"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -149,9 +151,12 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="80dp"
         android:layout_weight="0.05"
+        android:background="@color/colorPrimary"
+        android:elevation="10dp"
         android:gravity="center"
         android:text="@string/btn_area"
-        android:textAppearance="@style/TextAppearance.AppCompat.Button" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        android:textColor="@color/common_google_signin_btn_text_dark_default" />
 
 
 </LinearLayout>

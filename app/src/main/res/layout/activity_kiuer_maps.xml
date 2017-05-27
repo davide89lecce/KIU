@@ -27,6 +27,7 @@
         android:layout_marginTop="15dp"
         android:background="@color/trans"
         android:contentDescription="@string/img_content"
+        android:elevation="10dp"
         android:scaleType="fitXY"
         android:src="@drawable/button_cancel" />
 

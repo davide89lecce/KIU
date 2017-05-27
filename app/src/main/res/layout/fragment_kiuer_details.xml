@@ -36,14 +36,6 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/dettagli"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:textSize="@dimen/font_size_small" />
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -57,22 +49,35 @@
             android:id="@+id/luogo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/btn_details_kiuer"
+            android:background="@color/colorPrimary"
             android:drawableRight="@drawable/ic_go"
+            android:elevation="10dp"
+            android:text="@string/btn_details_kiuer"
             android:textAppearance="@style/TextAppearance.AppCompat.Button"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
             tools:ignore="ButtonStyle" />
 
         <Button
             android:id="@+id/contatta_kiuer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
             android:drawableRight="@drawable/ic_contact"
+            android:elevation="10dp"
             android:text="@string/btn2_details_kiuer"
             android:textAppearance="@style/TextAppearance.AppCompat.Button"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
             tools:ignore="ButtonStyle" />
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/dettagli"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textSize="@dimen/font_size_small" />
 
 
 </LinearLayout>

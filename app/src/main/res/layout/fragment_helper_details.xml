@@ -52,9 +52,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="10dp"
-        android:text="@string/btn_details_helper"
+        android:background="@color/colorPrimary"
         android:drawableLeft="@drawable/ic_contact"
-        android:textAppearance="@style/TextAppearance.AppCompat.Button" />
+        android:elevation="10dp"
+        android:text="@string/btn_details_helper"
+        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        android:textColor="@color/common_google_signin_btn_text_dark_default" />
 
 </LinearLayout>
 
