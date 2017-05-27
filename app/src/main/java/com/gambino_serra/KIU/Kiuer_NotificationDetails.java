@@ -45,7 +45,7 @@ public class Kiuer_NotificationDetails extends DialogFragment {
 
                         if(bundle.get("stato_richiesta").toString().equals("1") || bundle.get("stato_richiesta").toString().equals("2")) {
 
-                            String url = "http://www.davideantonio2.altervista.org/richiesta_kiuer_notificata.php";
+                            String url = "http://www.davideantonio2.altervista.org/kiuer_richiestaNotificata.php";
                             StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
 
                                 @Override

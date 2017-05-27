@@ -83,7 +83,7 @@ public class NotificationService extends IntentService {
             //Se l'utente è loggato come Helper gestisce le notifiche relative all'helper
             if (prefs.getString(TIPO_UTENTE, "").equals("H")) {
                 //Richiesta dati dal database di altervista per verificare se sono presenti nuove richieste di coda da notificare
-                String url = "http://www.davideantonio2.altervista.org/helper_check_richieste.php";
+                String url = "http://www.davideantonio2.altervista.org/helper_controllaRichieste.php";
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -140,7 +140,7 @@ public class NotificationService extends IntentService {
             else if (prefs.getString(TIPO_UTENTE, "").equals("K")) {
 
                 //Richiesta dati dal database di altervista per verificare se sono presenti nuove richieste di coda accettate/rifiutate da notificare
-                String url = "http://www.davideantonio2.altervista.org/kiuer_check_richieste.php";
+                String url = "http://www.davideantonio2.altervista.org/kiuer_controllaRichieste.php";
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

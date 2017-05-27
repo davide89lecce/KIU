@@ -57,7 +57,7 @@ public class Kiuer_CloseQueue extends DialogFragment {
 
                         final RatingBar rating = (RatingBar) getDialog().findViewById(R.id.rating_kiuer);
 
-                        String url = "http://www.davideantonio2.altervista.org/chiudi_coda_kiuer.php";
+                        String url = "http://www.davideantonio2.altervista.org/kiuer_chiudiCoda.php";
                         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) { }

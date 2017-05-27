@@ -130,7 +130,7 @@ public class Kiuer_Home extends AppCompatActivity implements Response.Listener<S
     public void updateRichieste(){
 
         final SharedPreferences prefs = getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
-        String url = "http://www.davideantonio2.altervista.org/code_kiuer.php";
+        String url = "http://www.davideantonio2.altervista.org/kiuer_code.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, this, new Response.ErrorListener() {
 
             @Override
@@ -196,10 +196,14 @@ public class Kiuer_Home extends AppCompatActivity implements Response.Listener<S
                     }
                 DialogFragment newFragment = new Kiuer_ShowHelperDetails();
                 bundle.putString("ID", productList.get(position).ID_richiesta.toString());
-                bundle.putString("text", getResources().getString(R.string.queue_assigned_to) + " " + productList.get(position).orario.substring(0,5) + "\n\n"
-                                        + getResources().getString(R.string.place) + "  " + productList.get(position).luogo + "\n\n"
-                                        + getResources().getString(R.string.description)  + "  " + productList.get(position).descrizione +"\n\n"
-                                        + getResources().getString(R.string.helper2) + "  " + productList.get(position).nome );
+                bundle.putString("text", getResources().getString(R.string.queue_assigned_to) + " "
+                                        + productList.get(position).orario.substring(0,5) + "\n\n"
+                                        + getResources().getString(R.string.place) + "  "
+                                        + productList.get(position).luogo + "\n\n"
+                                        + getResources().getString(R.string.description)  + "  "
+                                        + productList.get(position).descrizione +"\n\n"
+                                        + getResources().getString(R.string.helper2) + "  "
+                                        + productList.get(position).nome );
                 bundle.putString("nome", productList.get(position).nome);
                 bundle.putString("stato_coda", statoCoda.toString());
                 bundle.putString("orario_inizio_coda", productList.get(position).orario_inizio.toString());

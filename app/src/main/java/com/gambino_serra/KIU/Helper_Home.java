@@ -67,7 +67,7 @@ public class Helper_Home extends AppCompatActivity implements Response.Listener<
         final SharedPreferences prefs = getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
 
         //Lettura con volley dell'attributo disponibilità helper per settare lo switch presente nel layout
-        String url = "http://www.davideantonio2.altervista.org/read_disponibilita_helper.php";
+        String url = "http://www.davideantonio2.altervista.org/helper_disponibilita.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -103,7 +103,7 @@ public class Helper_Home extends AppCompatActivity implements Response.Listener<
             public void onClick(View v) {
                 if (switchDisponibilita.isChecked()) {
                     //Aggiornamento dell'attributo disponibilita' helper del DB su "Disponibile"
-                    String url = "http://www.davideantonio2.altervista.org/set_disponibilita_helper.php";
+                    String url = "http://www.davideantonio2.altervista.org/helper_impostaDisponibilita.php";
                     StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -134,7 +134,7 @@ public class Helper_Home extends AppCompatActivity implements Response.Listener<
                 }
                 else {
                     //Aggiornamento dell'attributo disponibilità helper del DB su "Non Disponibile"
-                    String url = "http://www.davideantonio2.altervista.org/set_disponibilita_helper.php";
+                    String url = "http://www.davideantonio2.altervista.org/helper_impostaDisponibilita.php";
                     StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -168,7 +168,7 @@ public class Helper_Home extends AppCompatActivity implements Response.Listener<
         });
 
         //Lettura con volley dell'attributo rating e visualizzazione
-        url = "http://www.davideantonio2.altervista.org/helper_detail_rating.php";
+        url = "http://www.davideantonio2.altervista.org/helper_visualizzaRating.php";
         stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -267,7 +267,7 @@ public class Helper_Home extends AppCompatActivity implements Response.Listener<
     public void updateRichieste() {
 
         final SharedPreferences prefs = getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
-        String url = "http://www.davideantonio2.altervista.org/code_helper.php";
+        String url = "http://www.davideantonio2.altervista.org/helper_code.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, this, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {

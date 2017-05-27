@@ -30,7 +30,6 @@ public class Login extends AppCompatActivity {
     private static final String PASSWORD = "password";
     private static final String TIPO_UTENTE = "tipoUtente";
     private static final String LOGGED_USER = "logged_user";
-    private static final String CONV_NAME = "_conv_name";
 
     EditText etUsername, etPassword;
     Button btnLogin;
@@ -139,7 +138,7 @@ public class Login extends AppCompatActivity {
         final SharedPreferences sharedPrefs = getSharedPreferences(MY_PREFERENCES, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPrefs.edit();
         editor.putString(IDUTENTE, username);   // identificativo utente in altervista.
-        editor.putString(PASSWORD, password);   // identificativo utente in altervista.
+        editor.putString(PASSWORD, password);   // password utente in altervista.
         editor.putString(TIPO_UTENTE, tipologia); // usato come identificativo del tipo di utente.
         editor.apply();
     }

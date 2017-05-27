@@ -83,21 +83,22 @@ public class Helper_Notification extends AppCompatActivity implements Response.L
             public String getStringValue(Json_Richiesta product, int position) {
                 return getResources().getString(R.string.hour_queue) + " " + product.orario.toString().substring(0, 5) + "\n"
                         + getResources().getString(R.string.kiuer2) + product.nome.toString() + "\n";
-            }
+                        }
         }).onClick(new ItemClickListener<Json_Richiesta>() {
 
             @Override
             public void onClick(Json_Richiesta item, int position, View view) {
                 DialogFragment newFragment = new Helper_NotificationDetails();
                 bundle.putString("ID", productList.get(position).ID_richiesta.toString());
-                bundle.putString("text", productList.get(position).nome
-                        + " " + getResources().getString(R.string.text_request_queue)
-                        + " \n" + getResources().getString(R.string.text_request_queue1)
-                        + " " + productList.get(position).orario.substring(0, 5)
-                        + " \n" + getResources().getString(R.string.text_request_queue2)
-                        + " " + productList.get(position).luogo
-                        + " \n" + getResources().getString(R.string.text_request_queue3)
-                        + " " + productList.get(position).descrizione );
+                bundle.putString("text",  productList.get(position).nome + " "
+                                        + getResources().getString(R.string.text_request_queue) + " \n"
+                                        + getResources().getString(R.string.text_request_queue1) + " "
+                                        + productList.get(position).orario.substring(0, 5) + " \n"
+                                        + getResources().getString(R.string.text_request_queue2) + " "
+                                        + productList.get(position).luogo + " \n"
+                                        + getResources().getString(R.string.text_request_queue3) + " "
+                                        + productList.get(position).descrizione );
+
                 newFragment.setArguments(bundle);
                 newFragment.show(getFragmentManager(), "Helper_NotificationDetails");
             }
@@ -110,14 +111,14 @@ public class Helper_Notification extends AppCompatActivity implements Response.L
     public void onResume() {
         super.onResume();
         updateRichieste();
-    }
+        }
 
     /**
      * Il metodo esegue la richiesta di lettura dei dati presenti nel database altervista relativi alle richieste di coda pendenti per l'aggiornamento della ListView
      */
     public void updateRichieste() {
         final SharedPreferences prefs = getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
-        String url = "http://www.davideantonio2.altervista.org/helper_check_richieste.php";
+        String url = "http://www.davideantonio2.altervista.org/helper_controllaRichieste.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, this, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {

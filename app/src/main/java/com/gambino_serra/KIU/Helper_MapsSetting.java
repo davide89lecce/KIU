@@ -302,7 +302,7 @@ public class Helper_MapsSetting extends FragmentActivity implements GoogleApiCli
 
         //Lettura della coordinate del Helper.
         final SharedPreferences prefs = getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
-        String url = "http://www.davideantonio2.altervista.org/helper_read_settings.php";
+        String url = "http://www.davideantonio2.altervista.org/helper_letturaImpostazioni.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -333,7 +333,7 @@ public class Helper_MapsSetting extends FragmentActivity implements GoogleApiCli
                                 final Double longitude = ltln.longitude;
 
                                 //Invio delle nuove coordinate al database di altervista
-                                String url = "http://www.davideantonio2.altervista.org/helper_update_coordinate.php";
+                                String url = "http://www.davideantonio2.altervista.org/helper_aggiornaCoordinate.php";
                                 StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                                     @Override
                                     public void onResponse(String response) {
@@ -400,7 +400,7 @@ public class Helper_MapsSetting extends FragmentActivity implements GoogleApiCli
                                 final Double longitude = ltln.longitude;
 
                                 //Invio delle nuove coordinate al database di altervista
-                                String url = "http://www.davideantonio2.altervista.org/helper_update_coordinate.php";
+                                String url = "http://www.davideantonio2.altervista.org/helper_aggiornaCoordinate.php";
                                 StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                                     @Override
                                     public void onResponse(String response) {
