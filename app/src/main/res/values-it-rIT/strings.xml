@@ -23,6 +23,8 @@
 
     <!-- Helper_Home -->
     <!-- Kiuer_Home -->
+    <string name="list">Le Mie Code</string>
+    <string name="slogan">Sconfiggi i Tempi di Attesa</string>
     <string name="disp">disponibilità: </string>
     <string name="visible_by_kiuer">Sei visibile ai Kiuer</string>
     <string name="invisible_by_kiuer">Non sei visibile ai Kiuer</string>
