@@ -17,14 +17,14 @@
         android:layout_gravity="end"
         android:layout_marginBottom="18dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:text="@string/disp"
         android:textSize="19sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/switchDisponibilita" />
+        app:layout_constraintRight_toLeftOf="@+id/switchDisponibilita"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <Switch
         android:id="@+id/switchDisponibilita"
