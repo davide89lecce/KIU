@@ -52,7 +52,7 @@ public class NotificationService extends IntentService {
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             notification = new Notification.Builder(getApplicationContext())
                     .setOngoing(true).setContentText(getResources().getString(R.string.waiting_message))
-                    .setSmallIcon(R.drawable.ic_letter_k)
+                    .setSmallIcon(R.drawable.ic_letters)
                     .setLargeIcon(BitmapFactory.decodeResource(this.getResources(), R.mipmap.ic_launcher))
                     .setPriority(Notification.PRIORITY_MAX)
                     .setContentIntent(pendingIntent).build();
@@ -63,7 +63,7 @@ public class NotificationService extends IntentService {
         else {
             notification = new Notification.Builder(getApplicationContext())
                     .setOngoing(true).setContentText(getResources().getString(R.string.waiting_message))
-                    .setSmallIcon(R.drawable.ic_notification)
+                    .setSmallIcon(R.mipmap.ic_launcher)//drawable.ic_notification)
                     .setLargeIcon(BitmapFactory.decodeResource(this.getResources(), R.mipmap.ic_launcher))
                     .setPriority(Notification.PRIORITY_MAX)
                     .setContentIntent(pendingIntent).build();
