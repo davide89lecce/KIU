@@ -29,7 +29,7 @@
     <string name="visible_by_kiuer">Sei visibile ai Kiuer</string>
     <string name="invisible_by_kiuer">Non sei visibile ai Kiuer</string>
     <string name="error_update_volley">Errore aggiornamento dati. Connessione internet mancante</string>
-    <string name="hour_queue">Ora coda: </string>
+    <string name="hour_queue">Orario: </string>
     <string name="kiuer2">Kiuer:  </string>
     <string name="helper2">Helper:  </string>
     <string name="state">Stato:  </string>
@@ -40,6 +40,7 @@
     <string name="queue_not_started">Coda non iniziata </string>
     <string name="queue_in_progress">Coda in corso </string>
     <string name="queue_terminated">Coda terminata  </string>
+    <string name="rating_home">La tua valutazione: </string>
     <string name="cont_code">Numero di code effettuate =  </string>
 
     <!-- Helper_CloseQueue -->
@@ -48,13 +49,13 @@
     <string name="queue_closed">Coda chiusa</string>
     <string name="hour_start_queue">Ora inizio coda:</string>
     <string name="hour_end_queue">Ora fine coda:</string>
-    <string name="time_queue">Tempo coda:</string>
+    <string name="time_queue">Durata coda:</string>
     <string name="payment">Compenso:</string>
 
     <!-- Kiuer_ShowHelperDetails -->
     <string name="queue_not_finished">La coda non è stata ancora terminata dall\'helper</string>
     <string name="chiudi_coda">Chiudi coda</string>
-    <string name="goback">indietro</string>
+    <string name="goback">Indietro</string>
 
     <!-- Kiuer_Details -->
     <string name="kiuer_details">DETTAGLI KIUER</string>
@@ -68,12 +69,12 @@
     <string name="disconnected">Disconnesso. Si prega di riconnettersi</string>
     <string name="network_lost">Connessione assente. Si prega di riconnettersi</string>
     <string name="location_service_not_available">I servizi di localizzazione non sono disponibili</string>
-    <string name="place_marker_on_location">Posiziona il segnaposto sul luogo dove desideri cedere la coda</string>
+    <string name="place_marker_on_location">Posiziona il segnaposto sul luogo in cui desideri assegnare la coda</string>
     <string name="select_helper">Seleziona uno degli helper visibili sulla mappa</string>
     <string name="click_here_for_details">Premi qui per i dettagli</string>
     <string name="request_sent">Richiesta inviata</string>
     <string name="unused_request">Richiesta non inviata. Riprovare più tardi</string>
-    <string name="set_request_time">Imposta ora richiesta</string>
+    <string name="set_request_time">Imposta orario richiesta</string>
     <string name="sign_your_position">Indica la tua posizione sulla mappa</string>
     <string name="update_coordinates">Aggiornamento coordinate</string>
     <string name="error_update_coordinates">Errore aggiornamento coordinate</string>
@@ -86,8 +87,8 @@
     <string name="start_availability">Inizio disponibilità:</string>
     <string name="end_availability">Fine disponibilità:</string>
     <string name="queue_done">Code effettuate:</string>
-    <string name="invia_richiesta">invia richiesta</string>
-    <string name="annulla">annulla</string>
+    <string name="invia_richiesta">Invia richiesta</string>
+    <string name="annulla">Annulla</string>
 
 
     <!-- Kiuer_NotificationDetails -->
@@ -103,8 +104,8 @@
     <string name="text_request_queue1">alle ore </string>
     <string name="text_request_queue2">in </string>
     <string name="text_request_queue3">Descrizione : </string>
-    <string name="accept">accetta</string>
-    <string name="reject">rifiuta</string>
+    <string name="accept">Accetta</string>
+    <string name="reject">Rifiuta</string>
 
     <!-- Helper_Settings -->
     <string name="update_setting">Impostazioni aggiornate</string>
@@ -117,7 +118,7 @@
     <string name="queue_end">ha terminato la coda</string>
     <plurals name="incoming_queue_request">
         <item quantity="one">%d Richiesta di coda da effettuare</item>
-        <item quantity="other">%d Richieste di coda da effettuare</item>
+        <item quantity="other">%d Richieste di code da effettuare</item>
     </plurals>
     <plurals name="request_accepted_notification">
         <item quantity="one">%d Richiesta accettata</item>
@@ -140,7 +141,7 @@
     <string name="fascia_costo">Definisci costo orario</string>
     <string name="start_time">Ora inizio disponibilità:</string>
     <string name="end_time">Ora fine disponibilità:</string>
-    <string name="btn_area">scegli area</string>
+    <string name="btn_area">Scegli area</string>
 
     <!-- fragment_helper_close_kiu-->
     <string name="img_icon_descr">immagine icona utente</string>
@@ -151,22 +152,24 @@
     <string name="txt_rating">Dai un voto</string>
 
     <!-- fragment_helper_details-->
-    <string name="btn_details_helper">contatta</string>
+    <string name="btn_details_helper">Contatta </string>
     <string name="img_user_helper">immagine utente helper</string>
     <string name="detail_helper_title">DETTAGLI HELPER</string>
 
 
     <!-- fragment_kiuer_details-->
-    <string name="btn_details_kiuer">vai!</string>
-    <string name="btn2_details_kiuer">contatta</string>
+    <string name="btn_details_kiuer">Raggiungi </string>
+    <string name="btn2_details_kiuer">Contatta </string>
     <string name="img_user_kiuer">user kiuer image icon</string>
     <string name="img_details_kiuer">immagine utente kiuer</string>
     <string name="detail_kiuer_title">DETTAGLI KIUER</string>
 
     <!-- fragment_kiuer_details_maps-->
+    <string name="descr">Inserisci una descrizione...</string>
     <string name="ora_richiesta">00:00</string>
-    <string name="req_queue">Orario richiesta coda:</string>
+    <string name="req_queue">La tua richiesta</string>
     <string name="rating">Valutazione: </string>
+    <string name="errore_orario">L\'orario inserito non è disponibile per l\'Helper desiderato</string>
 
     <!-- notification_layout_helper-->
     <string name="img_desc_1">immagine helper notifica</string>
@@ -180,8 +183,6 @@
     <!-- product_layout-->
     <string name="img_desc_3">immagine icona utente</string>
 
-    <!-- splash_layout-->
-    <string name="splash_descr">immagine avvio applicazione</string>
 
 
 </resources>

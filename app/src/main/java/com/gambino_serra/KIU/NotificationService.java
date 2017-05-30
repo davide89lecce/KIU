@@ -106,7 +106,7 @@ public class NotificationService extends IntentService {
                                 //Visualizza la notifica se sono presenti notifiche da visualizzare
                                 if (contaNotifiche != 0) {
                                     NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext())
-                                            //.setSmallIcon(R.drawable.ic_notifications)
+                                            .setSmallIcon(R.drawable.ic_notifications)
                                             .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher))
                                             .setContentTitle(getResources().getString(R.string.kiu))
                                             .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))

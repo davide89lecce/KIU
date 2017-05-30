@@ -1,13 +1,12 @@
 <resources>
 
-    <string name="app_name">KIU</string>
+    <string name="app_name">KIÚ</string>
     <string name="action_settings">Settings</string>
-    <string name="title_notification_helper">Notification helper</string>
+    <string name="title_notification_helper">Helper\'s Notification</string>
     <string name="title_setting_helper">Settings</string>
-    <string name="title_notification_kiuer">Notification kiuer</string>
+    <string name="title_notification_kiuer">Kiuer\'s Notification</string>
     <string name="title_home_helper">Home Helper</string>
     <string name="title_home_kiuer">Home Kiuer</string>
-    <string name="title_register">Sign In</string>
     <string name="ok">OK</string>
 
     <!-- Items string -->
@@ -20,7 +19,7 @@
     <string name="err_read_google"> Error while reading Google</string>
     <string name="err_login">Incorrect username and password</string>
     <string name="auth_failed">Authentication failed</string>
-    <string name="insert_name_password">Insert mail and password</string>
+    <string name="insert_name_password">Insert ID and password</string>
 
     <!-- content_main -->
     <string name="enter_ID"> Enter Username</string>
@@ -37,33 +36,34 @@
     <string name="slogan">Defeat the Waiting Times</string>
     <string name="list">My Queues</string>
     <string name="disp">availability:  </string>
-    <string name="visible_by_kiuer">You are visible from Kiuer</string>
-    <string name="invisible_by_kiuer">You are not visible from Kiuer</string>
+    <string name="visible_by_kiuer">You are visible from Kiuers</string>
+    <string name="invisible_by_kiuer">You are not visible from Kiuers</string>
     <string name="error_update_volley">Error data update. Internet Missing</string>
-    <string name="hour_queue">Hour queue: </string>
+    <string name="hour_queue">Hours: </string>
     <string name="kiuer2">Kiuer:  </string>
     <string name="helper2">Helper:  </string>
-    <string name="state">State:  </string>
-    <string name="queue_start_at">queue to be carried out at </string>
+    <string name="state">Status:  </string>
+    <string name="queue_start_at">Queue starts at </string>
     <string name="queue_assigned_to">Queue assigned to </string>
-    <string name="place">Place:  </string>
+    <string name="place">Address:  </string>
     <string name="description">Description:  </string>
     <string name="queue_not_started">Queue not started </string>
     <string name="queue_in_progress">Queue in progress </string>
     <string name="queue_terminated">Queue terminated  </string>
+    <string name="rating_home">Your rating: </string>
     <string name="cont_code">Number of completed queues =  </string>
 
     <!-- Helper_CloseQueue -->
     <!-- Kiuer_CloseQueue -->
     <string name="close_queue">CLOSE QUEUE</string>
     <string name="queue_closed">Queue closed</string>
-    <string name="hour_start_queue">Hour start queue:</string>
-    <string name="hour_end_queue">Hour queue end:</string>
-    <string name="time_queue">Time queue:</string>
-    <string name="payment">Payment:</string>
+    <string name="hour_start_queue">Queue started at:</string>
+    <string name="hour_end_queue">Queue ended at:</string>
+    <string name="time_queue">Queue duration:</string>
+    <string name="payment">Price:</string>
 
     <!-- Kiuer_ShowHelperDetails -->
-    <string name="queue_not_finished">The queue was not yet finished by helper</string>
+    <string name="queue_not_finished">The queue was not yet finished by the helper</string>
     <string name="chiudi_coda">Close queue</string>
     <string name="goback">back</string>
 
@@ -78,14 +78,14 @@
     <string name="enable_gps">Enable GPS</string>
     <string name="disconnected">Disconnected. Please re-connect</string>
     <string name="network_lost">Network lost. Please re-connect</string>
-    <string name="location_service_not_available">Location services not available to you</string>
-    <string name="place_marker_on_location">Place the marker on the location where you want to give up the queue</string>
-    <string name="select_helper">Select one of the helper visible on the map</string>
+    <string name="location_service_not_available">Location services not available</string>
+    <string name="place_marker_on_location">Place the marker on the location where you want to let start the queue</string>
+    <string name="select_helper">Select one of the helpers shown on the map</string>
     <string name="click_here_for_details">Click here for details</string>
     <string name="request_sent">Request sent</string>
     <string name="unused_request">Unused request. Try again later.</string>
-    <string name="set_request_time">Set request time</string>
-    <string name="sign_your_position">Sign your marker position on the map</string>
+    <string name="set_request_time">Set request hours</string>
+    <string name="sign_your_position">Put your marker position on the map</string>
     <string name="update_coordinates">Update coordinates</string>
     <string name="error_update_coordinates">Error update coordinates</string>
     <string name="error_read_coordinates">Error read coordinates</string>
@@ -96,8 +96,8 @@
     <string name="hour_rate">Hour rate</string>
     <string name="start_availability">Start availability:</string>
     <string name="end_availability">End availability:</string>
-    <string name="queue_done">Queue done:</string>
-    <string name="invia_richiesta">send request</string>
+    <string name="queue_done">Queues completed:</string>
+    <string name="invia_richiesta">Send request</string>
     <string name="annulla">Cancel</string>
 
     <!-- Kiuer_NotificationDetails -->
@@ -125,12 +125,12 @@
 
     <!-- NotificationService -->
     <string name="waiting_message">Running...</string>
-    <string name="kiu">KIU\'</string>
+    <string name="kiu">KIÚ</string>
     <string name="queue_started">started the queue</string>
     <string name="queue_end">ended the queue</string>
     <plurals name="incoming_queue_request">
         <item quantity="one">%d Incoming queue request</item>
-        <item quantity="other">%d Incoming queue requests</item>
+        <item quantity="other">%d Incoming queues requests</item>
     </plurals>
     <plurals name="request_accepted_notification">
         <item quantity="one">%d Request accepted</item>
@@ -151,8 +151,8 @@
     <string name="euro_hour_sign">€/h</string>
     <string name="fascia_oraria">Define time slot</string>
     <string name="fascia_costo">Define hourly cost</string>
-    <string name="start_time">Start time availability:</string>
-    <string name="end_time">End time availability:</string>
+    <string name="start_time">Your availability starts at:</string>
+    <string name="end_time">Your availability ends at:</string>
     <string name="btn_area">choose area</string>
 
     <!-- fragment_helper_close_kiu-->
@@ -164,21 +164,23 @@
     <string name="txt_rating">Rate</string>
 
     <!-- fragment_kiuer_details-->
-    <string name="btn_details_kiuer">go!</string>
-    <string name="btn2_details_kiuer">contact</string>
+    <string name="btn_details_kiuer">Go! </string>
+    <string name="btn2_details_kiuer">Contact </string>
     <string name="img_user_kiuer">user kiuer image icon</string>
     <string name="img_details_kiuer">image kiuer icon</string>
     <string name="detail_kiuer_title">KIUER DETAILS</string>
 
     <!-- fragment_helper_details-->
-    <string name="btn_details_helper">contact</string>
+    <string name="btn_details_helper">Contact </string>
     <string name="img_user_helper">user helper image icon</string>
     <string name="detail_helper_title">HELPER DETAILS</string>
 
     <!-- fragment_kiuer_details_maps-->
+    <string name="descr">Insert a description...</string>
     <string name="ora_richiesta">00:00</string>
-    <string name="req_queue">Time request queue:</string>
+    <string name="req_queue">Your request</string>
     <string name="rating">Rating: </string>
+    <string name="errore_orario">The requested time is not available for this Helper</string>
 
     <!-- notification_layout_helper-->
     <string name="img_desc_1">image icon helper notification</string>
