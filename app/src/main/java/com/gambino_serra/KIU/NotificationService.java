@@ -93,6 +93,7 @@ public class NotificationService extends IntentService {
                             notificheHelper = 0;
                             }
                         else {
+                            //array richieste
                             ArrayList<Json_Richiesta> productList = new JsonConverter<Json_Richiesta>().toArrayList(response, Json_Richiesta.class);
                             int contaNotifiche = 0;
                             //Verifica il numero di notifiche da visualizzare
@@ -221,7 +222,7 @@ public class NotificationService extends IntentService {
 
             }//fine gestione notifiche Kiuer
             Log.d("PROVA SERVICE", "Richiesta database n°." + numeroRichiestaDB++);
-            try { Thread.sleep(10000); }
+            try { Thread.sleep(10000);}
             catch (InterruptedException e) { }
         }
     }

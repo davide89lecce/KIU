@@ -1,5 +1,6 @@
 package com.gambino_serra.KIU;
 
+import com.google.gson.JsonArray;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -16,4 +17,5 @@ public class Json_Helper {
     @SerializedName("nome")             public String nome;
     @SerializedName("rating")           public float rating;
     @SerializedName("cont_feedback")    public Integer cont_feedback;
+
 }

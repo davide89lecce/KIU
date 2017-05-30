@@ -33,9 +33,18 @@ public class Helper_CloseQueue extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
         final Bundle bundle = getArguments();
+
+        //l'oggetto builder si occuperà di costruire la dialog con i parametri passati
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        //l'inflater provederà a rendere un'Activity disponibile alla visualizzazione all'interno del fragment
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        builder.setTitle(R.string.close_queue);
+
+
+
+        //INIZIA LA COSTRUZIONE DEL FRAGMENT
+        builder.setTitle(R.string.close_queue); // assegna titolo
+
+        //assegna il layout ed aggiunge bottoni (Positive e Neutral
         builder.setView(inflater.inflate(R.layout.fragment_helper_close_queue, null))
 
                 //Memorizza sul DB l'avvenuta chiusura della coda da parte dell'Helper

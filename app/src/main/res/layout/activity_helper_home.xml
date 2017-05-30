@@ -23,17 +23,16 @@
         android:textSize="19sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/switchDisponibilita"
-        android:layout_marginLeft="16dp"
+        android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <Switch
         android:id="@+id/switchDisponibilita"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/disponibilita"
-        android:layout_marginRight="16dp"
+        android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent" />
 
 
@@ -46,12 +45,13 @@
         android:layout_marginLeft="80dp"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginBottom="19dp"
-        app:layout_constraintBottom_toTopOf="@+id/disponibilita" />
+        app:layout_constraintBottom_toTopOf="@+id/disponibilita"
+        android:layout_marginStart="80dp" />
 
     <TextView
         android:id="@+id/num_cont_code"
-        android:layout_width="36dp"
-        android:layout_height="19dp"
+        android:layout_width="0dp"
+        android:layout_height="21dp"
         android:textSize="14sp"
         android:textStyle="bold"
         tools:layout_conversion_absoluteHeight="21dp"
@@ -62,8 +62,8 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBaseline_toBaselineOf="@+id/linearLayout"
         app:layout_constraintLeft_toRightOf="@+id/linearLayout"
-        android:layout_marginLeft="0dp"
-        app:layout_constraintHorizontal_bias="0.112" />
+        app:layout_constraintHorizontal_bias="0.112"
+        android:layout_marginEnd="8dp" />
 
 
     <TextView
@@ -82,7 +82,9 @@
         tools:layout_conversion_absoluteHeight="26dp"
         tools:layout_conversion_absoluteWidth="67dp"
         tools:layout_conversion_absoluteX="9dp"
-        tools:layout_conversion_absoluteY="139dp" />
+        tools:layout_conversion_absoluteY="139dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <RatingBar
         android:id="@+id/rating_helper"
@@ -92,14 +94,14 @@
         tools:layout_conversion_absoluteY="116dp"
         tools:layout_conversion_absoluteWidth="274dp"
         tools:layout_conversion_absoluteHeight="57dp"
-        android:layout_marginBottom="0dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.504" />
-
+        app:layout_constraintHorizontal_bias="0.504"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <include
         layout="@layout/content_sub"
@@ -112,6 +114,7 @@
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintHorizontal_bias="0.482" />
+
 
     <TextView
         android:id="@+id/textView2"
@@ -127,6 +130,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteY="16dp" />
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
 </android.support.constraint.ConstraintLayout>

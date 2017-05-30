@@ -74,11 +74,11 @@ public class Helper_Home extends AppCompatActivity implements Response.Listener<
                 if (response.contains("disponibile")) {
                     switchDisponibilita.setChecked(true);
                     disponibilita.setText(getResources().getString(R.string.visible_by_kiuer));
-                }
+                    }
                 else {
                     switchDisponibilita.setChecked(false);
                     disponibilita.setText(getResources().getString(R.string.invisible_by_kiuer));
-                }
+                    }
             }
         }, new Response.ErrorListener() {
             @Override

@@ -415,7 +415,7 @@ public class Kiuer_Maps extends FragmentActivity implements
     protected Dialog onCreateDialog(int id) {
         switch (id) {
             case TIME_DIALOG_ID1:
-                return new android.app.TimePickerDialog(this, mTimeSetListener, ora, minuti, false);
+                return new android.app.TimePickerDialog(this, mTimeSetListener, ora, minuti, true);
         }
         return null;
     }
@@ -438,6 +438,7 @@ public class Kiuer_Maps extends FragmentActivity implements
      */
     public void showTimePickerRichiesta() {
         showDialog(TIME_DIALOG_ID1);
+
     }
 
     /**
