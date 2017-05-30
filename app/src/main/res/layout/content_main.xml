@@ -7,7 +7,9 @@
     android:isScrollContainer="false"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.gambino_serra.KIU.Login"
-    tools:showIn="@layout/activity_main"    >
+    tools:showIn="@layout/activity_main"
+    tools:layout_editor_absoluteY="81dp"
+    tools:layout_editor_absoluteX="0dp">
 
 
     <Button
@@ -15,45 +17,18 @@
         style="@style/Widget.AppCompat.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="0dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="-9dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginRight="16dp"
         android:backgroundTint="@color/colorPrimary"
         android:elevation="15dp"
         android:text="@string/str_login"
         android:textAllCaps="false"
         android:textColor="@color/common_google_signin_btn_text_dark_pressed"
         android:textStyle="bold|italic"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline3"
-        app:layout_constraintVertical_bias="0.52" />
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3" />
     <!--app:layout_constraintTop_toBottomOf="@+id/logo_app_kiu"-->
 
-
-    <ImageView
-        android:id="@+id/login_img1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="32dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="24dp"
-        android:adjustViewBounds="false"
-        android:contentDescription="@string/logo_app"
-        android:cropToPadding="false"
-        android:fitsSystemWindows="false"
-        android:paddingBottom="35dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/coda1" />
 
     <EditText
         android:id="@+id/etUsername"
@@ -65,9 +40,9 @@
         android:fontFamily="sans-serif-light"
         android:hint="@string/enter_ID"
         android:inputType="textEmailAddress"
-        android:layout_marginBottom="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
-        android:layout_marginLeft="16dp"
+        app:layout_constraintTop_toTopOf="@+id/guideline5"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <EditText
@@ -79,36 +54,10 @@
         android:fontFamily="sans-serif-light"
         android:hint="@string/enter_password"
         android:inputType="textPassword"
-        android:layout_marginTop="0dp"
-        app:layout_constraintTop_toTopOf="@+id/guideline3"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/etUsername"
         android:layout_marginLeft="0dp"
-        app:layout_constraintLeft_toLeftOf="@+id/etUsername"
-        android:layout_marginRight="0dp"
-        app:layout_constraintRight_toRightOf="@+id/etUsername"
-        tools:layout_editor_absoluteY="257dp"
-        app:layout_constraintHorizontal_bias="0.0" />
-
-    <ImageView
-        android:id="@+id/login_img2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="32dp"
-        android:adjustViewBounds="false"
-        android:contentDescription="@string/logo_app"
-        android:cropToPadding="false"
-        android:fitsSystemWindows="false"
-        android:paddingTop="30dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline3"
-        app:layout_constraintVertical_bias="0.52"
-        app:srcCompat="@drawable/coda2" />
+        app:layout_constraintLeft_toLeftOf="@+id/etUsername" />
 
 
     <android.support.constraint.Guideline
@@ -116,5 +65,42 @@
         android:layout_height="wrap_content"
         android:id="@+id/guideline3"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.75" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="0dp"
+        android:elevation="10dp"
+        app:layout_constraintHorizontal_bias="0.437"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/icon_kiu" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        app:layout_constraintTop_toTopOf="@+id/guideline3"
+        app:srcCompat="@drawable/coda3"
+        android:layout_marginRight="6dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guideline5"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
 </android.support.constraint.ConstraintLayout>
