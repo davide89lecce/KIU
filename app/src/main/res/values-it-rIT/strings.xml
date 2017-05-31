@@ -136,12 +136,12 @@
     <!-- activity_settings-->
     <string name="plus_sign">+</string>
     <string name="minus_sign">-</string>
-    <string name="euro_hour_sign">€/h</string>
+    <string name="euro_hour_sign"> €/h</string>
     <string name="fascia_oraria">Definisci fascia oraria</string>
     <string name="fascia_costo">Definisci costo orario</string>
     <string name="start_time">Ora inizio disponibilità:</string>
     <string name="end_time">Ora fine disponibilità:</string>
-    <string name="btn_area">Scegli area</string>
+    <string name="btn_area"> Scegli area </string>
 
     <!-- fragment_helper_close_kiu-->
     <string name="img_icon_descr">immagine icona utente</string>
@@ -152,14 +152,14 @@
     <string name="txt_rating">Dai un voto</string>
 
     <!-- fragment_helper_details-->
-    <string name="btn_details_helper">Contatta </string>
+    <string name="btn_details_helper"> Contatta </string>
     <string name="img_user_helper">immagine utente helper</string>
     <string name="detail_helper_title">DETTAGLI HELPER</string>
 
 
     <!-- fragment_kiuer_details-->
     <string name="btn_details_kiuer">Raggiungi </string>
-    <string name="btn2_details_kiuer">Contatta </string>
+    <string name="btn2_details_kiuer"> Contatta </string>
     <string name="img_user_kiuer">user kiuer image icon</string>
     <string name="img_details_kiuer">immagine utente kiuer</string>
     <string name="detail_kiuer_title">DETTAGLI KIUER</string>

@@ -99,9 +99,9 @@ public class Helper_CloseQueue extends DialogFragment {
         TextView nome = (TextView) this.getDialog().findViewById(R.id.text_nome_1h);
         nome.setText(bundle.get("nome").toString());
         text.setText( getResources().getString(R.string.hour_start_queue) + "  " + bundle.get("orario_inizio").toString().substring(11, 16) + "\n\n"
-                    + getResources().getString(R.string.hour_end_queue) + "  " + bundle.get("orario_fine").toString().substring(11, 16) + "\n\n"
-                    + getResources().getString(R.string.time_queue) + "  " + calcoloOre(bundle.get("orario_inizio").toString(), bundle.get("orario_fine").toString()) + "\n\n"
-                    + getResources().getString(R.string.payment) + "  " + calcoloCompenso(bundle.get("orario_inizio").toString(), bundle.get("orario_fine").toString(), bundle.getInt("tariffa_oraria")) + "€\n");
+                    + getResources().getString(R.string.hour_end_queue) + "  " + bundle.get("orario_fine_coda").toString().substring(11, 16) + "\n\n"
+                    + getResources().getString(R.string.time_queue) + "  " + calcoloOre(bundle.get("orario_inizio").toString(), bundle.get("orario_fine_coda").toString()) + "\n\n"
+                    + getResources().getString(R.string.payment) + "  " + calcoloCompenso(bundle.get("orario_inizio").toString(), bundle.get("orario_fine_coda").toString(), bundle.getInt("tariffa_oraria")) + "€\n");
     }
 
     /**

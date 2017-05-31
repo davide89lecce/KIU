@@ -20,6 +20,11 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
+
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -95,7 +100,12 @@ public class Kiuer_Details extends DialogFragment {
                             Volley.getInstance(getActivity().getApplicationContext()).addToRequestQueue(stringRequest);
                             }
                         else if (bundle.get("stato_coda").toString().equals(getResources().getString(R.string.queue_in_progress))) {
+                            DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                            String date = df.format(Calendar.getInstance().getTime());
+
                             String url = "http://www.davideantonio2.altervista.org/helper_fineCoda.php";
+                            bundle.putString( "orario_fine_coda", date );
+
                             StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
 
                                 @Override

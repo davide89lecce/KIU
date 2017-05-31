@@ -173,9 +173,9 @@ public class Helper_Settings extends AppCompatActivity {
     protected Dialog onCreateDialog(int id) {
         switch (id) {
             case TIME_DIALOG_ID1:
-                return new android.app.TimePickerDialog(this, mTimeSetListener, oraInizio, minutiInizio, false);
+                return new android.app.TimePickerDialog(this, mTimeSetListener, oraInizio, minutiInizio, true);
             case TIME_DIALOG_ID2:
-                return new android.app.TimePickerDialog(this, mTimeSetListener, oraFine, minutiFine, false);
+                return new android.app.TimePickerDialog(this, mTimeSetListener, oraFine, minutiFine, true);
         }
         return null;
     }

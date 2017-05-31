@@ -148,7 +148,7 @@
     <!-- activity_settings-->
     <string name="plus_sign">+</string>
     <string name="minus_sign">-</string>
-    <string name="euro_hour_sign">€/h</string>
+    <string name="euro_hour_sign"> €/h</string>
     <string name="fascia_oraria">Define time slot</string>
     <string name="fascia_costo">Define hourly cost</string>
     <string name="start_time">Your availability starts at:</string>

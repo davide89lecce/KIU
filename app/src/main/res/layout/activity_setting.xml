@@ -146,11 +146,11 @@
     <Button
         android:id="@+id/scegliArea"
         style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
+        android:layout_width="107dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="80dp"
-        android:layout_weight="0.05"
+        android:layout_weight="0.02"
         android:background="@color/colorPrimary"
         android:elevation="10dp"
         android:gravity="center"

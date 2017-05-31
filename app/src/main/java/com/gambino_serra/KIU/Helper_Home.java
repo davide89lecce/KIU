@@ -351,19 +351,19 @@ public class Helper_Home extends AppCompatActivity implements Response.Listener<
     @Override
     public void onErrorResponse(VolleyError error) {
         Toast.makeText(getApplicationContext(), R.string.error_update_volley, Toast.LENGTH_SHORT).show();
-    }
+        }
 
     /**
      * Il metodo avvia il servizio per la gestione delle notifiche e messaggi
      */
     public void startService() {
         startService(new Intent(this, NotificationService.class));
-    }
+        }
 
     /**
      *  Il metodo permette di mettere in Stop il servizio per la gestione delle notifiche e dei messaggi (eseguito al logout).
      */
     public void stopService() {
         stopService(new Intent(this, NotificationService.class));
-    }
+        }
 }

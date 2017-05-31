@@ -191,7 +191,7 @@ public class NotificationService extends IntentService {
                                 //Visualizza la notifica di richieste rifiutate se sono presenti notifiche da visualizzare
                                 if ((contaNotifiche != 0) && (contaRifiutata != 0)) {
                                     NotificationCompat.Builder mBuilder2 = new NotificationCompat.Builder(getApplicationContext())
-                                            //.setSmallIcon(R.drawable.ic_notifications)
+                                            .setSmallIcon(R.mipmap.ic_launcher)
                                             .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher))
                                             .setContentTitle(getResources().getString(R.string.kiu))
                                             .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
