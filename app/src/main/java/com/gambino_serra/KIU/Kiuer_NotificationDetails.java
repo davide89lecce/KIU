@@ -8,7 +8,10 @@ import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -83,8 +86,12 @@ public class Kiuer_NotificationDetails extends DialogFragment {
     public void onStart(){
         super.onStart();
         TextView testo = (TextView) this.getDialog().findViewById(R.id.richiesta);
+        TextView rating = (TextView) this.getDialog().findViewById(R.id.textView8);
+        RatingBar rating_kiuer = (RatingBar) this.getDialog().findViewById(R.id.rating_kiuer);
+
         Bundle bundle = getArguments();
         String status;
+
         if(bundle.get("stato_richiesta").toString().equals("1")){
             status = getResources().getString(R.string.request_accepted);
             }
@@ -94,9 +101,12 @@ public class Kiuer_NotificationDetails extends DialogFragment {
         else{
             status = getResources().getString(R.string.pending_confirmation);
             }
-        testo.setText(status + "\n\n" + getResources().getString(R.string.name) + " " + bundle.get("nome").toString() + "\n"
-                + getResources().getString(R.string.time) + " " + bundle.get("orario").toString().substring(0,5) + "\n"
-                + getResources().getString(R.string.place) + " " + bundle.get("luogo").toString() + "\n"
+        testo.setText(status + "\n\n" + getResources().getString(R.string.name) + " " + bundle.get("nome").toString() + "\n\n"
+                + getResources().getString(R.string.time) + " " + bundle.get("orario").toString().substring(0,5) + "\n\n"
+                + getResources().getString(R.string.place) + " " + bundle.get("luogo").toString() + "\n\n"
                 + getResources().getString(R.string.description) + " " + bundle.get("descrizione").toString());
+
+        rating.setVisibility(View.GONE);
+        rating_kiuer.setVisibility(View.GONE);
     }
 }

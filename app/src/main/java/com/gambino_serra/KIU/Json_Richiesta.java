@@ -8,6 +8,8 @@ import com.google.gson.annotations.SerializedName;
 public class Json_Richiesta {
         @SerializedName("ID_richiesta")         public Integer ID_richiesta;
         @SerializedName("ID_kiuer")             public String ID_kiuer;
+        @SerializedName("rating")               public float rating;
+        @SerializedName("cont_feedback")        public Integer cont_feedback;
         @SerializedName("ID_helper")            public String ID_helper;
         @SerializedName("orario")               public String orario;
         @SerializedName("stato_richiesta")      public String stato_richiesta;

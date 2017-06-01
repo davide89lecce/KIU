@@ -98,11 +98,12 @@
     <string name="name">Nome</string>
     <string name="time">Orario</string>
     <string name="details_kiuer">DETTAGLI NOTIFICA</string>
+    <string name="rating_kiuer">Rating del Kiuer</string>
 
     <!-- Helper_Notification -->
     <string name="text_request_queue">richiede una coda </string>
-    <string name="text_request_queue1">alle ore </string>
-    <string name="text_request_queue2">in </string>
+    <string name="text_request_queue1">Alle ore : </string>
+    <string name="text_request_queue2">Presso : </string>
     <string name="text_request_queue3">Descrizione : </string>
     <string name="accept">Accetta</string>
     <string name="reject">Rifiuta</string>

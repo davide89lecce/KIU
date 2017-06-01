@@ -77,6 +77,7 @@ public class Helper_Notification extends AppCompatActivity implements Response.L
         final Bundle bundle = new Bundle();
         final SharedPreferences prefs = getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
         final ArrayList<Json_Richiesta> productList = new JsonConverter<Json_Richiesta>().toArrayList(response, Json_Richiesta.class);
+
         final BindDictionary<Json_Richiesta> dictionary = new BindDictionary<>();
         dictionary.addStringField(R.id.tvText, new StringExtractor<Json_Richiesta>() {
             @Override
@@ -91,13 +92,15 @@ public class Helper_Notification extends AppCompatActivity implements Response.L
                 DialogFragment newFragment = new Helper_NotificationDetails();
                 bundle.putString("ID", productList.get(position).ID_richiesta.toString());
                 bundle.putString("text",  productList.get(position).nome + " "
-                                        + getResources().getString(R.string.text_request_queue) + " \n"
+                                        + getResources().getString(R.string.text_request_queue) + " \n\n"
                                         + getResources().getString(R.string.text_request_queue1) + " "
-                                        + productList.get(position).orario.substring(0, 5) + " \n"
+                                        + productList.get(position).orario.substring(0, 5) + " \n\n"
                                         + getResources().getString(R.string.text_request_queue2) + " "
-                                        + productList.get(position).luogo + " \n"
+                                        + productList.get(position).luogo + " \n\n"
                                         + getResources().getString(R.string.text_request_queue3) + " "
                                         + productList.get(position).descrizione );
+                bundle.putFloat("rating", productList.get(position).rating);
+                bundle.putInt("cont_feedback", productList.get(position).cont_feedback);
 
                 newFragment.setArguments(bundle);
                 newFragment.show(getFragmentManager(), "Helper_NotificationDetails");

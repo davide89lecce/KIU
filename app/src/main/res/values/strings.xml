@@ -107,11 +107,12 @@
     <string name="name">Name</string>
     <string name="time">Time</string>
     <string name="details_kiuer">NOTIFICATION DETAILS</string>
+    <string name="rating_kiuer">Kiuer\'s Rating</string>
 
     <!-- Helper_Notification -->
     <string name="text_request_queue">wants you to do the queue for him </string>
-    <string name="text_request_queue1">at </string>
-    <string name="text_request_queue2">in </string>
+    <string name="text_request_queue1">At :</string>
+    <string name="text_request_queue2">Place :</string>
     <string name="text_request_queue3">Description : </string>
 
     <string name="accept">accept</string>

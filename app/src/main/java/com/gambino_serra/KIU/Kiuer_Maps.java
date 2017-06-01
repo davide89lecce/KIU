@@ -297,7 +297,7 @@ public class Kiuer_Maps extends FragmentActivity implements
                 }
             });
 
-        Snackbar snack = Snackbar.make(findViewById(android.R.id.content), R.string.place_marker_on_location, Snackbar.LENGTH_LONG);
+        Snackbar snack = Snackbar.make(findViewById(android.R.id.content), R.string.place_marker_on_location, Snackbar.LENGTH_INDEFINITE);
         View view1 = snack.getView();
         TextView tv = (TextView) view1.findViewById(android.support.design.R.id.snackbar_text);
         tv.setTextColor(Color.WHITE);
@@ -316,7 +316,7 @@ public class Kiuer_Maps extends FragmentActivity implements
                 .position(ltln)
                 .title("Io"));
 
-        Snackbar snack = Snackbar.make(findViewById(android.R.id.content), R.string.select_helper, Snackbar.LENGTH_LONG);
+        Snackbar snack = Snackbar.make(findViewById(android.R.id.content), R.string.select_helper, Snackbar.LENGTH_INDEFINITE);
         View view1 = snack.getView();
         TextView tv = (TextView) view1.findViewById(android.support.design.R.id.snackbar_text);
         tv.setTextColor(Color.WHITE);

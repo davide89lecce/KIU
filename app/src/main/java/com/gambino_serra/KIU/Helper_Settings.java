@@ -11,6 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -37,6 +38,8 @@ public class Helper_Settings extends AppCompatActivity {
     private Button scegliArea;
     private Button menoButton;
     private Button piuButton;
+    private ImageButton edit_inizio;
+    private ImageButton edit_fine;
     private int oraInizio;
     private int minutiInizio;
     private int oraFine;
@@ -51,7 +54,9 @@ public class Helper_Settings extends AppCompatActivity {
         setContentView(R.layout.activity_setting);
 
         textInizioDisp = (TextView) findViewById(R.id.orainiziodisponibilita);
+        edit_inizio = (ImageButton) findViewById(R.id.editInizio);
         textFineDisp = (TextView) findViewById(R.id.orafinedisponibilita);
+        edit_fine = (ImageButton) findViewById(R.id.editFine);
         textTariffaOraria = (TextView) findViewById(R.id.tariffa_oraria);
         scegliArea = (Button) findViewById(R.id.scegliArea);
         menoButton = (Button) findViewById(R.id.buttonMeno);
@@ -102,6 +107,15 @@ public class Helper_Settings extends AppCompatActivity {
             }
         });
 
+        edit_inizio.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //visualizza Dialog con id 0 in questo caso
+                showDialog(TIME_DIALOG_ID1);
+                setOrario = 1;
+            }
+        });
+
+
         textFineDisp.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //visualizza Dialog con id 0 in questo caso
@@ -109,6 +123,16 @@ public class Helper_Settings extends AppCompatActivity {
                 setOrario = 2;
             }
         });
+
+
+        edit_fine.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //visualizza Dialog con id 0 in questo caso
+                showDialog(TIME_DIALOG_ID2);
+                setOrario = 2;
+            }
+        });
+
 
         scegliArea.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

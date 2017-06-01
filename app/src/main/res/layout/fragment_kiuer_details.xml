@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:layout_editor_absoluteY="81dp"
+    tools:layout_editor_absoluteX="0dp">
 
 
     <ImageView
@@ -13,11 +15,10 @@
         android:layout_height="72dp"
         android:contentDescription="@string/img_user_kiuer"
         android:src="@drawable/ic_person"
-        tools:layout_constraintTop_creator="1"
-        android:layout_marginTop="9dp"
-        tools:layout_constraintLeft_creator="1"
+        android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp" />
 
     <TextView
         android:id="@+id/text_nome_1"
@@ -25,42 +26,43 @@
         android:layout_height="wrap_content"
         android:text=""
         android:textSize="@dimen/font_size_medium"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_constraintLeft_creator="1"
+        android:layout_marginStart="8dp"
         app:layout_constraintLeft_toRightOf="@+id/imageView"
-        android:layout_marginLeft="8dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView"
         android:layout_marginTop="8dp"
+        app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         android:layout_marginBottom="8dp" />
 
 
     <Button
         android:id="@+id/luogo"
-        android:layout_width="110dp"
-        android:layout_height="43dp"
-        android:layout_marginLeft="22dp"
+        android:layout_width="111dp"
+        android:layout_height="48dp"
         android:background="@color/colorPrimary"
         android:drawableRight="@drawable/ic_go"
         android:elevation="10dp"
         android:text="@string/btn_details_kiuer"
         android:textAppearance="@style/TextAppearance.AppCompat.Button"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
-        app:layout_constraintBaseline_toBaselineOf="@+id/contatta_kiuer"
-        app:layout_constraintLeft_toLeftOf="@+id/guideline4"
         tools:ignore="ButtonStyle"
         tools:layout_conversion_absoluteHeight="48dp"
         tools:layout_conversion_absoluteWidth="64dp"
         tools:layout_conversion_absoluteX="125dp"
         tools:layout_conversion_absoluteY="318dp"
-        tools:layout_editor_absoluteY="139dp" />
+        android:layout_marginStart="22dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/contatta_kiuer"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline4" />
 
     <Button
         android:id="@+id/contatta_kiuer"
-        android:layout_width="110dp"
-        android:layout_height="43dp"
+        android:layout_width="111dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="24dp"
         android:background="@color/colorPrimary"
         android:drawableRight="@drawable/ic_contact"
         android:elevation="10dp"
@@ -68,37 +70,39 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Button"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         tools:ignore="ButtonStyle"
+        tools:layout_conversion_absoluteHeight="48dp"
+        tools:layout_conversion_absoluteWidth="95dp"
         tools:layout_conversion_absoluteX="189dp"
         tools:layout_conversion_absoluteY="318dp"
-        tools:layout_conversion_absoluteWidth="95dp"
-        tools:layout_conversion_absoluteHeight="48dp"
-        android:layout_marginTop="13dp"
-        app:layout_constraintTop_toBottomOf="@+id/dettagli"
         app:layout_constraintRight_toLeftOf="@+id/guideline4"
-        android:layout_marginRight="24dp" />
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/dettagli" />
 
 
     <TextView
         android:id="@+id/dettagli"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:textAlignment="textStart"
         android:textSize="@dimen/font_size_small"
-        app:layout_constraintLeft_toRightOf="@+id/imageView"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        tools:layout_constraintBottom_creator="1"
-        tools:layout_constraintLeft_creator="1" />
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <android.support.constraint.Guideline
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/guideline4"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.5"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="206dp" />
 
 
 </android.support.constraint.ConstraintLayout>

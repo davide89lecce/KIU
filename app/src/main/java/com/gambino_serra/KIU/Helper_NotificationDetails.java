@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -37,6 +38,7 @@ public class Helper_NotificationDetails extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
         final Bundle bundle = getArguments();
+
         ((Helper_Notification) getActivity()).updateRichieste();
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
@@ -46,6 +48,7 @@ public class Helper_NotificationDetails extends DialogFragment {
         title.setText(R.string.notif_details_helper_title);
         title.setGravity(Gravity.CENTER);
         title.setTextSize(25F);
+
         builder.setCustomTitle(title);
         builder.setView(inflater.inflate(R.layout.fragment_notification_details, null))
 
@@ -118,6 +121,7 @@ public class Helper_NotificationDetails extends DialogFragment {
                         ((Helper_Notification) getActivity()).onResume();
                     }
                 });
+
         return builder.create();
     }
 
@@ -127,8 +131,11 @@ public class Helper_NotificationDetails extends DialogFragment {
     @Override
     public void onStart(){
         super.onStart();
+        RatingBar rating = (RatingBar) this.getDialog().findViewById(R.id.rating_kiuer);
         TextView testo = (TextView) this.getDialog().findViewById(R.id.richiesta);
         Bundle bundle = getArguments();
         testo.setText(bundle.get("text").toString());
+        rating.setRating(bundle.getFloat("rating") / bundle.getInt("cont_feedback"));
+        rating.setIsIndicator(true);
     }
 }
