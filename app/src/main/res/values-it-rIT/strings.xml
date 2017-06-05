@@ -73,7 +73,7 @@
     <string name="select_helper">Seleziona uno degli helper visibili sulla mappa</string>
     <string name="click_here_for_details">Premi qui per i dettagli</string>
     <string name="request_sent">Richiesta inviata</string>
-    <string name="unused_request">Richiesta non inviata. Riprovare più tardi</string>
+    <string name="unused_request">Richiesta non inviata. Riprovare più tardi\n Evitare caratteri non validi</string>
     <string name="set_request_time">Imposta orario richiesta</string>
     <string name="sign_your_position">Indica la tua posizione sulla mappa</string>
     <string name="update_coordinates">Aggiornamento coordinate</string>
