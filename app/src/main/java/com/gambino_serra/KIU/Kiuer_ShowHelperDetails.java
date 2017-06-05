@@ -47,6 +47,7 @@ public class Kiuer_ShowHelperDetails extends DialogFragment {
 
                 .setPositiveButton(R.string.chiudi_coda, new DialogInterface.OnClickListener() {
                     @TargetApi(Build.VERSION_CODES.M)
+
                     public void onClick(DialogInterface dialog, int id) {
 
                         //Se la coda è terminata avvia la Dialog relativa alla chiusura della coda altrimenti avvisa l'utente che non è possibile chiuderla
